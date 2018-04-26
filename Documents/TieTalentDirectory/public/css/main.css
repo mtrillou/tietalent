@@ -1,0 +1,4120 @@
+
+
+/* Normalize */
+
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+
+/* Document
+   ========================================================================== */
+
+
+
+/* TEST */
+
+
+.wrapper {
+  margin: 0 auto;
+}
+
+
+nav {
+  background-color: white;
+}
+
+nav:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+nav .toggle {
+  display: none;
+  background-color: white;
+  color: #333333;
+  text-decoration: none;
+}
+
+#logoTieTalentSmallMenu, #navigationMobile {
+  display:none;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+nav .nav:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+nav .navMobile:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+nav .nav {
+  float:right;
+  display:flex;
+  width:60%;
+}
+
+nav .navMobile {
+  float:right;
+  display:flex;
+  width:40%;
+}
+
+
+nav .nav > li {
+  position: relative;
+  width:25%;
+}
+nav .navMobile > li {
+  position: relative;
+  width:20%
+}
+nav .nav > li a, nav .nav .navButton {
+  display: block;
+  line-height: 3rem;
+  padding: 0 0.5rem;
+  color: #384763;
+  text-decoration: none;
+}
+nav .navMobile > li a {
+  display: block;
+  line-height: 3rem;
+  padding: 0 1rem;
+  color: #384763;
+  text-decoration: none;
+}
+nav .nav > li a:active {
+  background-color: #b4b4b4;
+}
+nav .navMobile > li a:active {
+  background-color: #b4b4b4;
+}
+nav .nav > li a:hover {
+  background-color: #F1F1F1;
+  color:#F14904;
+}
+nav .navMobile > li a:hover {
+  background-color: #F1F1F1;
+  color:#F14904;
+}
+nav .nav > li.dropdown > a::after {
+  content: "+\00a0";
+  float: right;
+}
+nav .navMobile > li.dropdown > a::after {
+  content: "+\00a0";
+  float: right;
+}
+nav .nav > li ul {
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  display: none;
+}
+
+nav .navMobile > li ul {
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  display: none;
+}
+
+nav .nav > li ul > li {
+  position: relative;
+  padding:0.5em 0rem 0.5rem 0rem;
+}
+
+nav .nav > li ul > li a {
+  color: #384763;
+  line-height: 30px;
+}
+
+nav .nav > li ul > li a:active {
+  background-color: #5493bb;
+}
+
+nav .nav > li ul > li a:hover {
+  color: #F14904;
+}
+
+nav .nav > li ul > li.dropdown > a::after {
+  content: "+\00a0";
+  float: right;
+}
+
+nav .nav > li ul > li ul {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: #c1d8e7;
+}
+
+nav .nav > li ul > li ul > li {
+  position: relative;
+}
+
+nav .nav > li ul > li ul > li a {
+  color: #384763;
+  line-height: 60px;
+}
+
+nav .nav > li ul > li ul > li a:active {
+  background-color: #5493bb;
+}
+
+nav .nav > li ul > li ul > li a:hover {
+  color: #263042;
+}
+
+nav .nav > li ul > li ul > li:hover {
+  background-color: #79aac9;
+}
+
+nav .nav > li ul > li:hover, .lightGreyBackground {
+  background-color: #F1F1F1;
+}
+
+.underlineDarkGrey {
+  text-decoration: underline;
+  text-decoration-color: #333333;
+}
+
+nav .nav > li:hover {
+  background-color: #D3D3D3;
+
+}
+nav .navMobile > li:hover {
+  background-color: #D3D3D3;
+
+}
+nav .nav > li:hover > ul {
+  display: block;
+}
+
+nav .nav > li:hover > ul li:hover ul {
+  display: block;
+}
+
+.iconToDisplayMobile {
+  display:none;
+}
+#logoTieTalent {
+  display:block !important;
+}
+
+#buttonRecruit{
+  line-height:2rem;
+  margin:0.5rem 0.5rem 0.5rem 0rem;;
+  color:white;
+}
+
+#buttonRecruit:hover{
+  background-color:#F14904;
+}
+
+#recruitButton:hover{
+  background-color:transparent;
+}
+
+.underlineHover:hover{
+  text-decoration: underline !important;
+}
+
+#footer .col-md-12 {
+  display:flex;
+  justify-content:space-between;
+}
+
+
+.our_plans {
+    background-color: #28A55F;
+    padding: .9rem 1.4rem;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    text-align: right;
+    width: 200px;
+    position: relative;
+    left: -31px;
+    top: 105px;
+  }
+
+
+.our_plans:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-left: 16px solid #358A6F;
+  position: absolute;
+  -webkit-transform: scaleY(.8) rotate(45deg);
+  -moz-transform: scaleY(.8) rotate(45deg);
+  -ms-transform: scaleY(.8) rotate(45deg);
+  transform: scaleY(.8) rotate(45deg);
+  top: -20px;
+  left: 9px;
+}
+
+
+
+@media (max-width: 1300px) {
+  nav .nav {
+    width:70%;
+  }
+  nav .navMobile {
+    width:50%;
+  }
+
+  .iconToDisplayMobile {
+    display:none;
+  }
+  #logoTieTalent {
+    display:block !important;
+  }
+}
+
+@media (max-width: 1050px) {
+  nav .nav {
+    width:70%;
+    float:right;
+    display:flex;
+  }
+
+  .confidentialityButton {
+    width:40% !important;
+  }
+
+  nav .navMobile {
+    width:60%;
+    float:right;
+    display:flex;
+  }
+
+  .iconToDisplayMobile {
+    display:none;
+  }
+
+  #msform{
+    width:100% !important;
+  }
+  #candidateregistrationform .col-md-3,#candidateregistrationform .col-md-4,#candidateregistrationform .col-md-5,#candidateregistrationform .col-md-6{
+    width:40% !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .titleh2{
+    width:100% !important;
+  }
+}
+
+#logoTieTalent {
+  display:block !important;
+}
+
+#profileRowPresentation{
+  background-color:#D3D3D3;
+  border-radius:2rem;
+  margin:3rem 1rem 2rem 1rem;
+  padding:1rem;
+}
+
+#settingsElementDeactivateRow .settings-element-deactivate-box{
+  width:20% !important;
+}
+
+
+
+
+@media (max-width: 860px) {
+
+
+  .confidentialityButton {
+    width:40% !important;
+  }
+
+  #inviteFromEmailAccount {
+    width:60%;
+  }
+
+  nav .nav {
+    float:none;
+    margin:0 auto;
+    display:none;
+    width:100%;
+  }
+  nav .navMobile {
+    float:none;
+    margin:0 auto;
+    width:100%;
+  }
+
+  #logoTieTalent {
+    display:none !important;
+  }
+
+  aside.leftpart {
+    display:none;
+  }
+
+  article.rightpart {
+    width:100%;
+  }
+
+  #logoTieTalentSmallMenu, #navigationMobile {
+    display:block;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  nav .toggle {
+    display: block;
+    line-height: 50px;
+    padding: 0 25px;
+  }
+  nav .nav > li {
+    float: none;
+    position: static;
+    width: 100% !important;
+  }
+  nav .navMobile > li {
+    float: none;
+    position: static;
+    width: 100%;
+  }
+  nav .nav > li a {
+    line-height: 50px;
+    padding: 0 25px;
+  }
+  nav .navMobile > li a {
+    line-height: 50px;
+  }
+  nav .nav > li ul {
+    background-color: #cecece;
+    position: static;
+    display: none;
+  }
+  nav .navMobile > li ul {
+    background-color: #cecece;
+    position: static;
+    display: none;
+  }
+  nav .nav > li ul > li {
+    position: static;
+  }
+  nav .navMobile > li ul > li {
+    position: static;
+  }
+  nav .nav > li ul > li a {
+    color: #384763;
+    line-height: 50px;
+  }
+  nav .navMobile > li ul > li a {
+    color: #384763;
+    line-height: 50px;
+  }
+  nav .nav > li ul > li ul {
+    position: static;
+    left: 0;
+    top: 0;
+  }
+  nav .navMobile > li ul > li ul {
+    position: static;
+    left: 0;
+    top: 0;
+  }
+  nav .nav > li ul > li ul > li {
+    position: static;
+  }
+  nav .navMobile > li ul > li ul > li {
+    position: static;
+  }
+  nav .nav > li ul > li ul > li a {
+    line-height: 50px;
+  }
+  nav .navMobile > li ul > li ul > li a {
+    line-height: 50px;
+  }
+
+  .iconToDisplayMobile {
+    display:none;
+  }
+
+  #settingsElementDeactivateRow .settings-element-deactivate-box{
+    width:20% !important;
+  }
+
+}
+
+@media (max-width: 560px) {
+
+  main {
+    min-height:600px;
+  }
+
+  #welcome {
+    padding:0rem 1rem 0rem 1rem !important;
+  }
+
+  #welcome h1.alignleft {
+    margin-top:2rem !important;
+  }
+
+  .titleh2{
+    width:100% !important;
+    margin-left:0 !important;
+    background-color:rgba(255,255,255,0.5) !important;
+  }
+
+
+  #footer{
+    display:none;
+  }
+
+  .faq-title{
+    line-height: normal !important;
+  }
+
+  .faq-title h1{
+    padding-top:2rem !important;
+  }
+
+  main{
+    margin-bottom:3rem;
+  }
+  .textToHideMobile {
+    display:none;
+  }
+
+  .iconToDisplayMobile {
+    display:block;
+  }
+
+  aside.leftpart {
+    display:none;
+  }
+
+  article.rightpart {
+    width:100%;
+    padding:0;
+    margin-top:4rem;
+  }
+
+  .rightpart .file-upload {
+    width:100% !important;
+  }
+
+  .document-button {
+    width:40% !important;
+  }
+
+  .confidentialityButton {
+    width:40% !important;
+  }
+
+  .thickdashedborder .saveclick{
+    width:35% !important;
+  }
+
+  .candidate-linktoposition-companyname, .candidate-linktoposition-element, .reference-fn, .reference-company {
+    width:80% !important;
+    margin-top:0.2rem;
+  }
+
+  #settingsElementDeactivateRow .settings-element-deactivate-box{
+    width:20% !important;
+  }
+
+  .loginMobileButton{
+    display:inline !important;
+  }
+
+
+}
+
+@media (max-width: 490px) {
+  #inviteCompanyInputs input{
+    width:80%;
+    margin-top:0.2rem;
+  }
+
+  #inviteFromEmailAccount {
+    width:80%;
+  }
+
+  #confidentialityRow {
+    flex-direction:row;
+  }
+
+  #confidentialityCompanyList input {
+    width:70%;
+  }
+
+  #confidentiality_save, #communication_save, #email_save, #skypeCandidate_save, #phone_save, #password_save, #general_edit, #general_save, #communicationPartner_save, #emailPartner_save, #phonePartner_save, #skypePartner_save, #passwordPartner_save {
+    width:30% !important;
+  }
+
+  #generalCompanyUser_edit, #generalCompanyUser_save, #skypeCompany_save, #passwordCompany_save, #generalCompanyInformation_edit{
+    width:30% !important;
+  }
+
+  .confidentialityButton {
+    width:45% !important;
+    margin-left:-15px;
+    margin-right:15px;
+  }
+
+  #profileRowPresentation{
+    flex-direction:row !important;
+    margin-top:2rem;
+  }
+
+  #settingsElementDeactivateRow{
+    flex-direction:row;
+  }
+
+  #settingsElementDeactivateRow .settings-element-deactivate-box{
+    width:20% !important;
+    margin-top:3rem;
+    text-align:center;
+  }
+
+  .dashboard-box {
+    margin-top:0.5rem;
+    width:50% !important;
+  }
+
+  .settings-element-language {
+    padding-bottom:3rem;
+  }
+
+  .welcome-company-btn-default{
+    padding:1.3rem !important;
+  }
+
+  #msform, #msform fieldset{
+    width:100% !important;
+    margin:0 !important;
+  }
+
+  #candidateregistrationform .radioinput .row {
+    flex-direction: row !important;
+  }
+
+
+
+}
+
+
+/*TEST*/
+
+
+
+
+html {
+  font-family: sans-serif; /* 1 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in IE.
+ */
+
+figcaption,
+figure,
+main { /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ */
+
+details, /* 1 */
+menu {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/* Scripting
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+canvas {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in IE.
+ */
+
+template {
+  display: none;
+}
+
+/* Hidden
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10-.
+ */
+
+[hidden] {
+  display: none;
+}
+
+
+/* -------------------------------------------------- */
+
+
+
+
+
+
+@font-face {
+  font-family: "poppins";
+  src: url({{ asset('fonts/poppins/Poppins-Light.ttf') }}) format("woff");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
+  font-family: "poppins";
+  src: url({{ asset('fonts/poppins/Poppins-Bold.ttf') }}) format("woff");
+  font-weight:bold;
+  font-style:normal;
+}
+
+@font-face {
+  font-family: "roboto";
+  src: url({{ asset('fonts/roboto/Roboto-Italic.ttf') }}) format("woff");
+  font-weight:normal;
+  font-style:normal;
+}
+
+
+
+.clear {
+  clear:both;
+  display:block;
+  height:0;
+}
+
+
+body, html {
+  font-family: "poppins", sans-serif, arial;
+  text-align:center;
+  color:white;
+}
+
+
+#welcomecompany-main a {
+  width:10%;
+  margin:0 auto;
+}
+
+header {
+  display:flex;
+  justify-content:space-between;
+  text-align:left;
+  padding:0rem 0rem 0rem 4rem;
+  color:#333333;
+  background-color:white;
+  position: fixed;
+  top:0;
+  width:100%;
+  z-index:100;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+}
+
+header nav li {
+  display:inline-block;
+  position:relative;
+}
+
+header nav {
+  padding-right:2rem;
+
+}
+
+header nav li {
+  padding:1rem 1.5rem 0.2rem 1.5rem;
+}
+
+header .header-submenu, header .faq-header-submenu {
+  color:#333333;
+  background-color:white;
+  text-align:center;
+  display:none;
+  position:absolute;
+  top:100%;
+  right:-1px;
+  width:143px;
+  padding:0.5rem 1rem 0rem 1rem;
+  z-index:10;
+}
+
+
+
+header .header-submenu-partner, header .faq-header-submenu-partner {
+  color:#333333;
+  background-color:white;
+  text-align:center;
+  display:none;
+  position:absolute;
+  top:100%;
+  right:-10px;
+  width:135px;
+  padding:0.5rem 1rem 0rem 1rem;
+  z-index:10;
+}
+
+header .partner-header-submenu {
+  color:#333333;
+  background-color:white;
+  text-align:center;
+  display:none;
+  position:absolute;
+  top:100%;
+  right:-1px;
+  width:143px;
+  padding:0.5rem 1rem 0rem 1rem;
+  z-index:10;
+}
+
+header .partner-header-submenu-partner {
+  color:#333333;
+  background-color:white;
+  text-align:center;
+  display:none;
+  position:absolute;
+  top:100%;
+  right:-10px;
+  width:135px;
+  padding:0.5rem 1rem 0rem 1rem;
+  z-index:10;
+}
+
+header .header-submenu a, header .header-submenu-partner a, header .faq-header-submenu a, header .faq-header-submenu-partner a, header .partner-header-submenu a,  header .partner-header-submenu-partner a {
+  margin:1rem 0rem 0.5rem 0rem;
+}
+
+header .header-submenu a:hover,  header .header-submenu-partner a:hover, header .faq-header-submenu a:hover, header .faq-header-submenu-partner a:hover, .inviteacompany:hover, .candidateinterview-interview-partner a:hover, .candidateinterview-interview-company a:hover, .rightpart .goback-to-opportunity:hover, #companymainpage .inviteacompany:hover {
+  color:#F14904;
+}
+
+header .partner-header-submenu a:hover,  header .partner-header-submenu-partner a:hover {
+  color:#F14904;
+}
+
+header > nav > ul > li:hover, header > .menuburgerfull > nav > ul > li:hover {
+  padding-bottom:0rem;
+  color:#F14904;
+  transition:none;
+}
+
+
+header > nav > ul > li:hover > .header-submenu, header > nav > ul > li:hover > .header-submenu-partner, header > nav > ul > li:hover > .faq-header-submenu, header > nav > ul > li:hover > .faq-header-submenu-partner, header > nav > ul > li:hover > .partner-header-submenu, header > nav > ul > li:hover > .partner-header-submenu-partner {
+  display:flex;
+  flex-direction:column;
+}
+
+
+header > .menuburgerfull > nav > ul > li:hover > .header-submenu, header > .menuburgerfull > nav > ul > li:hover > .header-submenu-partner, header > .menuburgerfull > nav > ul > li:hover > .faq-header-submenu, header > .menuburgerfull > nav > ul > li:hover > .faq-header-submenu-partner, header > .menuburgerfull > nav > ul > li:hover > .partner-header-submenu, header > .menuburgerfull > nav > ul > li:hover > .partner-header-submenu-partner {
+  display:flex;
+  flex-direction:column;
+  background-color:#F1F1F1;
+}
+
+.menuburger li {
+  display:flex;
+  flex-direction:column;
+}
+
+header a {
+  transition:none;
+}
+
+.menuburger {
+  list-style-type:none;
+  display:none;
+  font-size:1rem;
+  text-align:center;
+  background-color:white;
+}
+
+.menuburger li {
+  margin:0.5rem;
+}
+
+.menuburgerfull {
+  display:none;
+  font-size:2rem;
+  text-align:center;
+  background-color:white;
+  color:#333333;
+}
+
+main {
+  min-height:700px;
+}
+
+
+.mobilePointer {
+  cursor:pointer;
+}
+
+
+a {
+  text-decoration:none;
+  color:inherit;
+}
+
+.h2 {
+  margin-bottom:10px;
+}
+
+ul {
+  padding:0;
+}
+
+li {
+  list-style:none;
+}
+
+
+@media (max-width: 800px) {
+  header .header-submenu-partner, header .faq-header-submenu-partner, header .partner-header-submenu, header .partner-header-submenu-partner {
+    position:absolute;
+    top:100%;
+    right:-1px;
+    width:143px;
+    padding:0.5rem 1rem 0rem 1rem;
+  }
+}
+
+.nooutline{
+  outline: none;
+}
+
+
+#thankyou-landing {
+  background: transparent url(../img/work2bis.jpeg) top left no-repeat;
+  background-size:cover;
+}
+
+.paddingtop-big {
+  padding-top:7rem;
+}
+
+.weight500 {
+  font-weight:500;
+}
+
+@media (max-width: 480px) {
+  #thankyou-landing h1 {
+    font-size: 2rem;
+  }
+
+  #thankyou-landing h2 {
+    font-size: 1rem !important;
+  }
+}
+
+
+/* welcome.html */
+
+#welcome {
+  display:flex;
+  flex-direction:column;
+  background: transparent url(../img/london.jpg) top left no-repeat;
+  background-size:cover;
+  padding:0rem 4rem 4rem 4rem;
+}
+
+#welcome #login {
+  font-size:1.1rem;
+  width:auto;
+  text-align:center;
+  width:4rem;
+  margin-right:0.5rem;
+  margin-left:auto;
+}
+
+#welcome #login:hover {
+  color:#F14904;
+  transition:none;
+  cursor:pointer;
+}
+
+#welcome img {
+  margin:0 auto;
+}
+
+#welcome .identity a {
+  width:30%;
+  margin:0 auto;
+}
+
+
+#welcome h1 {
+  margin:5rem 1rem 3rem 0rem;
+  /*text-shadow: 0 2px 10px rgba(0,0,0,0.5);*/
+  color:#333333;
+  font-size:6rem;
+  font-weight:500;
+}
+
+
+#welcome h2 {
+  /*text-shadow: 0 2px 10px rgba(0,0,0,0.5);*/
+  margin:0rem 0rem 4rem 0rem;
+  font-weight:500;
+}
+
+#welcome .identity {
+  margin-bottom:3rem;
+}
+
+#welcome .welcome-btn-default {
+  width:40%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+  border: none;
+  -webkit-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.9);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #F14904;
+  -webkit-box-shadow: 0 0 0 0 rgba(0,0,0,0.2) ;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.2) ;
+  text-shadow: 0 0 0 rgba(15,73,168,0.66);
+  outline-color:#F14904;
+}
+
+#welcome .company {
+  background-color:#333333;
+}
+
+.HowItWorksH1 {
+  margin-left:9%;
+  height: auto;
+  font-weight: 500;
+  font-size:6rem;
+}
+
+.HIWStepDescription {
+  padding-left:2rem;
+}
+
+.HIWFullStep {
+  margin:0 !important;
+  padding:6rem 3rem;
+}
+
+.width50 {
+  width:50%;
+}
+
+.width40{
+  width:40%;
+}
+
+.width100 {
+  width:100%;
+}
+
+.underlineOrange {
+  text-decoration: underline #F14904;
+}
+
+.underlineWhite {
+  border-bottom: 7px solid white;
+}
+
+.whiteBackground {
+  background-color:white;
+}
+
+
+.evenNumb, .oddNumb {
+  position:relative;
+}
+
+.evenNumb:before {
+  width: 0;
+  height: 0;
+  border-left: 44px solid transparent;
+  border-right: 44px solid transparent;
+  border-top: 44px solid #FFF;
+  bottom: -44px;
+  position: absolute;
+  left: 19%;
+  z-index: 2;
+}
+
+.oddNumb:before {
+  width: 0;
+  height: 0;
+  border-left: 44px solid transparent;
+  border-right: 44px solid transparent;
+  border-top: 44px solid #D1D1D1;
+  bottom: -44px;
+  position: absolute;
+  right: 19%;
+  z-index: 2;
+}
+
+#welcome .login2, #profileNotComplete, #profileReviewed, #profileValidated, #notValidated, #partnerInterview, #partnerInterviewSummary, #companyInterview, #companyInterviewSummary, #candidateNotInterested, #candidateNotInterestedFeedbackSent {
+  display:none;
+}
+
+#welcome .title-responsive, #completeInterviewTab, #profileRecommended, #opportunityPresentation {
+  display:none;
+}
+
+.stepTitle {
+  font-size:4rem;
+  margin-top:0;
+}
+
+
+
+@media (max-width: 800px) {
+
+  #welcome {
+    padding:2.5rem 0rem;
+  }
+
+  #welcome h1 {
+    font-size:3.5rem;
+  }
+
+  #welcome #login {
+    margin-right:2rem;
+  }
+
+  #welcome .welcome-btn-default {
+    width:90%;
+    margin-bottom:1rem;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .rowbenefits {
+    display:block !important;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  main {
+    min-height:600px;
+  }
+  #welcome .title {
+    display:none;
+  }
+
+  #welcome #login {
+    display:none;
+  }
+
+  #welcome .title-responsive {
+    display:inline;
+  }
+
+  #welcome .login2 {
+    display:inline;
+    background:transparent;
+    border:2px solid #F14904;
+  }
+
+  #footer {
+    padding: 1rem 0.2rem;
+  }
+
+
+  #msform fieldset {
+    padding: 20px 10px;
+  }
+
+  #benefits {
+    padding: 2rem 0.5rem 0rem 0.5rem !important;
+  }
+
+  .HowItWorksH1 {
+    margin: 0;
+    text-align: center;
+    font-size: 4rem !important;
+  }
+
+  .evenNumb {
+    display:flex;
+    flex-direction:column-reverse !important;
+  }
+
+  .HITDescriptionStep {
+    width:90% !important;
+  }
+
+  .HIWStepDescription {
+    z-index: 2;
+    padding-left:0 !important;
+    text-align: center !important;
+    margin-top:-20rem;
+  }
+
+  .HIWPictureTab {
+    width:95% !important;
+    z-index:3;
+  }
+
+  .HIWPicture {
+    width:100% !important;
+    margin: 2rem 0rem;
+  }
+
+  .HIWStepNumber {
+    font-size: 20rem;
+    color: #D1D1D1;
+    position: relative;
+    bottom: 1rem;
+    z-index: 1;
+    opacity: 0.5;
+  }
+
+  .HIWFullStep {
+    padding:2rem 1rem;
+  }
+
+  .evenNumb:before {
+    left:auto !important;
+  }
+
+  .oddNumb:before {
+    right:auto !important;
+  }
+
+  .stepTitle {
+    font-size:3rem;
+  }
+
+  #benefits .colonne {
+    margin: 0 auto;
+  }
+
+
+}
+
+
+
+
+/* index.html */
+
+
+
+
+
+/* Presentation */
+
+.presentation {
+  display:flex;
+  flex-direction:column;
+}
+
+.presentationcandidate {
+  background: transparent url(../img/work.jpg) top left no-repeat;
+  background-size:cover;
+}
+
+.presentationcompany {
+  background: transparent url(../img/team.jpg) top left no-repeat;
+  background-size:cover;
+}
+
+.presentationpartner {
+  background: transparent url(../img/home.jpg) top left no-repeat;
+  background-size:cover;
+}
+
+.content {
+  text-align:left;
+  display:flex;
+  justify-content: space-around;
+  padding:4rem 4rem 0rem 4rem;
+}
+
+.index-company-form, .index-candidate-form {
+  width:70%;
+}
+
+.presentation h1 {
+  font-size:4rem;
+  margin:0rem 1rem 4rem 0rem;
+  height:9rem;
+}
+
+.presentationpartner h1 {
+  margin-bottom:0;
+}
+
+.presentationpartner h3 {
+  margin-top:0;
+  margin-bottom:7.34rem;
+}
+
+.presentation h1, .presentation h3 {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.leftpart h3 {
+  font-weight:500;
+}
+
+p {
+  font-size:0.8rem;
+  margin-bottom:1rem;
+}
+
+.structure .fa-angle-down, #benefits .fa-angle-down {
+  font-size:4rem;
+  padding:0rem 2rem 1rem 2rem;
+}
+
+a .fa-angle-down {
+  color:white;
+}
+
+
+
+/* Form */
+
+.index-company-form, .index-candidate-form {
+  background:rgba(221, 221, 221, 0.6);
+  border-radius:0.5rem;
+  -webkit-border-radius: 0.5rem;
+  padding: 0.5rem 1.7rem 2rem 1.7rem;
+  margin-left: 3rem;
+}
+
+.index-company-form h2, .index-candidate-form h2 {
+  font-size:1rem;
+  margin:1rem 0rem 1rem 0rem;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+.index-company-form-horizontal, .index-candidate-form-horizontal {
+  width:100%;
+}
+
+
+.index-company-form-group, .index-candidate-form-group {
+  display:flex;
+  justify-content:space-between;
+  justify-content:center;
+  margin-top:1rem;
+}
+
+.index-company-form-control, .index-candidate-form-control {
+  width:100%;
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 0.63rem 1.25rem;
+  border: 1px solid #b7b7b7;
+  -webkit-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  color: black;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(252,252,252,1);
+  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.2) inset;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2) inset;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.66);
+  outline-color:#F14904;
+}
+
+.index-company-btn-default, .index-candidate-btn-default, .welcome-company-btn-default {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 0.63rem 2rem 0.63rem 2rem;
+  border: none;
+  -webkit-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.9);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #F14904;
+  -webkit-box-shadow: 0 0 0 0 rgba(0,0,0,0.2) ;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.2) ;
+  text-shadow: 0 0 0 rgba(15,73,168,0.66) ;
+}
+
+
+
+
+/* STEPS - etapes du process */
+
+#steps {
+  color:#F14904;
+  padding:2rem 3rem 0rem 3rem;
+}
+
+#steps h2, #benefits h2 {
+  margin: 3rem 0rem 3.5rem 0rem;
+}
+
+
+.row {
+  display:flex;
+  justify-content:space-around;
+  margin:3rem 0rem 2rem 0rem;
+}
+
+.stepcontent h3 {
+  margin:1.8rem 0rem 0rem 0rem;
+  text-align:left;
+}
+
+.stepcontent p {
+  margin-top:3rem;
+  text-align:left;
+}
+
+.colonne {
+  width:100%;
+  padding:1rem;
+}
+
+.colonne:nth-child(1) {
+  animation-delay:0.25s;
+}
+
+.colonne:nth-child(2) {
+  animation-delay:0.5s;
+}
+
+.colonne:nth-child(3){
+  animation-delay:0.75s;
+}
+
+.circle {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border:4px solid #F14904;
+  font-size: 30px;
+  color: white;
+  line-height: 67px;
+  background-color:#F14904;
+  float:left;
+  margin-right:1rem;
+}
+
+a .orange{
+  color:#F14904;
+}
+
+
+/* Benefits */
+
+#benefits {
+  background-color:#333333;
+  padding:2rem 3rem 0rem 3rem;
+}
+
+#benefits .fa-heart {
+  color:#ff0000;
+}
+
+
+
+h4 {
+  font-size:1.2rem;
+}
+
+
+
+
+/* Get TieTalent */
+
+#gettietalent {
+  padding:5rem 3rem 5rem 3rem;
+}
+
+#gettietalent p {
+  color:#F14904;
+  font-size:5rem;
+  margin:2rem;
+}
+
+#gettietalent button {
+  padding:1rem 3rem 1rem 3rem;
+  font-size:2rem;
+  margin-bottom:2rem;
+}
+
+
+/* Footer */
+
+footer {
+  padding:1rem 3rem 1rem 3rem;;
+  background-color:#F1F1F1;
+  color:#333333;
+  display:flex;
+  justify-content:space-between;
+}
+
+
+footer .social {
+  font-size:2rem;
+  margin:0rem;
+}
+
+footer a {
+  padding:0.3rem;
+}
+
+footer a:visited {
+  color:inherit;
+}
+
+
+footer .language {
+  background:transparent;
+  border:none;
+}
+
+footer .language:focus{
+  outline:0;
+}
+
+footer form, footer .social {
+  display:flex;
+  vertical-align:center;
+}
+
+
+/*Go to top*/
+
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 45px;
+    width: 20px !important;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top i {
+    color: #F14904;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 2rem;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#return-to-top:hover i {
+    top: 5px;
+}
+
+.fontsize-five {
+  font-size:5rem;
+}
+
+
+/* Responsive */
+
+@media (max-width: 800px) {
+
+  header {
+    padding-left:0rem;
+  }
+
+  .content {
+    flex-direction:column;
+  }
+
+  #public-menu {
+    display:none;
+  }
+
+  .menuburgerfull {
+    display:block;
+    display:inline;
+    font-size:1.5rem;
+    padding:0.7rem;
+  }
+
+  .menuburgerfull:hover .menuburger{
+      display:block;
+    }
+
+
+  .index-company-form, .index-candidate-form {
+    margin:0 auto;
+    width:70%;
+  }
+
+  #welcomecompany-main .companytoppart {
+    padding:6rem 0.5rem 1rem 0.5rem;
+  }
+
+  #welcomecompany-main h1 {
+    font-size:2.5rem;
+    height:auto;
+  }
+
+  #welcomecompany-main .wp-company-form-control, #welcomecompany-main .wp-btn-default, #welcomecompany-main .welcome-company-btn-default {
+    width:90%;
+    margin-bottom:1rem;
+    margin-left:0;
+    margin-right:0;
+  }
+
+  #welcomecompany-main .wp-form-group {
+    margin-bottom:1rem;
+  }
+
+  #welcomecompany-main #gettietalent {
+    padding: 5rem 0.2rem;
+  }
+
+}
+
+
+
+@media (max-width: 480px) {
+
+  .logo {
+      width:150px;
+    }
+
+  .rowbenefits {
+    flex-wrap:wrap;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  header {
+    padding:0rem;
+  }
+
+
+  .content {
+    flex-direction:column;
+    padding:1rem;
+  }
+
+  h1 {
+    font-size:3.5rem;
+    margin-bottom:1rem;
+  }
+
+  .index-company-form, .index-candidate-form {
+    margin:0 auto;
+    width:80%;
+  }
+
+  .structure .fa-angle-down {
+    padding:0rem;
+  }
+
+  .row {
+    flex-direction:column;
+    margin-top:0rem;
+  }
+
+  .colonne {
+    width:90%;
+  }
+
+
+
+  #gettietalent p {
+    margin:1rem 0rem 1rem 0rem;
+    font-size:3rem;
+  }
+
+  #gettietalent button {
+    padding:0.7rem 2rem 0.7rem 2rem;
+    font-size:1.2rem;
+    margin-bottom:1rem;
+  }
+}
+
+
+
+
+/* candidateProfile.html */
+
+
+
+
+/* candidate presentation*/
+
+#candidatePresentation {
+  color: #333333;
+  width:90%;
+  margin:0 auto;
+}
+
+#candidateKeyElements {
+  width:70%;
+}
+
+#candidateKeyElements img {
+  height:120px;
+  width:auto;
+  max-width:250px;
+}
+
+#candidateKeyElements .img {
+  width:50%;
+  border-right:0.05em solid #333333;
+  text-align:right;
+  padding-right:2rem;
+}
+
+.keyElements {
+  width:50%;
+  text-align:left;
+  padding-left:2rem;
+}
+
+.h1CandidateProfile {
+  font-size:2rem;
+  margin:2rem 0rem 0rem 0rem;
+}
+
+.noTopMargin {
+  margin-top:0rem;
+}
+
+.candidateSummary h3 {
+  margin-top:0;
+}
+
+
+/* documents */
+
+#documents {
+  color: #F14904;
+  width:20%;
+  margin: 0rem;
+}
+
+#documents h3 {
+  font-size: 1.3rem;
+  margin-top:4rem;
+}
+
+#documents .cvHoverContent, #documents .referencesHoverContent, #documents .cAndDHoverContent, #companymainpage .others-benefits, #companyOtherAddress-search, .vacancy-language-2, .vacancy-language-3, .vacancy-language-4, #companyOtherLineManager, .partner-askforinterview, .partner-waitingforinterviewconf, .partner-interviewconfirmed, .vacancy-IT-2, .vacancy-IT-3, .vacancy-IT-4, .vacancy-IT-5 {
+  display:none;
+}
+
+#documents .cv:hover .cvHoverContent, #documents .references:hover .referencesHoverContent, #documents .certificatesAndDiplomas:hover .cAndDHoverContent {
+  display:block;
+}
+
+#documents li {
+  margin:1rem 0rem 0rem 0rem;
+  font-size:0.8rem;
+}
+
+
+
+/* reason to hire*/
+
+#reasonToHire {
+  background-color: #333333;
+  color: white;
+  padding:0.5rem 3rem 3rem 3rem;
+}
+
+
+#reasonToHire h2 {
+  margin: 3rem 0rem 3rem 0rem;
+}
+
+
+
+
+/* candidateSelection.html */
+
+
+
+.selection-boxes {
+  width: 60rem;
+  margin: 3.13rem auto;
+  padding: 0.31rem;
+  padding-left: 1.25rem;
+}
+
+.box {
+  width: 28%;
+  height: 15.63rem;
+  margin: 2%;
+  border-radius:2rem;
+  box-sizing: border-box;
+  display: inline-block;
+  background: #333333;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+.box .icon-cont {
+  border: 0.375rem solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  width: 4.69rem;
+  height: 4.69rem;
+  margin: 1.25rem auto;
+  margin-left:1rem;
+  margin-top:0rem;
+  display: block;
+  text-align: center;
+  position: absolute;
+  top: 1.2rem;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);
+}
+.box .icon-cont i {
+  color: #fff;
+  opacity: 0.6;
+  font-size: 2.5em;
+  line-height: 4.69rem;
+}
+.box:hover .icon-cont {
+  animation: shady 4s linear infinite;
+}
+
+@keyframes shady {
+  0% {box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);}
+  20% {box-shadow: 0 0 0 100px rgba(255,255,255,0), 0 0 0 0px rgba(3, 108, 129, 0);}
+  20.1% {box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);}
+  50% {box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);}
+  70% {box-shadow: 0 0 0 100px rgba(255,255,255,0), 0 0 0 0px rgba(3, 108, 129, 0);}
+  70.1% {box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);}
+  100% {box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);}
+}
+
+.box h2 {
+  color: #fff;
+  font-weight: 300;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,0);
+  width: 50%;
+  position:absolute;
+  top:1.5rem;
+  left:7rem;
+  border-bottom:1px solid white;
+}
+.box ul {
+  font-family: 'Open Sans', Arial, sans-serif;
+  color: #fff;
+  font-size: 0.81rem;
+  line-height: 1.75rem;
+  text-indent: 0.9rem;
+  margin: 1.56rem;
+  margin-top: 23.75rem;
+  list-style-type: disc;
+}
+.box ul.hidden {
+  opacity: 0;
+}
+.box a.expand {
+  width: 2rem;
+  height: 2rem;
+  background: #fff;
+  font-weight: 600;
+  color: #036C81;
+  display: block;
+  margin: 1rem auto 1.56rem;
+  text-align: center;
+  line-height: 2rem;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.625rem;
+
+}
+.box a.expand span.minus {
+  opacity: 0;
+}
+
+.box a.expand span.plus {
+  opacity: 1;
+  padding-left: 0.32rem;
+}
+
+.box.selected a.expand {
+  display: block;
+  position: absolute;
+  left: 130px;
+  right: -29px;
+  bottom: -39px;
+  width: 80px;
+  height: 50px;
+  background: #eee;
+  color: #036C81;
+  transform: rotate(-45deg);
+}
+
+
+.box.selected a.expand span {
+  display: block;
+  position: absolute;
+  top: -4px;
+  left: 38px;
+  transform: rotate(45deg);
+  font-size: 24px;
+}
+
+.box.selected a.expand span.minus {
+  opacity: 1;
+}
+
+.box.selected a.expand span.plus {
+  opacity: 0;
+}
+
+.box.selected .icon-cont {
+  transform: scale(0.6,0.6);
+  opacity: 0.3;
+  position: absolute;
+  top: 0rem;
+  left: -0.9rem;
+}
+
+.box.selected:hover .icon-cont {
+  animation: none;
+}
+
+.box.selected h2 {
+  padding: 0rem 0rem 1rem 0rem;
+  border-bottom: 1px solid #F14904;
+  transform: scale(0.6,0.6);
+  opacity:0.3;
+  width: 50%;
+  top: 0rem;
+  left:5rem;
+}
+
+.box.selected ul.hidden {
+  opacity: 1;
+  margin-top: 6rem;
+}
+
+
+
+/* signup.html */
+
+
+
+
+
+
+#mainSignup, #mainLogin {
+  color: #333333;
+  background-color: #333333;
+  padding:10rem 0rem 4rem 0rem;
+}
+
+.tabs h3 {
+  margin-top:0;
+  font-size:1.5rem;
+}
+
+.form-wrap h2, #candidateregistrationform h2, #companyregistrationform h2 {
+  color:#F14904;
+  font-weight:300;
+  font-size:1.3rem;
+  margin:1rem 2rem 1rem 2rem;
+}
+
+.form-wrap {
+background-color: #fff;
+width: 40rem;
+margin: 0 auto;
+box-shadow: 0px 0px 0px #BEBEBE;
+-webkit-box-shadow: 0px 0px 0px #BEBEBE;
+-moz-box-shadow: 0px 0px 0px #BEBEBE;
+border-radius:0.5rem;
+-webkit-border-radius:0.5rem;
+}
+
+.signup-form-wrap .tabs h3 {
+  float: left;
+  width: 50%;
+}
+
+.signup-form-wrap .tabs h3 a {
+  padding: 1rem 0;
+  text-align: center;
+  font-weight: 400;
+  background-color: #e6e7e8;
+  display: block;
+  color: #666;
+  border-radius:0.5rem;
+  -webkit-border-radius:0.5rem;
+}
+
+.signup-form-wrap .tabs h3 a.active {
+  background-color: #fff;
+}
+
+.form-wrap .tabs-content {
+  padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+}
+
+/* Faire apparaitre le contenu candidat quand on clique dessus et pareil pour client */
+.form-wrap .tabs-content div[id$="tab-content"] {
+  display: none;
+}
+
+.form-wrap .tabs-content .active {
+    display: block !important;
+}
+
+.form-wrap form .input {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  color: inherit;
+  font-family: inherit;
+  padding: .5rem 0 10px .5rem;
+  border: 1px solid #CFCFCF;
+  border-radius:0.5rem;
+  -webkit-border-radius:0.5rem;
+  outline: 0;
+  display: inline-block;
+  margin: 0 0 .6rem 0;
+  padding-right: 2em;
+  width: 100%;
+}
+
+.form-wrap form .button {
+  width: 100%;
+  padding: .8em 0 10px .8em;
+  background-color: #28A55F;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius:0.5rem;
+  -webkit-border-radius:0.5rem;
+}
+
+.form-wrap form .button:hover {
+    background-color: #4FDA8C;
+}
+
+.form-wrap form .checkbox {
+  visibility: hidden;
+  padding: 1.25rem;
+  margin: .5rem 0 1.5rem;
+}
+
+.form-wrap form .checkbox:checked + label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+.form-wrap form label[for] {
+  position: relative;
+  padding-left: 1.25rem;
+  cursor: pointer;
+}
+
+.form-wrap form label[for]:before {
+    content: '';
+    position: absolute;
+    border: 1px solid #CFCFCF;
+    width: 1.02rem;
+    height: 1.02rem;
+    top: 4px;
+    left: -0.9rem;
+  }
+
+  .form-wrap form label[for]:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 0.6rem;
+    height: 0.3rem;
+    background-color: transparent;
+    top: 9px;
+    left: -10px;
+    border: 3px solid #28A55F;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+
+.form-wrap .help-text {
+  margin-top: .6rem;
+}
+
+.form-wrap .help-text p {
+    text-align: left;
+    font-size: 0.7rem;
+}
+
+.form-wrap .help-text a{
+  color:#28A55F;
+}
+
+
+
+@media (max-width:650px) {
+
+  #mainSignup {
+    padding-top:5rem;
+    padding-bottom:3rem;
+    min-height:auto;
+  }
+
+  #mainSignup .form-wrap {
+    width:100%;
+  }
+
+  #mainSignup .form-wrap .tabs-content {
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+  }
+}
+
+
+
+
+/* welcomepartner.php */
+
+#goBackToValidationButtons:hover, .pointerCursor:hover {
+  text-decoration:underline;
+  cursor:pointer;
+}
+
+@media (max-width:800px) {
+  #welcomecompany-main .welcomepartner-subtitle {
+    margin-top:3rem;
+    margin-bottom:4.34rem;
+  }
+}
+
+/* login.html */
+
+
+
+#login-tab-content h2 {
+  font-size:2.2rem;
+  margin-bottom:0rem;
+}
+
+#login-tab-content p {
+  font-size:0.7rem;
+  color:#F14904;
+  margin-top:0.2rem;
+}
+
+.linktoregistration {
+  color:white;
+}
+
+.linktoregistration a {
+  color:#F14904;
+}
+
+
+@media (max-width:650px) {
+
+  #mainLogin {
+    padding-top:5rem;
+    padding-bottom:3rem;
+    min-height:auto;
+  }
+
+  #mainLogin .form-wrap {
+    width:100%;
+  }
+
+  #mainLogin .form-wrap .tabs-content {
+    padding: 0.5rem;
+  }
+}
+
+
+/* welcomecompany.html */
+
+.companytoppart {
+  text-align:left;
+  padding:6.5rem 4rem 0rem 4rem;
+}
+
+.wp-form-group {
+  text-align:center;
+  margin: 4rem 0rem 4rem 0rem;
+}
+
+.wp-company-form-control {
+  width:40%;
+  text-align:center;
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 1rem 0rem 1rem 0rem;
+  margin-right:0.5rem;
+  border: 1px solid #b7b7b7;
+  -webkit-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: black;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(252,252,252,1);
+  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.2) inset;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2) inset;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.66);
+  outline-color:#F14904;
+}
+
+.wp-btn-default {
+  width:40%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 1rem 0rem 1rem 0rem;
+  margin-left:0.5rem;
+  border: none;
+  -webkit-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.9);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #F14904;
+  -webkit-box-shadow: 0 0 0 0 rgba(0,0,0,0.2) ;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.2) ;
+  text-shadow: 0 0 0 rgba(15,73,168,0.66) ;
+}
+
+@media (max-width:927px) and (min-width:800px){
+  .welcomecompany-subtitle {
+    margin-top:5rem;
+  }
+}
+
+
+
+
+
+
+/*   FAQ  */
+
+#faq {
+  color:#333333;
+  text-align:left;
+}
+
+#faq .faq-title {
+  background: #333333;
+  height: 12rem;
+  line-height: 12rem;
+  text-align: center;
+}
+
+#faq .faq-title h1 {
+  color: white;
+  font-size: 1.7rem;
+  font-weight:bold;
+}
+
+#faq p {
+  font-size:0.9rem;
+}
+
+
+.faq-element__answer {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+
+.faq-container {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:4rem;
+}
+
+
+.faq-headline {
+  font-family: "Varela Round", sans-serif;
+  text-align: left;
+  padding-left: 15px;
+  font-size: 1.5em;
+  margin-top: 1.5em;
+  font-weight: bold;
+}
+
+.faq-list {
+  margin: 15px 0;
+  padding: 0 15px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.faq-element {
+  font-family: "Varela Round", sans-serif;
+  list-style: none;
+  margin: 10px 0 5px;
+}
+
+.faq-element__title {
+  cursor: pointer;
+  font-weight: 500;
+  background: white;
+  z-index: 10;
+  position: relative;
+  font-size: 1.1em;
+}
+.faq-element__title:hover {
+  text-decoration: underline;
+}
+.faq-element__title::after {
+  white-space: nowrap;
+  font-weight: 300;
+  padding-left: 5px;
+  opacity: 0;
+  -webkit-transform-origin: 11px;
+          transform-origin: 11px;
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+  display: none;
+  content: ">";
+}
+
+.faq-element--active .faq-element__title {
+  color: #F14904;
+}
+.faq-element--active .faq-element__title::after {
+  opacity: 1;
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+  display: inline-block;
+}
+
+.faq-element__answer {
+  font-weight: normal;
+  margin-top: -10%;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  z-index: 1;
+  font-size: 0.9em;
+  color: #505050;
+}
+
+.faq-element--active .faq-element__answer {
+  opacity: 1;
+  position: relative;
+  top: 0;
+  left: 0;
+  font-weight: 300;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border: 1px solid white;
+  border-top: 1px solid #F14904;
+  padding: 20px;
+}
+
+@media (max-width: 700px) {
+  #faq .faq-title {
+    line-height:normal;
+    padding-top:2.5rem;
+  }
+
+  #faq, .faq-headline {
+    text-align:center;
+    padding-left:0;
+  }
+}
+
+
+@media (min-width: 700px) {
+  .faq-list {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+  }
+
+  .faq-list::before {
+    opacity: 0.2;
+  }
+
+  .faq-element {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .faq-element .faq-element__title {
+    width: 50%;
+    padding-right: 40px;
+    display: inline-block;
+  }
+  .faq-element .faq-element__title::after {
+    display: none;
+  }
+  .faq-element .faq-element__answer {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    left: 50%;
+    width: 50%;
+    border-left-color: #F14904;
+    border-top-color: white;
+  }
+}
+.c-note {
+  font-size: 0.8em;
+  padding-left: 15px;
+  opacity: 0.5;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+.c-note:hover {
+  opacity: 1;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+.c-note a {
+  color: #1e88e5;
+}
+
+
+
+
+/* candidateregistrationform.html - companyregistrationform.html*/
+
+#candidateregistrationform {
+  background-color:#333333;
+  height:80rem;
+  padding-top:5rem;
+}
+
+#candidateregistrationform h1, #companyregistrationform h1 {
+  margin-bottom:3rem;
+  padding-top:1rem;
+}
+
+#candidateregistrationform h5, #companyregistrationform h5 {
+  color: #333333;
+}
+
+.darkGreyColor {
+  color: #333333 !important;
+}
+
+#candidateregistrationform fieldset, #companyregistrationform fieldset {
+  transition:none;
+}
+
+/*form styles*/
+#msform, #msform-company {
+	width: 70%;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+}
+
+#msform fieldset, #msform-company fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+
+	box-sizing: border-box;
+	width: 90%;
+	margin: 0 5%;
+
+	/*stacking fieldsets above each other*/
+	position: absolute;
+}
+
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type), #msform-company fieldset:not(:first-of-type) {
+	display: none;
+}
+/*inputs*/
+#msform input, #msform textarea, .buttondesign {
+	padding: 0.7rem;
+	border: 1px solid #333333;
+	border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	color: #2C3E50;
+	font-size: 13px;
+}
+/*buttons*/
+#msform .action-button, #msform-company .action-button {
+	width: 100px;
+	background: #28A55F;
+	color: white;
+	border: 0 none;
+	border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+#msform .action-button:hover, #msform .action-button:focus, #msform-company .action-button:hover, #msform-company .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+  outline:0;
+}
+/*headings*/
+
+.fs-subtitle {
+	font-size: 1rem;
+	color: #333333;
+	margin: 2rem 0rem 1.5rem 0rem;
+}
+/*progressbar*/
+#progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+  display:flex;
+  justify-content:space-around;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+}
+#progressbar li {
+	list-style-type: none;
+	color: white;
+	font-size: 1rem;
+	position: relative;
+}
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 3rem;
+	line-height: 3rem;
+	display: block;
+	font-size: 1rem;
+	color: #333333;
+	background: white;
+	border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+	margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: white;
+	position: absolute;
+	z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none;
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after{
+	background: #27AE60;
+	color: white;
+}
+
+
+textarea {
+  resize:none;
+}
+
+
+.formchoicebutton {
+  color:#333333;
+  background-color:transparent;
+  padding:auto;
+  outline:0;
+}
+
+#candidateregistrationform .row, #companyregistrationform .row {
+  margin-top:0;
+}
+
+#candidateregistrationform .threeperline, #companyregistrationform .threeperline {
+  width:30%;
+}
+
+#candidateregistrationform .twoperline, #companyregistrationform .twoperline {
+  width:45%;
+}
+
+#candidateregistrationform .formchoicebutton, .buttondesign, #companyregistrationform .formchoicebutton {
+  border:2px solid #333333;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  padding:0.5rem;
+  font-size:0.85rem;
+}
+
+
+#candidateregistrationform .selected, #companyregistrationform .selected, #candidateregistrationform .radioinput input:checked + label, #companyregistrationform .radioinput input:checked + label, .buttondesign:checked + label, .buttonDesignChecked {
+  background-color:#333333;
+  color:#F14904 !important;
+  border:2px solid #27AE60 !important;
+}
+
+#candidateregistrationform .availability, #candidateregistrationform .mobility, #companyregistrationform .availability, #companyregistrationform .budget {
+  color:#333333;
+  font-size:1rem;
+  font-weight:normal;
+}
+
+
+#candidateregistrationform label, #companyregistrationform label, .label-buttondesign {
+  color:#333333;
+  font-size:0.85rem;
+  padding:0.5rem;
+  position:absolute;
+  top:-33px;
+  left:0px;
+  width:95%;
+  height:60px;
+  align-items:center;
+  display:flex;
+  justify-content:center;
+  border: 2px solid #333333;
+  border-radius:0.5rem;
+  -webkit-border-radius:0.5rem;
+}
+
+#candidateregistrationform .radioinput input, #companyregistrationform .radioinput input, .buttondesign {
+  width:95%;
+  height:60px;
+  position:absolute;
+  top:-37px;
+  left:15px;
+  opacity:0;
+  z-index:100;
+}
+
+#candidateregistrationform .radioinput .row, #companyregistrationform .radioinput .row {
+  margin-top:3.5rem;
+  margin-bottom:4.5rem;
+}
+
+
+#candidateregistrationform #candidateOtherCompanyType, #companyregistrationform #candidateOtherCompanyType, #candidateregistrationform #candidateOtherDivision, #companyregistrationform #candidateOtherDivision, #candidateregistrationform #candidateOtherFunction, #companyregistrationform #candidateOtherFunction, #candidateregistrationform #candidateFandAOtherDepartment, #companyregistrationform #candidateFandAOtherDepartment, #candidateregistrationform #candidateDepartmentFandA, #companyregistrationform #candidateDepartmentFandA, #candidateregistrationform #candidateFunctionAccounting, #companyregistrationform #candidateFunctionAccounting, #candidateregistrationform #candidateFunctionFandC, #companyregistrationform #candidateFunctionFandC, #candidateregistrationform #candidateFunctionTaxandTreasury, #companyregistrationform #candidateFunctionTaxandTreasury, #candidateregistrationform .candidateFunctionOther, #companyregistrationform .candidateFunctionOther, .candidate-notinterestedbyopportunity-other, .settings-element-communication, .settings-element-email, .settings-element-email .add-newcandidateemail, .settings-element-phone, .settings-element-phone .add-newcandidatephone, .settings-element-skype, .settings-element-skype .add-newcandidateskype, .settings-element-password, .settings-element-generalinfo, .settings-element-language, .settings-element-deactivate{
+  display:none;
+}
+
+
+
+
+
+.file-upload {
+  background-color: #ffffff;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+
+
+.file-upload-btn {
+  width: 100%;
+  margin: 0;
+  color: white;
+  background: #333333;
+  border: none;
+  padding: 10px;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.file-upload-btn:hover {
+  color: #F14904;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.file-upload-btn:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+.file-upload-content {
+  display: none;
+  text-align: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-upload-input-picture {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+  top:4px;
+  right:4px;
+  z-index:1001;
+}
+
+.image-upload-wrap {
+  margin-top: 20px;
+  border: 4px dashed #333333;
+  position: relative;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+  border: 4px dashed #F14904;
+}
+
+.image-upload-wrap:hover .drag-text h3 {
+  color:#F14904;
+}
+
+.image-title-wrap {
+  padding: 0 15px 15px 15px;
+  color: #222;
+}
+
+.drag-text {
+  text-align: center;
+}
+
+.drag-text h3 {
+  font-weight: 100;
+  text-transform: uppercase;
+  color: #333333;
+  padding: 60px 0;
+}
+
+.file-upload-image {
+  max-height: 200px;
+  max-width: 200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.remove-CV {
+  width: 200px;
+  margin: 0;
+  color: #333333;
+  background: #F1F1F1;
+  border: none;
+  padding: 10px;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  transition: all .2s ease;
+  outline: none;
+}
+
+.remove-CV:hover {
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.remove-CV:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+
+
+
+/*  candidatemainpage.html  */
+
+#candidatenotification-urgent h2, #companynotification-urgent h2, #partnernotification-urgent h2 {
+  color:#F14904;
+}
+
+#candidatenotification-urgent .row, #companynotification-urgent .row {
+  display:flex;
+  justify-content:center;
+}
+
+#candidatenotification-urgent .vacancycompanylogo {
+  width:50%;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+}
+
+#candidatenotification-urgent .vacancymaininfo {
+  text-align:left;
+  width:50%;
+  padding-left:2rem;
+}
+
+#candidatenotification-urgent .wp-btn-default, #companynotification-urgent .wp-btn-default {
+  width:20%;
+}
+
+
+#candidatenotification-urgent, #candidatenotification, #companynotification-urgent, #companynotification {
+  display:none;
+  color:#333333;
+  background-color:#F1F1F1;
+  width:100%;
+  margin:0 auto;
+  padding:5rem 10% 5% 10%;
+  border-top:1px solid #333333;
+}
+
+#candidatenotification .wp-btn-default, #companynotification .wp-btn-default {
+  width:20%;
+  background-color:grey;
+}
+
+#candidatemainpage, #companymainpage, #partnermainpage {
+  display:flex;
+  min-height:800px;
+}
+
+
+#candidatemainpage .leftpart, #companymainpage .leftpart, #partnermainpage .leftpart {
+  background-color:#333333;
+  width:20%;
+}
+
+.rightpart {
+  width:80%;
+  color:#333333;
+  margin-top:2rem;
+  padding: 0rem 5% 3rem 5%;
+}
+
+.row {
+  align-items:center;
+}
+
+.candidatemaininfo, .companymaininfo, .partnermaininfo {
+  text-align:left;
+}
+
+#candidatemainpage .rightpart p, #companymainpage .rightpart p, #partnermainpage .rightpart p {
+  margin:0.5rem;
+}
+
+.thickdashedborder {
+  text-align:left;
+  border:4px dashed #333333;
+  margin:2.5rem 1rem 1rem 1rem;
+  padding:0rem 1rem 1rem 1rem;
+  border-radius:0.5rem;
+  -webkit-border-radius:0.5rem;
+}
+
+.thickdashedborderOrange {
+  text-align:left;
+  border:4px dashed #F14904;
+  margin:2.5rem 1rem 1rem 1rem;
+  padding:0rem 1rem 1rem 1rem;
+  border-radius:0.5rem;
+  -webkit-border-radius:0.5rem;
+}
+
+.candidate-link2, .candidate-link3, .candidate-link4, .candidate-link5, .candidate-link6, .candidate-link7, .candidate-reference3, .candidate-reference4, .candidate-reference5, .candidate-reference6, .candidate-reference7 {
+  display:none;
+}
+
+
+.removelinkstoposition, .addlinkstoposition7, .addreference, .removereference, .removereference2, .addreference7 {
+  color:transparent;
+}
+
+.removelinkstoposition:hover, .addlinkstoposition7:hover, .addreference7:hover, .addreference:hover, .removereference:hover, .removereference2:hover {
+  cursor:default;
+}
+
+.row-reverse {
+  display:flex;
+  flex-direction:row-reverse;
+}
+
+.thickdashedborder .saveclick {
+  width:15%;
+  text-align:center;
+  padding:0.5rem 1rem 0.5rem 1rem;
+  margin-top:1rem;
+}
+
+.candidate-linktoposition-companyname, .candidate-linktoposition-element, .reference-fn, .reference-company, .candidate-notinterestedbyopportunity-other, .borderradius {
+  border:1px solid #333333;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  padding:0.3rem 0.5rem 0.3rem 0.5rem;;
+}
+
+.candidate-linktoposition-companyname {
+  width:15%;
+}
+
+.candidate-linktoposition-element {
+  width:70%;
+}
+
+.candidate-linktoposition-addbutton, .candidate-linktoposition-removebutton, .candidate-reference-addbutton, .candidate-reference-removebutton {
+  background-color:transparent;
+  border:none;
+}
+
+
+.reference-fn {
+  width:25%;
+  margin:0.2rem;
+}
+
+.reference-company {
+  width:50%;
+  margin:0.2rem;
+}
+
+#candidateCareerSummary, #candidateTietalentFeedback, #companyTietalentFeedback, #partnerCareerSummary, #partnerTietalentFeedback, #partner-recommendation-company, #partner-recommendation-candidate, #company-recommendation-company, #company-recommendation-candidate, #candidate-recommendation-company, #candidate-recommendation-candidate, #reasonRecommendationPersonality, #candidateTietalentFeedbackOtherComments, #reasonNoRecommendation {
+  width:100%;
+  font-size:1rem;
+  font-weight:500;
+  padding:0.5rem;
+  border-radius:0.5rem;
+  -webkit-border-radius: 0.5rem;
+}
+
+.profile-picture-circle {
+  border: 1px solid #333333;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
+#candidatemainpage h1, #companymainpage h1, #partnermainpage h1 {
+  font-size:1.5rem;
+  margin-top:4rem;
+  color:#F14904;
+}
+
+.leftpart li {
+  margin:0 auto;
+  margin-top:3rem;
+  margin-bottom:3rem;
+}
+
+#candidatemainpage li:hover, #companymainpage li:hover, #partnermainpage li:hover {
+  color:#F14904;
+  transition:none;
+}
+
+
+
+
+/* opportunities */
+#vacancyMoreDetails:hover, #advicesForTheInterview:hover, #interviewFeedbackButton:hover {
+  color:white;
+}
+
+/* candidateplatformfaq.html */
+
+.aligncenter {
+  text-align:center;
+}
+
+#candidatemainpage .aligncenter, #companymainpage .aligncenter, #partnermainpage .aligncenter {
+  margin-top:4rem;
+}
+
+
+#candidatemainpage .faq-container, #companymainpage .faq-container, #partnermainpage .faq-container {
+  width:100%;
+  font-size:1rem;
+}
+
+#candidatemainpage .faq-element, #companymainpage .faq-element, #partnermainpage .faq-element {
+  margin-top:1rem;
+}
+
+.hover, .relative {
+    position:relative;
+}
+
+.tooltip {
+  padding:0.2rem;
+  bottom:20px;
+  left:-18px;
+  background-color:white;
+  color:#F14904;
+  border:1px solid #333333;
+  border-radius:5px;
+  opacity:0;
+  position:absolute;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition:  opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition:  opacity 0.5s;
+  transition:  opacity 0.5s;
+}
+
+.hover:hover .tooltip {
+    opacity:1;
+}
+
+.hoverCopied {
+    position:relative;
+}
+
+.tooltipCopied {
+  padding:0.2rem;
+  bottom:32px;
+  left:5px;
+  background-color:white;
+  color:#F14904;
+  border:1px solid #333333;
+  border-radius:5px;
+  position:absolute;
+  opacity:0;
+
+}
+
+.hoverCopied:active .tooltipCopied {
+    opacity:1;
+}
+
+
+/* candidateplatformfeedback.html */
+
+.alignleft {
+  text-align:left;
+}
+
+#candidatemainpage .alignleft, #companymainpage .alignleft, #partnermainpage .alignleft {
+  font-weight:500;
+}
+
+.rating {
+  position: center;
+  width: 250px;
+  height: 30px;
+  padding: 5px 10px;
+  margin: auto;
+  border-radius: 30px;
+  display: block;
+  overflow: hidden;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.rating:not(:checked) > input {
+  display: none;
+}
+
+#like {
+  margin:0 auto;
+  margin-top:2rem;
+  margin-bottom:2rem;
+}
+
+#like label {
+  font-size:2rem;
+  margin-left:0.5rem;
+  margin-right:0.5rem;
+}
+
+#like:not(:checked) > label {
+  cursor:pointer;
+  float: right;
+  width: 30px;
+  height: 30px;
+  display: block;
+  color: rgba(233, 54, 40, .4);
+  line-height: 33px;
+  text-align: center;
+}
+
+#like:not(:checked) > label:hover, #like:not(:checked) > label:hover ~ label {
+  color: rgba(233, 54, 40, .6);
+}
+
+#like > input:checked + label:hover, #like > input:checked + label:hover ~ label, #like > input:checked ~ label:hover, #like > input:checked ~ label:hover ~ label, #like > label:hover ~ input:checked ~ label {
+  color: rgba(233, 54, 40, .8);
+}
+
+#like > input:checked ~ label {
+  color: rgb(233, 54, 40);
+}
+
+#candidateTietalentFeedback, #companyTietalentFeedback, #partnerTietalentFeedback, #reasonRecommendationPersonality, #candidateTietalentFeedbackOtherComments, #reasonNoRecommendation {
+  margin-top:1rem;
+  margin-bottom:1.5rem;
+}
+
+.rightpart .wp-btn-default {
+  font-weight:500;
+}
+
+.thanksforyourfeedback, .settings-element-phone .add-newcompanyphone, .settings-element-skype .add-newcompanyskype, .settings-element-email .add-newcompanyemail {
+  display:none;
+}
+
+.thanksforyourfeedback p {
+  margin:2rem 0rem 4rem 0rem;
+}
+
+
+
+/* candidateinvitefriends.html */
+
+.padding-middle {
+  padding:1.5rem;
+}
+
+.sharewithfriends {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.sharewithfriends .fa {
+  font-size: 2.3rem;
+  padding-left: 1rem;
+}
+
+.sharewithfriends .fa-linkedin-square {
+  color:#0177B5;
+}
+
+.sharewithfriends .fa-facebook-square {
+  color:#425F9C;
+}
+
+.sharewithfriends .fa-twitter-square {
+  color:#1DA1F2;
+}
+
+#linkshare {
+  width:15%;
+  height:2rem;
+  margin-left:1rem;
+  border:1px dashed #333333;
+  border-top-left-radius:0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-right:none;
+}
+
+.copylinkshare {
+  color:#F14904;
+  background-color:#333333;
+  height:2rem;
+  padding:0rem 1rem;
+  border:1px dashed #333333;
+  border-top-right-radius:0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-left:none;
+}
+
+.alignright {
+  text-align:right;
+}
+
+.inviteacompany {
+  margin-top:5rem;
+}
+
+
+
+
+/* candidatedocuments.html */
+
+
+.margintop-middle {
+  margin-top:4rem;
+}
+
+.rightpart .file-upload {
+  width:70%;
+}
+
+/* candidate company interview feedback */
+
+#offerMadeToCandidate {
+  background: transparent url(../img/4935.jpg) top left no-repeat;
+  background-size:cover;
+}
+
+
+
+
+/* candidateinterview.html */
+
+
+.button-optionselection {
+  background-color:transparent;
+  border:none;
+}
+
+
+
+.candidateinterview-profilereviewed a{
+  margin-top:10rem;
+}
+
+.candidateinterview-interview-partner .paddingtop, .candidateinterview-interview-company .paddingtop  {
+  padding-top:3rem;
+}
+
+.notinterested, .greybackground {
+  background-color:#333333;
+}
+
+.marginbottom-middle {
+  margin-bottom:3rem;
+}
+
+.marginbottom-big {
+  margin-bottom:5rem;
+}
+
+
+
+
+/* candidateaccountsettings.html */
+
+
+.settings-element {
+  border:0;
+  padding-top:1rem;
+  background-color:transparent;
+  width:100%;
+  text-align:left;
+}
+
+.greylign {
+  display:block;
+  border: 1px solid #BDBDBD;
+  margin:1rem 0rem 1rem 0rem;
+}
+
+.settings-element h3 {
+  margin-top:0;
+}
+
+
+
+.settings-element h5, .settings-element h6 {
+  color:#BDBDBD;
+  font-weight:500;
+  margin:0rem 0rem 1rem 0rem;
+}
+
+.settings-element-communication {
+  text-align:center;
+}
+
+#candidatemainpage .slider-horizontal, #companymainpage .slider-horizontal, #partnermainpage .slider-horizontal {
+  margin-left:0;
+}
+
+#candidatemainpage .inputpassword, #companymainpage .inputpassword, #partnermainpage .inputpassword {
+  display:block;
+  width:50%;
+  margin:0 auto;
+  margin-bottom:1rem;
+  padding:0.3rem;
+}
+
+.spacebetween {
+  display:flex;
+  justify-content:space-between;
+}
+
+.marginleft-middle {
+  margin-left:3rem;
+}
+
+.marginleft-big {
+  margin-left:6rem;
+}
+
+.orange {
+  color:#F14904;
+}
+
+#candidatemainpage .orange, #companymainpage .orange, #partnermainpage .orange {
+  background-color:transparent;
+  border:none;
+}
+
+
+
+.spacebetween button {
+  margin: 0.5rem 0rem 0rem 0rem;
+  background-color:transparent;
+  border:none;
+}
+
+
+.centeralign {
+  text-align:center;
+}
+
+.margintop-small {
+  margin-top:1rem;
+}
+
+
+.width-small {
+  width:20%;
+}
+
+.padding-small {
+  padding:0.5rem;
+}
+
+
+
+
+/* candidateconfidentiality.html */
+
+.width-full {
+  width:100%;
+}
+
+.width-middle {
+  width:50%;
+}
+
+.margintop-big {
+  margin-top:5rem;
+}
+
+
+
+
+
+
+/* companymainpage.html */
+.column {
+  display:flex;
+  flex-direction:column;
+}
+
+.benefits label {
+  margin:1rem;
+}
+
+.marginleft-small {
+  margin-left:1rem;
+}
+
+.marginleft-xsmall {
+  margin-left:0.5rem;
+}
+
+.paddingtop-zero {
+  padding-top:0rem;
+}
+
+.marginbottom-xsmall {
+  margin-bottom:5px;
+}
+
+
+#demoHeader {
+      background-color: #F14904;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      text-shadow: 0 1px 1px rgba(0,0,0,.2);
+      width:100%;
+      box-sizing:border-box;
+      text-align:center;
+      z-index:100 !important;
+    }
+
+
+/* Test Demo request */
+
+.modal-bg{
+	position:fixed;
+	left:0;right:0;
+	top:0;bottom:0;
+	z-index:100;
+	background-color:rgba(50,50,50,0.5);
+}
+
+#modal{
+	position:fixed;
+	background-color:white;
+  color:black;
+	top:35%;
+	left:25%;
+	z-index:101;
+	border-radius:1rem;
+	width:340px;
+	margin-top:-130px;
+	box-shadow:0 0 10px 0 rgba(0,0,0,0.3);
+}
+
+#modal span{
+	display: block;
+	background:#F14904;
+	padding: 10px;
+	color:#fff;
+  border-top-right-radius:1rem;
+  border-top-left-radius:1rem;
+}
+#close{
+	float: right;
+	color: #fff;
+	font-family: serif;
+	font-size: 15px;
+}
+#close:hover{
+	color: #000;
+}
+
+.inputRequestDemo {
+  display:block;
+  border:1px solid #CFCFCF;
+  border-radius:0.5rem;
+  width:70%;
+  margin:0 auto;
+  margin-top:1rem;
+  padding:0.5rem;
+}
+
+.inputRequestDemo:focus{
+    outline: none;
+}
+
+
+@media (max-width: 600px) {
+  #modal{
+  	left:2%;
+  	width:96% !important;
+    top:30% !important;
+  }
+
+}
+
+/* companyregistrationform */
+
+.selectCompanySize, .selectOfficeSize, .selectNumberRecruitment, .selectNumberHours{
+  color:#333333;
+  background-color:white;
+  width:40%;
+}
+
+
+
+/* companyrecruit.html */
+
+.paddingtop-small {
+  padding-top:1rem;
+}
+
+
+/* company new vacancy form */
+
+#companyregistrationform {
+  background-color:white;
+  height:75rem;
+  padding-top:5rem;
+}
+
+#msform-company {
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+}
+
+.width-middleMinus {
+  width:25%;
+}
+
+.width-middleLess {
+  width:40%;
+}
+
+.opacity-zero{
+  opacity:0;
+}
+
+.languageSelection, .ITSelection {
+  background-color:white;
+  color:#333333;
+  border:1px solid #333333;
+  margin:0.3rem;
+}
+
+.marginright-small {
+  margin-right:1rem;
+}
+
+#msform-company input, #msform-company textarea {
+	padding: 0.7rem;
+	border: 1px solid #333333;
+	border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+	color: #2C3E50;
+	font-size: 13px;
+}
+
+
+
+/* Vacancy details*/
+
+/*progressbar*/
+#progressbarVacancy {
+	margin-bottom: 30px;
+	overflow: hidden;
+  display:flex;
+  justify-content:space-around;
+  width:96%;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+}
+#progressbarVacancy li {
+	list-style-type: none;
+	color: #333333;
+	font-size: 1rem;
+	position: relative;
+}
+#progressbarVacancy li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 3.3rem;
+	line-height: 3rem;
+	display: block;
+	font-size: 1rem;
+	color: #333333;
+	background: white;
+  border: 2px solid #333333;
+	border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+	margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+#progressbarVacancy li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: white;
+	position: absolute;
+	z-index: -1; /*put it behind the numbers*/
+}
+#progressbarVacancy li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none;
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbarVacancy li.active:before{
+	background: #27AE60;
+  border: 2px solid #27AE60;
+	color: white;
+}
+
+
+#offerAccepted {
+  background: transparent url(../img/4935.jpg) top left no-repeat;
+  background-size:cover;
+}
+
+
+/* companyinterview.html */
+
+.underline {
+  text-decoration:underline;
+}
+
+.color-dark {
+  color:#333333;
+}
+
+
+
+/* partnermainpage.html */
+
+.dashboard-box {
+  width:30%;
+  border:2px solid #333333;
+  border-radius:0.5rem;
+  height:100px;
+}
+
+
+
+/* partnerseecandidates.html */
+
+.width-big {
+  width:80%;
+}
+
+.noborder {
+  border:none;
+}
+
+/* partnerseecandidates-profile.html */
+
+.heightmiddle{
+  height:3.5rem;
+}
+
+.flexcentermiddle {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+
+.document-button {
+  border:2px solid #333333;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  width:25%;
+  height:85px;
+}
+
+.fontweightlight {
+  font-weight:500;
+}
+
+.paddingbottom-tworem{
+  padding-bottom:2rem;
+}
+
+.greycolor {
+  color:#777777;
+}
+
+.rightpart .changeItwRequest:hover {
+  cursor:pointer;
+}
+
+.document-button{
+  position:relative;
+}
+
+.document-button:hover .deleteButton {
+  opacity:1;
+}
+
+.deleteButton {
+  opacity:0;
+  position:absolute;
+  top:-3px;
+  right:-10px;
+  z-index:1000;
+}
+
+.deleteButtonInput {
+  position:relative;
+  right:15px;
+}
+
+.profilePicture:hover .addProfilePicture {
+  opacity:1;
+}
+
+.addProfilePicture {
+  opacity:0;
+  position:absolute;
+  top:5px;
+  right:5px;
+  color:#BDBDBD;
+}
