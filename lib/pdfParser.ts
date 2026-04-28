@@ -18,20 +18,18 @@ export async function extractTextFromPDF(file: File): Promise<string> {
           const page = await pdf.getPage(i);
           const content = await page.getTextContent();
           const pageText = content.items
-	   .map((item) => ("str" in item ? item.str || "" : ""))
+            .map((item) => ("str" in item ? (item.str as string) || "" : ""))
             .join(" ");
           parts.push(pageText);
         }
 
         const result = parts.join("\n\n").replace(/\s{3,}/g, " ").trim();
-        console.log("[pdfParser] Extracted", result.length, "chars");
         if (result.length > 50) {
           resolve(result);
         } else {
-          reject(new Error("Could not extract enough text. Try pasting directly."));
+          reject(new Error("Could not extract text. Try pasting the CV directly."));
         }
-      } catch (err) {
-        console.error("[pdfParser] Error:", err);
+      } catch {
         reject(new Error("Failed to parse PDF. Try pasting the CV text directly."));
       }
     };
