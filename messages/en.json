@@ -1,0 +1,284 @@
+{
+  "nav": {
+    "candidateInsights": "Candidate Insights",
+    "fitAnalysis": "Role Fit",
+    "history": "My Analyses",
+    "pricing": "Credits",
+    "tryPro": "Get Started",
+    "signIn": "Sign in"
+  },
+  "home": {
+    "badge": "External Intelligence Only",
+    "title": "Reveal What the CV\nDoesn't Tell You",
+    "subtitle": "Go beyond the resume. Enrich candidate profiles with external signals, hidden insights, and targeted interview questions — in under 30 seconds.",
+    "uploadTitle": "Upload a CV to analyse",
+    "uploadSubtitle": "Insights not visible in the CV",
+    "generateButton": "Generate Intelligence Report",
+    "gdpr": "No data stored · In-memory only · GDPR compliant",
+    "freeBadge": "2 free analyses every day",
+    "stats": {
+      "time": "< 30s",
+      "timeLabel": "Analysis time",
+      "web": "Web",
+      "webLabel": "Enriched",
+      "zero": "0",
+      "zeroLabel": "Data stored"
+    },
+    "valueBlock": {
+      "title": "What you'll get in seconds",
+      "items": [
+        {
+          "icon": "🔍",
+          "label": "External validation",
+          "desc": "Credibility & visibility beyond the CV"
+        },
+        {
+          "icon": "⚠️",
+          "label": "Blind spots",
+          "desc": "What's not said — but should be"
+        },
+        {
+          "icon": "🧠",
+          "label": "Non-obvious insights",
+          "desc": "Patterns, inconsistencies, hidden strengths"
+        },
+        {
+          "icon": "🌐",
+          "label": "Market perception",
+          "desc": "How this profile reads externally"
+        },
+        {
+          "icon": "🎯",
+          "label": "Interview focus",
+          "desc": "Targeted questions to ask"
+        }
+      ]
+    },
+    "tagline": "\"Because the most important signals are never on the CV.\"",
+    "outcomes": {
+      "title": "After using this tool, you will",
+      "items": [
+        {
+          "icon": "✅",
+          "text": "Know what is credible vs unverified"
+        },
+        {
+          "icon": "📍",
+          "text": "Understand where the real risks are"
+        },
+        {
+          "icon": "⚡",
+          "text": "Spot missing experience instantly"
+        },
+        {
+          "icon": "💬",
+          "text": "Be ready with targeted questions"
+        },
+        {
+          "icon": "🚀",
+          "text": "Make faster, more confident decisions"
+        }
+      ]
+    },
+    "positioning": "This is not a CV analysis. It's a <strong>candidate intelligence layer</strong> built to reduce uncertainty before you invest time.",
+    "howItWorks": "How it works",
+    "steps": {
+      "step1Title": "Upload or paste CV",
+      "step1Desc": "PDF or plain text. Parsed entirely in your browser — never uploaded to our servers.",
+      "step2Title": "AI web enrichment",
+      "step2Desc": "We search the web for company signals, press coverage, and funding information.",
+      "step3Title": "Intelligence report",
+      "step3Desc": "Hypotheses, unknowns, and targeted interview questions ready in under 30 seconds."
+    }
+  },
+  "report": {
+    "ready": "External intelligence report ready",
+    "downloadPdf": "Download PDF",
+    "exporting": "Exporting…",
+    "externalLayer": "Candidate Intelligence",
+    "backButton": "New analysis",
+    "header": {
+      "title": "External Insights Only",
+      "subtitle": "This analysis highlights external signals not visible in the CV. No CV content is repeated."
+    },
+    "sections": {
+      "externalValidation": "External validation",
+      "externalValidationSub": "What public sources confirm about this candidate",
+      "missingSignals": "Missing or unverified signals",
+      "missingSignalsSub": "Expected external presence that was not found",
+      "nonObvious": "Non-obvious insights",
+      "nonObviousSub": "Signals only visible when combining CV context with external data",
+      "riskIndicators": "External risk indicators",
+      "riskIndicatorsSub": "Evidence-based only",
+      "requiresValidation": "What requires validation",
+      "requiresValidationSub": "Cannot be confirmed from CV or external data",
+      "marketPerception": "Market perception",
+      "marketPerceptionSub": "How this profile is likely perceived externally"
+    },
+    "dataConfidence": "Data confidence",
+    "credibilityAssessment": "Credibility assessment",
+    "marketVisibility": "Market visibility",
+    "noVerifiedSignals": "No signals could be verified from external sources.",
+    "noRiskIndicators": "No external risk indicators identified.",
+    "gdpr": "We do not store your data. CVs are processed in-memory only. Profile enrichment uses publicly available web data. GDPR compliant."
+  },
+  "fit": {
+    "badge": "Role Match Intelligence",
+    "title": "Know If This Candidate\nIs Worth the Interview",
+    "subtitle": "Instantly assess how well a profile matches your role — with deep analysis of alignment, gaps, and external signals that impact hiring decisions.",
+    "cvTitle": "Candidate CV",
+    "cvSubtitle": "Upload PDF or paste text",
+    "jdTitle": "Job Description",
+    "jdSubtitle": "Paste, upload, or link",
+    "pasteText": "Paste text",
+    "jobUrl": "Job URL",
+    "jdPlaceholder": "Paste the full job description here…\n\nInclude: role title, responsibilities, requirements, and seniority signals.",
+    "urlPlaceholder": "https://jobs.example.com/senior-engineer",
+    "urlNote": "We'll fetch and extract the job description automatically.",
+    "urlWarning": "⚠️ Some job boards block automated access. If fetch fails, paste the text directly.",
+    "blockedTitle": "🚫 This job board blocks automated access",
+    "blockedMessage": "Please open the job posting, copy the full description, and paste it in the text field above.",
+    "analyseButton": "Analyse Fit",
+    "gdpr": "No data stored · In-memory processing · GDPR compliant",
+    "whatYouGet": "After using this tool, you will",
+    "features": {
+      "score": "Know the fit level",
+      "scoreDesc": "Strong, partial, or mismatch — with evidence",
+      "gap": "See the real gaps",
+      "gapDesc": "Critical missing experience vs transferable skills",
+      "seniority": "Catch level mismatches",
+      "seniorityDesc": "Flags over/underqualification before the interview",
+      "questions": "Walk in prepared",
+      "questionsDesc": "Role-specific interview questions for this exact pairing"
+    },
+    "positioning": "This is not a keyword match. It's a <strong>decision tool</strong> for recruiters who want clarity before committing time.",
+    "tagline": "\"Stop guessing. Start screening with precision.\"",
+    "loading": {
+      "title": "Evaluating fit…",
+      "subtitle": "Comparing candidate profile against role requirements",
+      "steps": [
+        "Parsing CV…",
+        "Extracting candidate profile…",
+        "Analysing job requirements…",
+        "Running web enrichment…",
+        "Evaluating fit signals…",
+        "Building decision report…"
+      ]
+    },
+    "report": {
+      "ready": "Fit analysis ready",
+      "downloadPdf": "Download PDF",
+      "exporting": "Exporting…",
+      "label": "Candidate ↔ Role Fit Analysis",
+      "recommend": "Recommend",
+      "review": "Review",
+      "caution": "Caution",
+      "decision": "Decision",
+      "notKeywords": "Based on experience, seniority, and external signals — not keywords",
+      "sections": {
+        "alignment": "Alignment analysis",
+        "strongMatches": "Strong matches",
+        "partialMatches": "Partial matches",
+        "mismatches": "Mismatches",
+        "seniorityFit": "Seniority fit",
+        "candidateLevel": "Candidate level",
+        "roleRequires": "Role requires",
+        "experienceRelevance": "Experience relevance",
+        "relevantExp": "Relevant experience",
+        "missingExp": "Missing critical experience",
+        "transferable": "Transferable skills",
+        "riskFlags": "Risk flags",
+        "hiddenStrengths": "Hidden strengths for this role",
+        "unknowns": "Unknowns & validation points",
+        "externalValidation": "External validation",
+        "verified": "Verified",
+        "couldNotVerify": "Could not verify",
+        "impactOnFit": "Impact on fit",
+        "interviewFocus": "Interview questions for this role"
+      },
+      "gdpr": "No data stored. Processed in-memory only. GDPR compliant.",
+      "newAnalysis": "New analysis"
+    }
+  },
+  "loading": {
+    "title": "Analysing candidate",
+    "subtitle": "Building your intelligence report",
+    "steps": [
+      "Analyzing external signals…",
+      "Cross-validating public data…",
+      "Detecting patterns and inconsistencies…",
+      "Assessing credibility and risk…",
+      "Highlighting signals most recruiters miss…"
+    ]
+  },
+  "upload": {
+    "dropTitle": "Drop PDF here or click to upload",
+    "dropSubtitle": "PDF only · Max 10MB",
+    "selected": "selected",
+    "replace": "Click to replace",
+    "parsing": "Parsing PDF…",
+    "orPaste": "or paste CV text",
+    "pastePlaceholder": "Paste CV text directly here…"
+  },
+  "pricing": {
+    "badge": "Simple pricing",
+    "title": "1 credit = 1 analysis",
+    "subtitle": "No subscription. No commitment. Pay only when you need more analyses.",
+    "currentBalance": "free today · paid credits",
+    "freeTitle": "2 free analyses every day",
+    "freeDesc": "Your free credits reset at midnight UTC. No purchase needed for light usage.",
+    "credits": "credits",
+    "perCredit": "/ credit",
+    "buyNow": "Buy now",
+    "redirecting": "Redirecting…",
+    "mostPopular": "Most popular",
+    "successTitle": "Payment successful!",
+    "successDesc": "Your credits have been added to your account.",
+    "trust1": "🔒 Secure via Stripe",
+    "trust2": "↩️ No subscription",
+    "trust3": "✅ GDPR compliant",
+    "whyCredits": "Why buy credits?",
+    "reason1": "Screen more candidates faster",
+    "reason2": "Never miss a hidden red flag",
+    "reason3": "Walk into every interview prepared",
+    "reason4": "Make better hiring decisions"
+  },
+  "history": {
+    "title": "My analyses",
+    "subtitle": "Your previous candidate and role fit analyses.",
+    "empty": "No analyses yet",
+    "emptyDesc": "Run your first candidate intelligence or role fit analysis.",
+    "startButton": "Start analysing",
+    "view": "View",
+    "delete": "Delete",
+    "candidateIntelligence": "Candidate Intelligence",
+    "roleFit": "Role Fit"
+  },
+  "auth": {
+    "title": "Create your account to unlock the analysis",
+    "subtitle": "Sign in to generate your report. No card required — 2 free analyses every day.",
+    "google": "Continue with Google",
+    "emailPlaceholder": "your@email.com",
+    "emailButton": "Continue with Email",
+    "sending": "Sending…",
+    "checkEmail": "Check your email",
+    "checkEmailDesc": "We sent a magic link to",
+    "terms": "No credit card required · 2 free analyses/day",
+    "freeBadge": "2 free analyses per day"
+  },
+  "noCredits": {
+    "title": "You've used your free credits",
+    "desc1": "You get 2 free analyses every day.",
+    "desc2": "1 credit = 1 analysis. Buy more to continue now.",
+    "buyButton": "Buy credits",
+    "tomorrowButton": "Come back tomorrow",
+    "note": "Credits reset daily at midnight UTC · No subscription"
+  },
+  "errors": {
+    "uploadCv": "Please upload a CV or paste CV text.",
+    "pasteJd": "Please paste a job description.",
+    "enterUrl": "Please enter a job URL.",
+    "analysisError": "Analysis failed. Please try again.",
+    "generic": "Something went wrong."
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "nav": {
+    "candidateInsights": "Analyse candidat",
+    "fitAnalysis": "Adéquation poste",
+    "history": "Mes analyses",
+    "pricing": "Crédits",
+    "tryPro": "Commencer",
+    "signIn": "Se connecter"
+  },
+  "home": {
+    "badge": "Intelligence externe uniquement",
+    "title": "Révélez ce que le CV\nne dit pas",
+    "subtitle": "Allez au-delà du CV. Enrichissez les profils candidats avec des signaux externes, des insights cachés et des questions d'entretien ciblées — en moins de 30 secondes.",
+    "uploadTitle": "Téléchargez un CV à analyser",
+    "uploadSubtitle": "Insights non visibles dans le CV",
+    "generateButton": "Générer le rapport",
+    "gdpr": "Aucune donnée stockée · Traitement en mémoire · Conforme RGPD",
+    "freeBadge": "2 analyses gratuites chaque jour",
+    "stats": {
+      "time": "< 30s",
+      "timeLabel": "Temps d'analyse",
+      "web": "Web",
+      "webLabel": "Enrichi",
+      "zero": "0",
+      "zeroLabel": "Données stockées"
+    },
+    "valueBlock": {
+      "title": "Ce que vous obtenez en quelques secondes",
+      "items": [
+        {
+          "icon": "🔍",
+          "label": "Validation externe",
+          "desc": "Crédibilité et visibilité au-delà du CV"
+        },
+        {
+          "icon": "⚠️",
+          "label": "Angles morts",
+          "desc": "Ce qui n'est pas dit — mais devrait l'être"
+        },
+        {
+          "icon": "🧠",
+          "label": "Insights non évidents",
+          "desc": "Patterns, incohérences, forces cachées"
+        },
+        {
+          "icon": "🌐",
+          "label": "Perception du marché",
+          "desc": "Comment ce profil est perçu en externe"
+        },
+        {
+          "icon": "🎯",
+          "label": "Focus entretien",
+          "desc": "Questions ciblées à poser"
+        }
+      ]
+    },
+    "tagline": "\"Parce que les signaux les plus importants ne sont jamais dans le CV.\"",
+    "outcomes": {
+      "title": "Après avoir utilisé cet outil, vous saurez",
+      "items": [
+        {
+          "icon": "✅",
+          "text": "Ce qui est crédible vs non vérifié"
+        },
+        {
+          "icon": "📍",
+          "text": "Où se trouvent les vrais risques"
+        },
+        {
+          "icon": "⚡",
+          "text": "Repérer instantanément les expériences manquantes"
+        },
+        {
+          "icon": "💬",
+          "text": "Préparer des questions ciblées"
+        },
+        {
+          "icon": "🚀",
+          "text": "Prendre des décisions plus rapides et confiantes"
+        }
+      ]
+    },
+    "positioning": "Ce n'est pas une analyse de CV. C'est une <strong>couche d'intelligence candidat</strong> conçue pour réduire l'incertitude avant d'investir du temps.",
+    "howItWorks": "Comment ça fonctionne",
+    "steps": {
+      "step1Title": "Téléchargez ou collez le CV",
+      "step1Desc": "PDF ou texte brut. Traité dans votre navigateur — jamais transmis à nos serveurs.",
+      "step2Title": "Enrichissement IA web",
+      "step2Desc": "Nous recherchons des signaux d'entreprise, des articles de presse et des informations de financement.",
+      "step3Title": "Rapport d'intelligence",
+      "step3Desc": "Hypothèses, inconnues et questions d'entretien ciblées en moins de 30 secondes."
+    }
+  },
+  "report": {
+    "ready": "Rapport d'intelligence externe prêt",
+    "downloadPdf": "Télécharger le PDF",
+    "exporting": "Export en cours…",
+    "externalLayer": "Intelligence candidat",
+    "backButton": "Nouvelle analyse",
+    "header": {
+      "title": "Insights externes uniquement",
+      "subtitle": "Cette analyse met en lumière les signaux externes non visibles dans le CV. Aucun contenu du CV n'est répété."
+    },
+    "sections": {
+      "externalValidation": "Validation externe",
+      "externalValidationSub": "Ce que les sources publiques confirment sur ce candidat",
+      "missingSignals": "Signaux manquants ou non vérifiés",
+      "missingSignalsSub": "Présence externe attendue mais non trouvée",
+      "nonObvious": "Insights non évidents",
+      "nonObviousSub": "Signaux visibles uniquement en combinant le CV et les données externes",
+      "riskIndicators": "Indicateurs de risque externes",
+      "riskIndicatorsSub": "Fondés sur des preuves uniquement",
+      "requiresValidation": "Ce qui nécessite une validation",
+      "requiresValidationSub": "Ne peut être confirmé ni par le CV ni par les données externes",
+      "marketPerception": "Perception du marché",
+      "marketPerceptionSub": "Comment ce profil est probablement perçu en externe"
+    },
+    "dataConfidence": "Confiance dans les données",
+    "credibilityAssessment": "Évaluation de la crédibilité",
+    "marketVisibility": "Visibilité sur le marché",
+    "noVerifiedSignals": "Aucun signal n'a pu être vérifié à partir de sources externes.",
+    "noRiskIndicators": "Aucun indicateur de risque externe identifié.",
+    "gdpr": "Nous ne stockons pas vos données. Les CV sont traités en mémoire uniquement. L'enrichissement utilise des données web publiques. Conforme RGPD."
+  },
+  "fit": {
+    "badge": "Intelligence d'adéquation au poste",
+    "title": "Savoir si ce candidat\nvaut l'entretien",
+    "subtitle": "Évaluez instantanément l'adéquation d'un profil avec votre poste — avec une analyse approfondie des alignements, écarts et signaux externes.",
+    "cvTitle": "CV du candidat",
+    "cvSubtitle": "Télécharger PDF ou coller le texte",
+    "jdTitle": "Description de poste",
+    "jdSubtitle": "Coller, télécharger ou lier",
+    "pasteText": "Coller le texte",
+    "jobUrl": "URL de l'offre",
+    "jdPlaceholder": "Collez ici la description de poste complète…\n\nIncluez : titre, responsabilités, exigences et signaux de séniorité.",
+    "urlPlaceholder": "https://jobs.exemple.fr/ingenieur-senior",
+    "urlNote": "Nous récupérerons automatiquement la description de poste.",
+    "urlWarning": "⚠️ Certains sites d'emploi bloquent l'accès automatisé. Si la récupération échoue, collez le texte directement.",
+    "blockedTitle": "🚫 Ce site d'emploi bloque l'accès automatisé",
+    "blockedMessage": "Veuillez ouvrir l'offre, copier la description complète et la coller ci-dessus.",
+    "analyseButton": "Analyser l'adéquation",
+    "gdpr": "Aucune donnée stockée · Traitement en mémoire · Conforme RGPD",
+    "whatYouGet": "Après avoir utilisé cet outil, vous saurez",
+    "features": {
+      "score": "Connaître le niveau d'adéquation",
+      "scoreDesc": "Fort, partiel ou incompatible — avec des preuves",
+      "gap": "Voir les vrais écarts",
+      "gapDesc": "Expérience critique manquante vs compétences transférables",
+      "seniority": "Détecter les décalages de niveau",
+      "seniorityDesc": "Signale la sur/sous-qualification avant l'entretien",
+      "questions": "Entrer préparé",
+      "questionsDesc": "Questions d'entretien spécifiques pour cette combinaison exacte"
+    },
+    "positioning": "Ce n'est pas une correspondance de mots-clés. C'est un <strong>outil de décision</strong> pour les recruteurs qui veulent de la clarté avant d'investir du temps.",
+    "tagline": "\"Arrêtez de deviner. Commencez à filtrer avec précision.\"",
+    "loading": {
+      "title": "Évaluation en cours…",
+      "subtitle": "Comparaison du profil candidat avec les exigences du poste",
+      "steps": [
+        "Analyse du CV…",
+        "Extraction du profil…",
+        "Analyse des exigences…",
+        "Enrichissement web…",
+        "Évaluation des signaux…",
+        "Création du rapport…"
+      ]
+    },
+    "report": {
+      "ready": "Analyse d'adéquation prête",
+      "downloadPdf": "Télécharger le PDF",
+      "exporting": "Export en cours…",
+      "label": "Analyse candidat ↔ poste",
+      "recommend": "Recommandé",
+      "review": "À examiner",
+      "caution": "Avec réserves",
+      "decision": "Décision",
+      "notKeywords": "Basé sur l'expérience, la séniorité et les signaux externes — pas les mots-clés",
+      "sections": {
+        "alignment": "Analyse d'alignement",
+        "strongMatches": "Correspondances fortes",
+        "partialMatches": "Correspondances partielles",
+        "mismatches": "Divergences",
+        "seniorityFit": "Alignement séniorité",
+        "candidateLevel": "Niveau du candidat",
+        "roleRequires": "Poste requiert",
+        "experienceRelevance": "Pertinence de l'expérience",
+        "relevantExp": "Expérience pertinente",
+        "missingExp": "Expérience critique manquante",
+        "transferable": "Compétences transférables",
+        "riskFlags": "Signaux de risque",
+        "hiddenStrengths": "Forces cachées pour ce poste",
+        "unknowns": "Inconnues & points à valider",
+        "externalValidation": "Validation externe",
+        "verified": "Vérifié",
+        "couldNotVerify": "Non vérifié",
+        "impactOnFit": "Impact sur l'adéquation",
+        "interviewFocus": "Questions d'entretien pour ce poste"
+      },
+      "gdpr": "Aucune donnée stockée. Traitement en mémoire uniquement. Conforme RGPD.",
+      "newAnalysis": "Nouvelle analyse"
+    }
+  },
+  "loading": {
+    "title": "Analyse du candidat",
+    "subtitle": "Building your intelligence report",
+    "steps": [
+      "Analyzing external signals…",
+      "Cross-validating public data…",
+      "Detecting patterns and inconsistencies…",
+      "Assessing credibility and risk…",
+      "Highlighting signals most recruiters miss…"
+    ]
+  },
+  "upload": {
+    "dropTitle": "Déposez le PDF ici ou cliquez pour télécharger",
+    "dropSubtitle": "PDF uniquement · Max 10 Mo",
+    "selected": "sélectionné",
+    "replace": "Cliquer pour remplacer",
+    "parsing": "Lecture du PDF…",
+    "orPaste": "ou coller le texte du CV",
+    "pastePlaceholder": "Collez directement le texte du CV ici…"
+  },
+  "pricing": {
+    "badge": "Tarification simple",
+    "title": "1 crédit = 1 analyse",
+    "subtitle": "Sans abonnement. Sans engagement. Payez uniquement quand vous en avez besoin.",
+    "currentBalance": "gratuits aujourd'hui · crédits payants",
+    "freeTitle": "2 analyses gratuites chaque jour",
+    "freeDesc": "Vos crédits gratuits se réinitialisent à minuit UTC. Aucun achat nécessaire pour une utilisation légère.",
+    "credits": "crédits",
+    "perCredit": "/ crédit",
+    "buyNow": "Acheter",
+    "redirecting": "Redirection…",
+    "mostPopular": "Le plus populaire",
+    "successTitle": "Paiement réussi !",
+    "successDesc": "Les crédits ont été ajoutés à votre compte.",
+    "trust1": "🔒 Sécurisé via Stripe",
+    "trust2": "↩️ Sans abonnement",
+    "trust3": "✅ Conforme RGPD",
+    "whyCredits": "Pourquoi acheter des crédits ?",
+    "reason1": "Évaluez plus de candidats, plus vite",
+    "reason2": "Ne manquez plus aucun signal d'alerte",
+    "reason3": "Entrez préparé à chaque entretien",
+    "reason4": "Prenez de meilleures décisions de recrutement"
+  },
+  "history": {
+    "title": "Mes analyses",
+    "subtitle": "Vos précédentes analyses de candidats et d'adéquation.",
+    "empty": "Aucune analyse pour l'instant",
+    "emptyDesc": "Lancez votre première analyse de candidat ou d'adéquation au poste.",
+    "startButton": "Commencer",
+    "view": "Voir",
+    "delete": "Supprimer",
+    "candidateIntelligence": "Intelligence candidat",
+    "roleFit": "Adéquation poste"
+  },
+  "auth": {
+    "title": "Créez votre compte pour débloquer l'analyse",
+    "subtitle": "Connectez-vous pour générer votre rapport. Sans carte requise — 2 analyses gratuites chaque jour.",
+    "google": "Continuer avec Google",
+    "emailPlaceholder": "votre@email.com",
+    "emailButton": "Continuer par e-mail",
+    "sending": "Envoi…",
+    "checkEmail": "Vérifiez votre e-mail",
+    "checkEmailDesc": "Lien magique envoyé à",
+    "terms": "Sans carte bancaire · 2 analyses/jour",
+    "freeBadge": "2 analyses gratuites par jour"
+  },
+  "noCredits": {
+    "title": "Vous avez utilisé vos crédits gratuits",
+    "desc1": "Vous obtenez 2 analyses gratuites chaque jour.",
+    "desc2": "1 crédit = 1 analyse. Achetez-en plus pour continuer maintenant.",
+    "buyButton": "Acheter des crédits",
+    "tomorrowButton": "Revenir demain",
+    "note": "Crédits réinitialisés quotidiennement à minuit UTC · Sans abonnement"
+  },
+  "errors": {
+    "uploadCv": "Veuillez télécharger un CV ou coller le texte.",
+    "pasteJd": "Veuillez coller une description de poste.",
+    "enterUrl": "Veuillez entrer une URL d'offre.",
+    "analysisError": "Analyse échouée. Veuillez réessayer.",
+    "generic": "Une erreur est survenue."
+  }
+}

@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  TieTalent brand colors — extracted from tietalent.com live site:
+  --tt-red:        #E8303A  → primary CTA buttons, active states, logo tie
+  --tt-red-hover:  #C9242D  → button hover
+  --tt-red-light:  #FEF2F2  → tinted backgrounds, badges
+  --tt-red-border: #FECACA  → subtle red borders
+  --tt-navy:       #1A1A2E  → headings, logo wordmark, nav text
+  --tt-dark:       #111827  → body text
+  --tt-gray:       #6B7280  → secondary text, labels
+  --tt-border:     #E5E7EB  → card borders, dividers
+  --tt-surface:    #F9FAFB  → page background, section fills
+  --tt-white:      #FFFFFF  → cards, nav
+*/
+
+:root {
+  --tt-red:        #E8303A;
+  --tt-red-hover:  #C9242D;
+  --tt-red-light:  #FEF2F2;
+  --tt-red-border: #FECACA;
+  --tt-navy:       #1A1A2E;
+  --tt-dark:       #111827;
+  --tt-gray:       #6B7280;
+  --tt-border:     #E5E7EB;
+  --tt-surface:    #F9FAFB;
+  --tt-white:      #FFFFFF;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--tt-surface);
+  color: var(--tt-dark);
+}
+
+@media print {
+  .no-print { display: none !important; }
+}

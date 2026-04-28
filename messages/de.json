@@ -1,0 +1,284 @@
+{
+  "nav": {
+    "candidateInsights": "Kandidatenanalyse",
+    "fitAnalysis": "Stellenabgleich",
+    "history": "Meine Analysen",
+    "pricing": "Credits",
+    "tryPro": "Jetzt starten",
+    "signIn": "Anmelden"
+  },
+  "home": {
+    "badge": "Nur externe Erkenntnisse",
+    "title": "Entdecken Sie, was der\nLebenslauf verschweigt",
+    "subtitle": "Über den Lebenslauf hinausgehen. Kandidatenprofile mit externen Signalen, versteckten Erkenntnissen und gezielten Interviewfragen anreichern — in unter 30 Sekunden.",
+    "uploadTitle": "Lebenslauf hochladen",
+    "uploadSubtitle": "Erkenntnisse, die im Lebenslauf nicht sichtbar sind",
+    "generateButton": "Intelligence-Report erstellen",
+    "gdpr": "Keine Datenspeicherung · In-Memory · DSGVO-konform",
+    "freeBadge": "2 kostenlose Analysen täglich",
+    "stats": {
+      "time": "< 30 Sek.",
+      "timeLabel": "Analysezeit",
+      "web": "Web",
+      "webLabel": "Angereichert",
+      "zero": "0",
+      "zeroLabel": "Gespeicherte Daten"
+    },
+    "valueBlock": {
+      "title": "Was Sie in Sekunden erhalten",
+      "items": [
+        {
+          "icon": "🔍",
+          "label": "Externe Validierung",
+          "desc": "Glaubwürdigkeit und Sichtbarkeit jenseits des Lebenslaufs"
+        },
+        {
+          "icon": "⚠️",
+          "label": "Blinde Flecken",
+          "desc": "Was nicht gesagt wird — aber sollte"
+        },
+        {
+          "icon": "🧠",
+          "label": "Nicht offensichtliche Erkenntnisse",
+          "desc": "Muster, Widersprüche, versteckte Stärken"
+        },
+        {
+          "icon": "🌐",
+          "label": "Marktwahrnehmung",
+          "desc": "Wie dieses Profil extern wahrgenommen wird"
+        },
+        {
+          "icon": "🎯",
+          "label": "Interview-Fokus",
+          "desc": "Gezielte Fragen zum Stellen"
+        }
+      ]
+    },
+    "tagline": "\"Weil die wichtigsten Signale nie im Lebenslauf stehen.\"",
+    "outcomes": {
+      "title": "Nach diesem Tool werden Sie wissen",
+      "items": [
+        {
+          "icon": "✅",
+          "text": "Was glaubwürdig ist — und was nicht"
+        },
+        {
+          "icon": "📍",
+          "text": "Wo die echten Risiken liegen"
+        },
+        {
+          "icon": "⚡",
+          "text": "Fehlende Erfahrung sofort erkennen"
+        },
+        {
+          "icon": "💬",
+          "text": "Gezielte Fragen vorbereitet haben"
+        },
+        {
+          "icon": "🚀",
+          "text": "Schnellere und sicherere Entscheidungen treffen"
+        }
+      ]
+    },
+    "positioning": "Das ist keine Lebenslaufanalyse. Es ist eine <strong>Kandidaten-Intelligence-Schicht</strong>, die Unsicherheit vor Ihrer Zeitinvestition reduziert.",
+    "howItWorks": "So funktioniert es",
+    "steps": {
+      "step1Title": "Lebenslauf hochladen",
+      "step1Desc": "PDF oder Text. Vollständig im Browser verarbeitet — nie auf unsere Server hochgeladen.",
+      "step2Title": "KI-Web-Anreicherung",
+      "step2Desc": "Wir suchen nach Unternehmenssignalen, Presseberichten und Finanzierungsinfos.",
+      "step3Title": "Intelligence-Report",
+      "step3Desc": "Hypothesen, offene Fragen und gezielte Interviewfragen in unter 30 Sekunden."
+    }
+  },
+  "report": {
+    "ready": "Externer Intelligence-Report bereit",
+    "downloadPdf": "PDF herunterladen",
+    "exporting": "Wird exportiert…",
+    "externalLayer": "Kandidaten-Intelligence",
+    "backButton": "Neue Analyse",
+    "header": {
+      "title": "Nur externe Erkenntnisse",
+      "subtitle": "Diese Analyse hebt externe Signale hervor, die im Lebenslauf nicht sichtbar sind. Kein Inhalt des Lebenslaufs wird wiederholt."
+    },
+    "sections": {
+      "externalValidation": "Externe Validierung",
+      "externalValidationSub": "Was öffentliche Quellen über diesen Kandidaten bestätigen",
+      "missingSignals": "Fehlende oder nicht verifizierte Signale",
+      "missingSignalsSub": "Erwartete externe Präsenz, die nicht gefunden wurde",
+      "nonObvious": "Nicht offensichtliche Erkenntnisse",
+      "nonObviousSub": "Signale, die nur durch Kombination von Lebenslauf und externen Daten sichtbar werden",
+      "riskIndicators": "Externe Risikoindikatoren",
+      "riskIndicatorsSub": "Nur evidenzbasiert",
+      "requiresValidation": "Was validiert werden muss",
+      "requiresValidationSub": "Kann weder aus dem Lebenslauf noch aus externen Daten bestätigt werden",
+      "marketPerception": "Marktwahrnehmung",
+      "marketPerceptionSub": "Wie dieses Profil extern wahrscheinlich wahrgenommen wird"
+    },
+    "dataConfidence": "Datenkonfidenz",
+    "credibilityAssessment": "Glaubwürdigkeitsbewertung",
+    "marketVisibility": "Marktsichtbarkeit",
+    "noVerifiedSignals": "Es konnten keine Signale aus externen Quellen verifiziert werden.",
+    "noRiskIndicators": "Keine externen Risikoindikatoren identifiziert.",
+    "gdpr": "Wir speichern Ihre Daten nicht. Lebensläufe werden ausschließlich im Arbeitsspeicher verarbeitet. Anreicherung nutzt öffentliche Webdaten. DSGVO-konform."
+  },
+  "fit": {
+    "badge": "Stellenabgleich-Intelligence",
+    "title": "Ist dieser Kandidat\ndas Interview wert?",
+    "subtitle": "Sofortige Bewertung der Übereinstimmung eines Profils mit Ihrer Stelle — mit fundierter Analyse von Ausrichtung, Lücken und externen Signalen.",
+    "cvTitle": "Lebenslauf des Kandidaten",
+    "cvSubtitle": "PDF hochladen oder Text einfügen",
+    "jdTitle": "Stellenbeschreibung",
+    "jdSubtitle": "Einfügen, hochladen oder verlinken",
+    "pasteText": "Text einfügen",
+    "jobUrl": "Job-URL",
+    "jdPlaceholder": "Vollständige Stellenbeschreibung hier einfügen…\n\nInkl. Stellentitel, Aufgaben, Anforderungen und Senioritätssignale.",
+    "urlPlaceholder": "https://jobs.beispiel.de/senior-engineer",
+    "urlNote": "Wir rufen die Stellenbeschreibung automatisch ab.",
+    "urlWarning": "⚠️ Einige Jobbörsen blockieren automatisierten Zugriff. Falls der Abruf fehlschlägt, Text direkt einfügen.",
+    "blockedTitle": "🚫 Diese Jobbörse blockiert automatisierten Zugriff",
+    "blockedMessage": "Bitte öffnen Sie die Stellenanzeige, kopieren Sie die vollständige Beschreibung und fügen Sie sie oben ein.",
+    "analyseButton": "Abgleich starten",
+    "gdpr": "Keine Datenspeicherung · In-Memory · DSGVO-konform",
+    "whatYouGet": "Nach diesem Tool werden Sie wissen",
+    "features": {
+      "score": "Übereinstimmungsniveau kennen",
+      "scoreDesc": "Stark, teilweise oder nicht passend — mit Belegen",
+      "gap": "Echte Lücken sehen",
+      "gapDesc": "Fehlende kritische Erfahrung vs. übertragbare Fähigkeiten",
+      "seniority": "Niveauunterschiede erkennen",
+      "seniorityDesc": "Flaggt Über-/Unterqualifikation vor dem Interview",
+      "questions": "Vorbereitet eintreten",
+      "questionsDesc": "Rollenspezifische Interviewfragen für diese genaue Kombination"
+    },
+    "positioning": "Das ist kein Keyword-Matching. Es ist ein <strong>Entscheidungstool</strong> für Recruiter, die Klarheit wollen, bevor sie Zeit investieren.",
+    "tagline": "\"Aufhören zu raten. Mit Präzision screenen.\"",
+    "loading": {
+      "title": "Abgleich wird durchgeführt…",
+      "subtitle": "Kandidatenprofil wird mit Stellenanforderungen verglichen",
+      "steps": [
+        "Lebenslauf wird verarbeitet…",
+        "Profil wird extrahiert…",
+        "Anforderungen werden analysiert…",
+        "Web-Anreicherung läuft…",
+        "Signale werden bewertet…",
+        "Report wird erstellt…"
+      ]
+    },
+    "report": {
+      "ready": "Abgleichanalyse bereit",
+      "downloadPdf": "PDF herunterladen",
+      "exporting": "Wird exportiert…",
+      "label": "Kandidat ↔ Stelle Abgleich",
+      "recommend": "Empfohlen",
+      "review": "Prüfen",
+      "caution": "Mit Vorbehalt",
+      "decision": "Entscheidung",
+      "notKeywords": "Basiert auf Erfahrung, Seniorität und externen Signalen — nicht Keywords",
+      "sections": {
+        "alignment": "Übereinstimmungsanalyse",
+        "strongMatches": "Starke Übereinstimmungen",
+        "partialMatches": "Teilweise Übereinstimmungen",
+        "mismatches": "Diskrepanzen",
+        "seniorityFit": "Senioritätsabgleich",
+        "candidateLevel": "Kandidatenlevel",
+        "roleRequires": "Stelle erfordert",
+        "experienceRelevance": "Erfahrungsrelevanz",
+        "relevantExp": "Relevante Erfahrung",
+        "missingExp": "Fehlende kritische Erfahrung",
+        "transferable": "Übertragbare Fähigkeiten",
+        "riskFlags": "Risikosignale",
+        "hiddenStrengths": "Verborgene Stärken für diese Rolle",
+        "unknowns": "Offene Punkte & Validierungsbedarf",
+        "externalValidation": "Externe Validierung",
+        "verified": "Verifiziert",
+        "couldNotVerify": "Nicht verifiziert",
+        "impactOnFit": "Auswirkung auf den Abgleich",
+        "interviewFocus": "Interviewfragen für diese Stelle"
+      },
+      "gdpr": "Keine Datenspeicherung. In-Memory-Verarbeitung. DSGVO-konform.",
+      "newAnalysis": "Neue Analyse"
+    }
+  },
+  "loading": {
+    "title": "Kandidat wird analysiert",
+    "subtitle": "Building your intelligence report",
+    "steps": [
+      "Analyzing external signals…",
+      "Cross-validating public data…",
+      "Detecting patterns and inconsistencies…",
+      "Assessing credibility and risk…",
+      "Highlighting signals most recruiters miss…"
+    ]
+  },
+  "upload": {
+    "dropTitle": "PDF hier ablegen oder zum Hochladen klicken",
+    "dropSubtitle": "Nur PDF · Max. 10 MB",
+    "selected": "ausgewählt",
+    "replace": "Zum Ersetzen klicken",
+    "parsing": "PDF wird verarbeitet…",
+    "orPaste": "oder Lebenslauftext einfügen",
+    "pastePlaceholder": "Lebenslauftext hier direkt einfügen…"
+  },
+  "pricing": {
+    "badge": "Einfache Preisgestaltung",
+    "title": "1 Credit = 1 Analyse",
+    "subtitle": "Kein Abonnement. Keine Verpflichtung. Zahlen Sie nur, wenn Sie mehr Analysen benötigen.",
+    "currentBalance": "kostenlos heute · bezahlte Credits",
+    "freeTitle": "2 kostenlose Analysen täglich",
+    "freeDesc": "Ihre kostenlosen Credits werden täglich um Mitternacht UTC zurückgesetzt.",
+    "credits": "Credits",
+    "perCredit": "/ Credit",
+    "buyNow": "Jetzt kaufen",
+    "redirecting": "Weiterleitung…",
+    "mostPopular": "Am beliebtesten",
+    "successTitle": "Zahlung erfolgreich!",
+    "successDesc": "Credits wurden Ihrem Konto hinzugefügt.",
+    "trust1": "🔒 Sicher über Stripe",
+    "trust2": "↩️ Kein Abonnement",
+    "trust3": "✅ DSGVO-konform",
+    "whyCredits": "Warum Credits kaufen?",
+    "reason1": "Mehr Kandidaten schneller prüfen",
+    "reason2": "Kein Warnsignal mehr verpassen",
+    "reason3": "Vorbereitet in jedes Interview gehen",
+    "reason4": "Bessere Einstellungsentscheidungen treffen"
+  },
+  "history": {
+    "title": "Meine Analysen",
+    "subtitle": "Ihre bisherigen Kandidaten- und Stellenabgleich-Analysen.",
+    "empty": "Noch keine Analysen",
+    "emptyDesc": "Starten Sie Ihre erste Kandidaten- oder Stellenabgleich-Analyse.",
+    "startButton": "Jetzt analysieren",
+    "view": "Ansehen",
+    "delete": "Löschen",
+    "candidateIntelligence": "Kandidaten-Intelligence",
+    "roleFit": "Stellenabgleich"
+  },
+  "auth": {
+    "title": "Konto erstellen, um die Analyse freizuschalten",
+    "subtitle": "Melden Sie sich an, um Ihren Report zu erstellen. Keine Kreditkarte erforderlich — 2 kostenlose Analysen täglich.",
+    "google": "Mit Google fortfahren",
+    "emailPlaceholder": "ihre@email.de",
+    "emailButton": "Per E-Mail fortfahren",
+    "sending": "Wird gesendet…",
+    "checkEmail": "Überprüfen Sie Ihre E-Mail",
+    "checkEmailDesc": "Magic Link gesendet an",
+    "terms": "Keine Kreditkarte · 2 Analysen/Tag",
+    "freeBadge": "2 kostenlose Analysen pro Tag"
+  },
+  "noCredits": {
+    "title": "Ihre kostenlosen Credits wurden verwendet",
+    "desc1": "Sie erhalten täglich 2 kostenlose Analysen.",
+    "desc2": "1 Credit = 1 Analyse. Kaufen Sie mehr, um fortzufahren.",
+    "buyButton": "Credits kaufen",
+    "tomorrowButton": "Morgen wiederkommen",
+    "note": "Credits täglich um Mitternacht UTC zurückgesetzt · Kein Abonnement"
+  },
+  "errors": {
+    "uploadCv": "Bitte laden Sie einen Lebenslauf hoch oder fügen Sie den Text ein.",
+    "pasteJd": "Bitte fügen Sie eine Stellenbeschreibung ein.",
+    "enterUrl": "Bitte geben Sie eine Job-URL ein.",
+    "analysisError": "Analyse fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "generic": "Etwas ist schiefgelaufen."
+  }
+}
