@@ -18,7 +18,7 @@ export async function extractTextFromPDF(file: File): Promise<string> {
           const page = await pdf.getPage(i);
           const content = await page.getTextContent();
           const pageText = content.items
-            .map((item: { str?: string }) => item.str || "")
+	   .map((item) => ("str" in item ? item.str || "" : ""))
             .join(" ");
           parts.push(pageText);
         }
