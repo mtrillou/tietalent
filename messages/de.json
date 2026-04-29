@@ -8,14 +8,14 @@
     "signIn": "Anmelden"
   },
   "home": {
-    "badge": "Nur externe Erkenntnisse",
-    "title": "Entdecken Sie, was der\nLebenslauf verschweigt",
-    "subtitle": "Über den Lebenslauf hinausgehen. Kandidatenprofile mit externen Signalen, versteckten Erkenntnissen und gezielten Interviewfragen anreichern — in unter 30 Sekunden.",
+    "badge": "Kandidaten-Intelligenz",
+    "title": "Enthüllen Sie, was der Lebenslauf nicht zeigt",
+    "subtitle": "Über den Lebenslauf hinaus. Erkennen Sie sofort die wichtigen Signale — Glaubwürdigkeit, Lücken, Inkonsistenzen — in unter 30 Sekunden.",
     "uploadTitle": "Lebenslauf hochladen",
-    "uploadSubtitle": "Erkenntnisse, die im Lebenslauf nicht sichtbar sind",
-    "generateButton": "Intelligence-Report erstellen",
-    "gdpr": "Keine Datenspeicherung · In-Memory · DSGVO-konform",
-    "freeBadge": "2 kostenlose Analysen täglich",
+    "uploadSubtitle": "2 kostenlose Analysen pro Tag · Keine Einrichtung erforderlich",
+    "generateButton": "Intelligence-Bericht erstellen",
+    "gdpr": "Keine Datenspeicherung · Im Arbeitsspeicher verarbeitet · DSGVO-konform",
+    "freeBadge": "2 kostenlos / Tag",
     "stats": {
       "time": "< 30 Sek.",
       "timeLabel": "Analysezeit",
@@ -25,70 +25,70 @@
       "zeroLabel": "Gespeicherte Daten"
     },
     "valueBlock": {
-      "title": "Was Sie in Sekunden erhalten",
+      "title": "Was Sie erhalten",
       "items": [
         {
-          "icon": "🔍",
-          "label": "Externe Validierung",
-          "desc": "Glaubwürdigkeit und Sichtbarkeit jenseits des Lebenslaufs"
+          "icon": "◎",
+          "label": "Glaubwürdigkeitssignale",
+          "desc": "Verstehen Sie, was standhält — und was nicht"
         },
         {
-          "icon": "⚠️",
+          "icon": "◎",
           "label": "Blinde Flecken",
-          "desc": "Was nicht gesagt wird — aber sollte"
+          "desc": "Erkennen Sie, was fehlt oder unklar ist"
         },
         {
-          "icon": "🧠",
-          "label": "Nicht offensichtliche Erkenntnisse",
-          "desc": "Muster, Widersprüche, versteckte Stärken"
+          "icon": "◎",
+          "label": "Verborgene Erkenntnisse",
+          "desc": "Entdecken Sie Muster, Inkonsistenzen und Stärken"
         },
         {
-          "icon": "🌐",
+          "icon": "◎",
           "label": "Marktwahrnehmung",
-          "desc": "Wie dieses Profil extern wahrgenommen wird"
+          "desc": "Sehen Sie, wie das Profil wahrscheinlich wahrgenommen wird"
         },
         {
-          "icon": "🎯",
+          "icon": "◎",
           "label": "Interview-Fokus",
-          "desc": "Gezielte Fragen zum Stellen"
+          "desc": "Wissen Sie genau, was Sie hinterfragen müssen"
         }
       ]
     },
-    "tagline": "\"Weil die wichtigsten Signale nie im Lebenslauf stehen.\"",
+    "tagline": "Weil die wichtigsten Signale selten im Lebenslauf stehen.",
     "outcomes": {
-      "title": "Nach diesem Tool werden Sie wissen",
+      "title": "Nach der Nutzung werden Sie",
       "items": [
         {
-          "icon": "✅",
-          "text": "Was glaubwürdig ist — und was nicht"
+          "icon": "→",
+          "text": "Starke und schwache Signale klar unterscheiden"
         },
         {
-          "icon": "📍",
-          "text": "Wo die echten Risiken liegen"
+          "icon": "→",
+          "text": "Verstehen, wo die echten Risiken liegen"
         },
         {
-          "icon": "⚡",
-          "text": "Fehlende Erfahrung sofort erkennen"
+          "icon": "→",
+          "text": "Fehlende Erfahrungen sofort erkennen"
         },
         {
-          "icon": "💬",
-          "text": "Gezielte Fragen vorbereitet haben"
+          "icon": "→",
+          "text": "Gezieltere und schärfere Fragen stellen"
         },
         {
-          "icon": "🚀",
-          "text": "Schnellere und sicherere Entscheidungen treffen"
+          "icon": "→",
+          "text": "Schneller und sicherer Entscheidungen treffen"
         }
       ]
     },
     "positioning": "Das ist keine Lebenslaufanalyse. Es ist eine <strong>Kandidaten-Intelligence-Schicht</strong>, die Unsicherheit vor Ihrer Zeitinvestition reduziert.",
     "howItWorks": "So funktioniert es",
     "steps": {
-      "step1Title": "Lebenslauf hochladen",
-      "step1Desc": "PDF oder Text. Vollständig im Browser verarbeitet — nie auf unsere Server hochgeladen.",
-      "step2Title": "KI-Web-Anreicherung",
-      "step2Desc": "Wir suchen nach Unternehmenssignalen, Presseberichten und Finanzierungsinfos.",
-      "step3Title": "Intelligence-Report",
-      "step3Desc": "Hypothesen, offene Fragen und gezielte Interviewfragen in unter 30 Sekunden."
+      "step1Title": "CV hochladen oder einfügen",
+      "step1Desc": "Einfache Eingabe. Kein Aufwand.",
+      "step2Title": "Intelligence-Analyse",
+      "step2Desc": "Das Profil wird angereichert und analysiert, um nicht offensichtliche Signale zu erkennen.",
+      "step3Title": "Entscheidungsbereiter Bericht",
+      "step3Desc": "Klare Erkenntnisse, Risiken und Validierungspunkte in Sekunden."
     }
   },
   "report": {

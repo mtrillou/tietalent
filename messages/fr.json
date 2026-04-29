@@ -8,14 +8,14 @@
     "signIn": "Se connecter"
   },
   "home": {
-    "badge": "Intelligence externe uniquement",
-    "title": "Révélez ce que le CV\nne dit pas",
-    "subtitle": "Allez au-delà du CV. Enrichissez les profils candidats avec des signaux externes, des insights cachés et des questions d'entretien ciblées — en moins de 30 secondes.",
+    "badge": "Intelligence Candidat",
+    "title": "Révélez ce que le CV ne dit pas",
+    "subtitle": "Au-delà du CV. Détectez instantanément les signaux qui comptent — crédibilité, lacunes, incohérences et insights décisionnels — en moins de 30 secondes.",
     "uploadTitle": "Téléchargez un CV à analyser",
-    "uploadSubtitle": "Insights non visibles dans le CV",
-    "generateButton": "Générer le rapport",
-    "gdpr": "Aucune donnée stockée · Traitement en mémoire · Conforme RGPD",
-    "freeBadge": "2 analyses gratuites chaque jour",
+    "uploadSubtitle": "2 analyses gratuites par jour · Sans configuration",
+    "generateButton": "Générer le rapport d'intelligence",
+    "gdpr": "Aucune donnée stockée · Traité en mémoire · Conforme RGPD",
+    "freeBadge": "2 gratuites / jour",
     "stats": {
       "time": "< 30s",
       "timeLabel": "Temps d'analyse",
@@ -25,70 +25,70 @@
       "zeroLabel": "Données stockées"
     },
     "valueBlock": {
-      "title": "Ce que vous obtenez en quelques secondes",
+      "title": "Ce que vous obtenez",
       "items": [
         {
-          "icon": "🔍",
-          "label": "Validation externe",
-          "desc": "Crédibilité et visibilité au-delà du CV"
+          "icon": "◎",
+          "label": "Signaux de crédibilité",
+          "desc": "Comprenez ce qui tient — et ce qui ne tient pas"
         },
         {
-          "icon": "⚠️",
+          "icon": "◎",
           "label": "Angles morts",
-          "desc": "Ce qui n'est pas dit — mais devrait l'être"
+          "desc": "Identifiez ce qui manque ou n'est pas clair"
         },
         {
-          "icon": "🧠",
-          "label": "Insights non évidents",
-          "desc": "Patterns, incohérences, forces cachées"
+          "icon": "◎",
+          "label": "Insights cachés",
+          "desc": "Détectez patterns, incohérences et points forts"
         },
         {
-          "icon": "🌐",
-          "label": "Perception du marché",
-          "desc": "Comment ce profil est perçu en externe"
+          "icon": "◎",
+          "label": "Perception marché",
+          "desc": "Voyez comment le profil est probablement perçu"
         },
         {
-          "icon": "🎯",
+          "icon": "◎",
           "label": "Focus entretien",
-          "desc": "Questions ciblées à poser"
+          "desc": "Sachez exactement quoi challenger et valider"
         }
       ]
     },
-    "tagline": "\"Parce que les signaux les plus importants ne sont jamais dans le CV.\"",
+    "tagline": "Parce que les signaux les plus importants ne sont jamais dans le CV.",
     "outcomes": {
-      "title": "Après avoir utilisé cet outil, vous saurez",
+      "title": "Après avoir utilisé cet outil, vous pourrez",
       "items": [
         {
-          "icon": "✅",
-          "text": "Ce qui est crédible vs non vérifié"
+          "icon": "→",
+          "text": "Distinguer clairement signaux forts et faibles"
         },
         {
-          "icon": "📍",
-          "text": "Où se trouvent les vrais risques"
+          "icon": "→",
+          "text": "Comprendre où se trouvent les vrais risques"
         },
         {
-          "icon": "⚡",
-          "text": "Repérer instantanément les expériences manquantes"
+          "icon": "→",
+          "text": "Détecter instantanément les expériences manquantes"
         },
         {
-          "icon": "💬",
-          "text": "Préparer des questions ciblées"
+          "icon": "→",
+          "text": "Poser des questions plus ciblées et pertinentes"
         },
         {
-          "icon": "🚀",
+          "icon": "→",
           "text": "Prendre des décisions plus rapides et confiantes"
         }
       ]
     },
     "positioning": "Ce n'est pas une analyse de CV. C'est une <strong>couche d'intelligence candidat</strong> conçue pour réduire l'incertitude avant d'investir du temps.",
-    "howItWorks": "Comment ça fonctionne",
+    "howItWorks": "Comment ça marche",
     "steps": {
-      "step1Title": "Téléchargez ou collez le CV",
-      "step1Desc": "PDF ou texte brut. Traité dans votre navigateur — jamais transmis à nos serveurs.",
-      "step2Title": "Enrichissement IA web",
-      "step2Desc": "Nous recherchons des signaux d'entreprise, des articles de presse et des informations de financement.",
-      "step3Title": "Rapport d'intelligence",
-      "step3Desc": "Hypothèses, inconnues et questions d'entretien ciblées en moins de 30 secondes."
+      "step1Title": "Téléchargez ou collez un CV",
+      "step1Desc": "Entrée simple. Sans friction.",
+      "step2Title": "Analyse intelligente",
+      "step2Desc": "Le profil est enrichi et analysé pour révéler les signaux non évidents.",
+      "step3Title": "Rapport décisionnel",
+      "step3Desc": "Insights clairs, risques et points de validation en quelques secondes."
     }
   },
   "report": {

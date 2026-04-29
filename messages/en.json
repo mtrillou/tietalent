@@ -8,14 +8,14 @@
     "signIn": "Sign in"
   },
   "home": {
-    "badge": "External Intelligence Only",
-    "title": "Reveal What the CV\nDoesn't Tell You",
-    "subtitle": "Go beyond the resume. Enrich candidate profiles with external signals, hidden insights, and targeted interview questions — in under 30 seconds.",
-    "uploadTitle": "Upload a CV to analyse",
-    "uploadSubtitle": "Insights not visible in the CV",
+    "badge": "Candidate Intelligence",
+    "title": "Reveal what you can't see on a CV",
+    "subtitle": "Go beyond the resume. Instantly surface the signals that matter — credibility, gaps, inconsistencies, and decision-critical insights — in under 30 seconds.",
+    "uploadTitle": "Upload a CV to analyze",
+    "uploadSubtitle": "2 free analyses per day · No setup required",
     "generateButton": "Generate Intelligence Report",
-    "gdpr": "No data stored · In-memory only · GDPR compliant",
-    "freeBadge": "2 free analyses every day",
+    "gdpr": "No data stored · Processed in-memory · GDPR compliant",
+    "freeBadge": "2 free / day",
     "stats": {
       "time": "< 30s",
       "timeLabel": "Analysis time",
@@ -25,70 +25,70 @@
       "zeroLabel": "Data stored"
     },
     "valueBlock": {
-      "title": "What you'll get in seconds",
+      "title": "What you'll get",
       "items": [
         {
-          "icon": "🔍",
-          "label": "External validation",
-          "desc": "Credibility & visibility beyond the CV"
+          "icon": "◎",
+          "label": "Credibility signals",
+          "desc": "Understand what holds up — and what doesn't"
         },
         {
-          "icon": "⚠️",
+          "icon": "◎",
           "label": "Blind spots",
-          "desc": "What's not said — but should be"
+          "desc": "Identify what's missing or unclear"
         },
         {
-          "icon": "🧠",
-          "label": "Non-obvious insights",
-          "desc": "Patterns, inconsistencies, hidden strengths"
+          "icon": "◎",
+          "label": "Hidden insights",
+          "desc": "Spot patterns, inconsistencies, and strengths"
         },
         {
-          "icon": "🌐",
+          "icon": "◎",
           "label": "Market perception",
-          "desc": "How this profile reads externally"
+          "desc": "See how the profile is likely perceived"
         },
         {
-          "icon": "🎯",
+          "icon": "◎",
           "label": "Interview focus",
-          "desc": "Targeted questions to ask"
+          "desc": "Know exactly what to challenge and validate"
         }
       ]
     },
-    "tagline": "\"Because the most important signals are never on the CV.\"",
+    "tagline": "Because the most important signals are rarely written on the CV.",
     "outcomes": {
       "title": "After using this tool, you will",
       "items": [
         {
-          "icon": "✅",
-          "text": "Know what is credible vs unverified"
+          "icon": "→",
+          "text": "Clearly distinguish strong signals from weak ones"
         },
         {
-          "icon": "📍",
+          "icon": "→",
           "text": "Understand where the real risks are"
         },
         {
-          "icon": "⚡",
-          "text": "Spot missing experience instantly"
+          "icon": "→",
+          "text": "Instantly detect missing or unclear experience"
         },
         {
-          "icon": "💬",
-          "text": "Be ready with targeted questions"
+          "icon": "→",
+          "text": "Ask sharper, more targeted questions"
         },
         {
-          "icon": "🚀",
-          "text": "Make faster, more confident decisions"
+          "icon": "→",
+          "text": "Make faster, more confident hiring decisions"
         }
       ]
     },
     "positioning": "This is not a CV analysis. It's a <strong>candidate intelligence layer</strong> built to reduce uncertainty before you invest time.",
     "howItWorks": "How it works",
     "steps": {
-      "step1Title": "Upload or paste CV",
-      "step1Desc": "PDF or plain text. Parsed entirely in your browser — never uploaded to our servers.",
-      "step2Title": "AI web enrichment",
-      "step2Desc": "We search the web for company signals, press coverage, and funding information.",
-      "step3Title": "Intelligence report",
-      "step3Desc": "Hypotheses, unknowns, and targeted interview questions ready in under 30 seconds."
+      "step1Title": "Upload or paste a CV",
+      "step1Desc": "Simple input. No friction.",
+      "step2Title": "Intelligence analysis",
+      "step2Desc": "The profile is enriched and analyzed to surface non-obvious signals.",
+      "step3Title": "Decision-ready report",
+      "step3Desc": "Get clear insights, risks, and validation points in seconds."
     }
   },
   "report": {
