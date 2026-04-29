@@ -34,7 +34,7 @@ function PricingContent() {
     setLoading(packId);
     try {
       const res = await fetch("/api/stripe/checkout", {
-        method: "POST", headers: { "Content-Type": "application/json" },
+        method: "POST", credentials: "include", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ packId, locale }),
       });
       const { url } = await res.json();
