@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TieTalent</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 280px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      background: #fff;
+    }
+    .header {
+      background: #1A1A2E;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header img { width: 28px; height: 28px; border-radius: 6px; }
+    .header-text h1 { font-size: 14px; font-weight: 700; color: #fff; }
+    .header-text p { font-size: 10px; color: #9CA3AF; }
+    .section { padding: 14px 16px; border-bottom: 1px solid #E5E7EB; }
+    .label { font-size: 10px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .credits { font-size: 18px; font-weight: 700; color: #059669; }
+    .credits-sub { font-size: 11px; color: #9CA3AF; margin-top: 2px; }
+    .key-display { font-size: 11px; color: #6B7280; font-family: monospace; background: #F9FAFB; padding: 6px 8px; border-radius: 6px; margin-bottom: 8px; word-break: break-all; }
+    .btn { width: 100%; padding: 9px; border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; font-family: inherit; }
+    .btn-primary { background: #E8303A; color: #fff; }
+    .btn-primary:hover { background: #C9242D; }
+    .btn-secondary { background: #F3F4F6; color: #374151; border: 1px solid #E5E7EB; margin-top: 6px; }
+    .btn-secondary:hover { background: #E5E7EB; }
+    .input { width: 100%; padding: 9px 10px; border: 1.5px solid #E5E7EB; border-radius: 7px; font-size: 12px; font-family: inherit; outline: none; }
+    .input:focus { border-color: #E8303A; }
+    .error { font-size: 11px; color: #DC2626; margin-top: 6px; }
+    .hint { font-size: 11px; color: #9CA3AF; margin-top: 6px; text-align: center; }
+    .hint a { color: #E8303A; }
+    .footer { padding: 10px 16px; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="icon48.png" alt="TieTalent" />
+    <div class="header-text">
+      <h1>TieTalent</h1>
+      <p>Candidate Intelligence</p>
+    </div>
+  </div>
+
+  <div id="no-key-section" class="section" style="display:none;">
+    <div class="label">API Key</div>
+    <input id="key-input" class="input" type="password" placeholder="tt_xxxxxxxxxxxxxxxx" />
+    <p id="key-error" class="error" style="display:none;"></p>
+    <button id="save-key-btn" class="btn btn-primary" style="margin-top:8px;">Connect</button>
+    <p class="hint">No key? <a href="https://tietalent.com/en/settings" target="_blank">Get one here →</a></p>
+  </div>
+
+  <div id="connected-section" style="display:none;">
+    <div class="section">
+      <div class="label">Credits remaining</div>
+      <div class="credits" id="credits-count">…</div>
+      <div class="credits-sub" id="credits-sub">Loading…</div>
+    </div>
+    <div class="section">
+      <div class="label">API Key</div>
+      <div class="key-display" id="key-display">…</div>
+      <button id="remove-key-btn" class="btn btn-secondary">Remove key</button>
+    </div>
+    <div class="footer">
+      <button id="generate-key-btn" class="btn btn-primary">Generate new key</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
