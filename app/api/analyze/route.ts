@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { checkAndDeductCredit, saveScan, getUserCredits } from "@/lib/credits";
 import { analyzeCV } from "@/lib/claude";
-import { enforceRateLimit, sanitizeCvText, validateCvInput, safeError } from "@/lib/security";
+import { enforceRateLimit, sanitizeCvText, validateCvInput } from "@/lib/security";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -15,6 +15,8 @@ interface Identity {
   current_company: string | null;
   is_founder: boolean;
   confidence: number;
+  past_companies?: string[];
+  location?: string;
 }
 
 interface EnrichedResult { title: string; snippet: string; link: string; }
@@ -25,13 +27,13 @@ async function extractIdentity(cv_text: string): Promise<Identity | null> {
   try {
     const msg = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
-      max_tokens: 200,
+      max_tokens: 300,
       system: "Extract structured data from CVs. Return only JSON, no other text.",
       messages: [{
         role: "user",
-        content: `Extract: full_name, current_company, is_founder (boolean), confidence (0-1).
-Return ONLY JSON: {"full_name":"...","current_company":"...","is_founder":false,"confidence":0.9}
-CV: ${cv_text.slice(0, 2000)}`,
+        content: `Extract: full_name, current_company, is_founder (boolean), confidence (0-1), past_companies (array of up to 3 previous companies), location (city/country if visible).
+Return ONLY JSON: {"full_name":"...","current_company":"...","is_founder":false,"confidence":0.9,"past_companies":[],"location":""}
+CV: ${cv_text.slice(0, 3000)}`,
       }],
     });
     const block = msg.content.find((b) => b.type === "text");
@@ -42,21 +44,21 @@ CV: ${cv_text.slice(0, 2000)}`,
   } catch { return null; }
 }
 
-// ── Web enrichment ───────────────────────────────────────────────────────────
+// ── Deep search engine ───────────────────────────────────────────────────────
 
-async function runSearch(query: string): Promise<EnrichedResult[]> {
+async function runSearch(query: string, num = 5): Promise<EnrichedResult[]> {
   const apiKey = process.env.SERPER_API_KEY;
   if (!apiKey) return [];
   try {
     const res = await fetch("https://google.serper.dev/search", {
       method: "POST",
       headers: { "X-API-KEY": apiKey, "Content-Type": "application/json" },
-      body: JSON.stringify({ q: query, num: 5 }),
+      body: JSON.stringify({ q: query, num }),
       signal: AbortSignal.timeout(8000),
     });
     if (!res.ok) return [];
     const data = await res.json();
-    return (data.organic || []).slice(0, 5).map(
+    return (data.organic || []).slice(0, num).map(
       (item: { title?: string; snippet?: string; link?: string }) => ({
         title: item.title || "", snippet: item.snippet || "", link: item.link || "",
       })
@@ -67,56 +69,86 @@ async function runSearch(query: string): Promise<EnrichedResult[]> {
 async function enrichCandidate(identity: Identity): Promise<string> {
   const name = identity.full_name!;
   const company = identity.current_company;
-  const queries = [
-    { label: "core",             query: company ? `"${name}" "${company}"` : `"${name}"` },
-    { label: "name_search",      query: `"${name}" site:linkedin.com OR site:twitter.com OR site:x.com` },
-    { label: "twitter_x",        query: `"${name}" site:twitter.com OR site:x.com` },
-    { label: "linkedin",         query: `"${name}" site:linkedin.com` },
-    { label: "github",           query: `"${name}" site:github.com OR site:gitlab.com` },
-    { label: "reddit_company",   query: company ? `"${company}" site:reddit.com` : `"${name}" site:reddit.com` },
-    { label: "reddit_person",    query: `"${name}" site:reddit.com` },
-    { label: "press",            query: `"${name}" interview OR profile OR "talked to" OR "spoke with" -job -hiring` },
-    { label: "company_press",    query: company ? `"${company}" TechCrunch OR Forbes OR Wired OR "Business Insider" OR Bloomberg OR Reuters` : "" },
-    { label: "funding",          query: company ? `"${company}" site:crunchbase.com OR site:pitchbook.com OR funding OR raised OR investors OR "seed round" OR "series A"` : "" },
-    { label: "company_info",     query: company ? `"${company}" employees OR team OR "founded" OR revenue OR customers OR growth` : "" },
-    { label: "thought_leadership", query: `"${name}" speaker OR keynote OR podcast OR blog OR "wrote" OR "author" OR "published"` },
-    { label: "community",        query: `"${name}" "Product Hunt" OR "Hacker News" OR "Indie Hackers" OR medium.com OR substack.com` },
-    { label: "reputation",       query: company ? `"${company}" site:glassdoor.com OR site:trustpilot.com OR reviews OR culture` : "" },
+  const pastCos = identity.past_companies || [];
+
+  // ── LAYER 1: Professional signals ──────────────────────────────────────────
+  const professionalQueries = [
+    { label: "CORE_IDENTITY",        query: company ? `"${name}" "${company}"` : `"${name}"` },
+    { label: "LINKEDIN_PROFILE",     query: `"${name}" site:linkedin.com` },
+    { label: "PROFESSIONAL_PRESS",   query: `"${name}" interview OR "spoke to" OR profile OR founder OR CEO` },
+    { label: "COMPANY_CREDIBILITY",  query: company ? `"${company}" funding OR revenue OR customers OR employees OR "series"` : "" },
+    { label: "COMPANY_PRESS",        query: company ? `"${company}" TechCrunch OR Forbes OR Bloomberg OR Reuters OR "Business Insider"` : "" },
+    { label: "PAST_COMPANY_1",       query: pastCos[0] ? `"${name}" "${pastCos[0]}"` : "" },
+    { label: "PAST_COMPANY_2",       query: pastCos[1] ? `"${name}" "${pastCos[1]}"` : "" },
   ].filter(q => q.query.trim().length > 0);
 
-  const BATCH_SIZE = 6;
-  const allResults: { label: string; results: EnrichedResult[] }[] = [];
+  // ── LAYER 2: Risk & reputation signals ─────────────────────────────────────
+  const riskQueries = [
+    { label: "LEGAL_RISK",           query: `"${name}" lawsuit OR litigation OR fraud OR convicted OR arrested OR indicted OR "legal action"` },
+    { label: "CONTROVERSY",          query: `"${name}" controversy OR scandal OR accused OR misconduct OR investigation` },
+    { label: "COMPANY_LEGAL",        query: company ? `"${company}" lawsuit OR fraud OR "regulatory action" OR scam OR controversy OR "shut down"` : "" },
+    { label: "REDDIT_REPUTATION",    query: `"${name}" site:reddit.com` },
+    { label: "REDDIT_COMPANY",       query: company ? `"${company}" site:reddit.com` : "" },
+    { label: "GLASSDOOR_REPUTATION", query: company ? `"${company}" site:glassdoor.com OR trustpilot.com` : "" },
+    { label: "NEWS_NEGATIVE",        query: `"${name}" fired OR "laid off" OR resign OR controversy OR "stepping down"` },
+  ].filter(q => q.query.trim().length > 0);
 
-  for (let i = 0; i < queries.length; i += BATCH_SIZE) {
-    const batch = queries.slice(i, i + BATCH_SIZE);
-    await Promise.all(
-      batch.map(async ({ label, query }) => {
-        const results = await runSearch(query);
-        if (results.length > 0) allResults.push({ label, results });
-      })
-    );
-  }
+  // ── LAYER 3: Public visibility & community ─────────────────────────────────
+  const visibilityQueries = [
+    { label: "THOUGHT_LEADERSHIP",   query: `"${name}" podcast OR keynote OR speaker OR "wrote" OR author OR blog` },
+    { label: "COMMUNITY_SIGNALS",    query: `"${name}" "Product Hunt" OR "Hacker News" OR "Y Combinator" OR "Indie Hackers"` },
+    { label: "GITHUB_CODE",          query: `"${name}" site:github.com OR site:gitlab.com` },
+    { label: "FUNDING_TRACK",        query: company ? `"${company}" site:crunchbase.com OR site:pitchbook.com OR raised OR investors` : "" },
+    { label: "SUBSTACK_MEDIUM",      query: `"${name}" site:substack.com OR site:medium.com` },
+    { label: "TWITTER_X",            query: `"${name}" site:twitter.com OR site:x.com` },
+  ].filter(q => q.query.trim().length > 0);
+
+  // ── Run all batches in parallel ─────────────────────────────────────────────
+  const allQueryGroups = [
+    { group: "PROFESSIONAL", queries: professionalQueries },
+    { group: "RISK",         queries: riskQueries },
+    { group: "VISIBILITY",   queries: visibilityQueries },
+  ];
+
+  const allResults: { group: string; label: string; results: EnrichedResult[] }[] = [];
+
+  await Promise.all(
+    allQueryGroups.map(async ({ group, queries }) => {
+      await Promise.all(
+        queries.map(async ({ label, query }) => {
+          const results = await runSearch(query, 5);
+          if (results.length > 0) {
+            allResults.push({ group, label, results });
+          }
+        })
+      );
+    })
+  );
 
   if (allResults.length === 0) return "No external data found.";
 
-  const labelGroups: Record<string, string> = {
-    core: "DIRECT MENTIONS", name_search: "SOCIAL PROFILES", twitter_x: "TWITTER/X",
-    linkedin: "LINKEDIN", github: "GITHUB", reddit_person: "REDDIT (PERSON)",
-    reddit_company: "REDDIT (COMPANY)", press: "PRESS & INTERVIEWS",
-    company_press: "COMPANY COVERAGE", funding: "FUNDING DATA",
-    company_info: "COMPANY INTELLIGENCE", thought_leadership: "THOUGHT LEADERSHIP",
-    community: "COMMUNITY", reputation: "REVIEWS & REPUTATION",
-  };
-
+  // Structure output for Claude with clear group separation
   const sections: string[] = [];
-  for (const { label, results } of allResults) {
-    sections.push(`\n── ${labelGroups[label] || label.toUpperCase()} ──`);
-    for (const r of results) {
-      sections.push(`• ${r.title}`);
-      sections.push(`  ${r.snippet}`);
-      sections.push(`  → ${r.link}`);
+
+  const groupOrder = ["PROFESSIONAL", "RISK", "VISIBILITY"];
+  for (const group of groupOrder) {
+    const groupResults = allResults.filter(r => r.group === group);
+    if (groupResults.length === 0) continue;
+
+    sections.push(`\n${"═".repeat(50)}`);
+    sections.push(`GROUP: ${group} SIGNALS`);
+    sections.push("═".repeat(50));
+
+    for (const { label, results } of groupResults) {
+      sections.push(`\n[${label}]`);
+      for (const r of results) {
+        sections.push(`• ${r.title}`);
+        sections.push(`  ${r.snippet}`);
+        sections.push(`  → ${r.link}`);
+      }
     }
   }
+
   return sections.join("\n");
 }
 
@@ -162,61 +194,41 @@ export function safeParseJSON<T>(raw: string): T {
 
 export async function POST(request: NextRequest) {
   try {
-    // 1. Auth
     const session = await getServerSession(authOptions) as { user?: { id?: string; email?: string } } | null;
-    if (!session?.user?.id) {
-      return NextResponse.json({ error: "UNAUTHENTICATED" }, { status: 401 });
-    }
+    if (!session?.user?.id) return NextResponse.json({ error: "UNAUTHENTICATED" }, { status: 401 });
     const userId = session.user.id;
 
-    // 2. Rate limiting (server-side, per user)
     const rateLimitResult = enforceRateLimit(request, userId, "paid");
     if (rateLimitResult) return rateLimitResult;
 
-    // 3. Credit check (server-side, before work)
     const { totalAvailable } = await getUserCredits(userId);
-    if (totalAvailable < 1) {
-      return NextResponse.json({ error: "NO_CREDITS" }, { status: 402 });
-    }
+    if (totalAvailable < 1) return NextResponse.json({ error: "NO_CREDITS" }, { status: 402 });
 
-    // 4. Parse & validate input
     const body = await request.json().catch(() => null);
     const validation = validateCvInput(body?.cv_text);
-    if (!validation.valid) {
-      return NextResponse.json({ error: validation.error }, { status: 400 });
-    }
+    if (!validation.valid) return NextResponse.json({ error: validation.error }, { status: 400 });
 
-    // 5. Sanitize against prompt injection
     const { safe: cv_text, injectionDetected } = sanitizeCvText(body.cv_text);
-    if (injectionDetected) {
-      // Log suspicious activity server-side only — never expose to client
-      console.warn(`[security] Prompt injection attempt from user ${userId}`);
-    }
+    if (injectionDetected) console.warn(`[security] Injection attempt from user ${userId}`);
 
-    // 6. Atomic credit deduction
     const deduction = await checkAndDeductCredit(userId);
-    if (!deduction.ok) {
-      return NextResponse.json({ error: "NO_CREDITS" }, { status: 402 });
-    }
+    if (!deduction.ok) return NextResponse.json({ error: "NO_CREDITS" }, { status: 402 });
 
-    // 7. Enrich & analyze
     const identity = await extractIdentity(cv_text);
     let enrichedData = "No external data found.";
     if (identity?.full_name) {
+      console.log(`[enrichment] Analyzing: ${identity.full_name} @ ${identity.current_company}`);
       enrichedData = await enrichCandidate(identity);
     }
 
     const report = await analyzeCV(cv_text, enrichedData, safeParseJSON);
 
-    // 8. Save (no CV stored — only label and structured result)
     const label = identity?.full_name || "Unknown candidate";
     await saveScan({ userId, type: "candidate_intelligence", input_label: label, result: report as object });
 
-    // 9. Return (never include internal data, prompts, or CV text)
     return NextResponse.json({ report });
 
   } catch (err) {
-    // Never expose stack traces or internal errors
     console.error("[/api/analyze] Error:", err instanceof Error ? err.message : "unknown");
     return NextResponse.json({ error: "Analysis failed. Please try again." }, { status: 500 });
   }

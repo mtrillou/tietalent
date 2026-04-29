@@ -2,10 +2,11 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import type { ReportData, VerifiedSignal, WeakSignal, UnverifiedClaim } from "@/lib/claude";
+import type { ReportData, VerifiedSignal, WeakSignal, UnverifiedClaim, HighImpactFinding } from "@/lib/claude";
 
+// TieTalent brand colors
 const B = {
-  red: "#E8303A", navy: "#1A1A2E", dark: "#111827",
+  red: "#E8303A", navy: "#1A1A2E", dark: "#1A1A1A",
   gray: "#6B7280", grayL: "#9CA3AF",
   border: "#E5E7EB", surface: "#F9FAFB", white: "#FFFFFF",
   green: "#059669", greenL: "#ECFDF5", greenB: "#A7F3D0",
@@ -20,7 +21,7 @@ const DECISION_CFG: Record<string, { color: string; bg: string; border: string; 
   "Strong Proceed": { color: "#059669", bg: "#ECFDF5", border: "#A7F3D0", dot: "#059669" },
   "Proceed":        { color: "#059669", bg: "#ECFDF5", border: "#A7F3D0", dot: "#059669" },
   "Proceed with Validation": { color: "#D97706", bg: "#FFFBEB", border: "#FDE68A", dot: "#D97706" },
-  "Neutral":        { color: "#6B7280", bg: "#F9FAFB", border: "#E5E7EB", dot: "#6B7280" },
+  "Neutral":        { color: "#1A1A2E", bg: "#EFF6FF", border: "#BFDBFE", dot: "#1A1A2E" },
   "Caution":        { color: "#EA580C", bg: "#FFF7ED", border: "#FED7AA", dot: "#EA580C" },
   "High Risk":      { color: "#DC2626", bg: "#FEF2F2", border: "#FECACA", dot: "#DC2626" },
 };
@@ -35,8 +36,34 @@ const ALERT: Record<string, { color: string; bg: string; border: string }> = {
   Green:  { color: "#059669", bg: "#ECFDF5", border: "#A7F3D0" },
   Yellow: { color: "#D97706", bg: "#FFFBEB", border: "#FDE68A" },
   Orange: { color: "#EA580C", bg: "#FFF7ED", border: "#FED7AA" },
-  Red:    { color: "#DC2626", bg: "#FEF2F2", border: "#FECACA" },
+  Red:    { color: "#E8303A", bg: "#FEF2F2", border: "#FECACA" },
 };
+
+
+const HIF_CFG: Record<string, { color: string; bg: string; border: string; icon: string }> = {
+  "Legal":       { color: "#DC2626", bg: "#FEF2F2", border: "#FECACA", icon: "⚖" },
+  "Reputation":  { color: "#EA580C", bg: "#FFF7ED", border: "#FED7AA", icon: "⚠" },
+  "Credibility": { color: "#D97706", bg: "#FFFBEB", border: "#FDE68A", icon: "◉" },
+  "Career":      { color: "#2563EB", bg: "#EFF6FF", border: "#BFDBFE", icon: "→" },
+  "Positive":    { color: "#059669", bg: "#ECFDF5", border: "#A7F3D0", icon: "✓" },
+};
+
+function HIF({ f }: { f: HighImpactFinding }) {
+  const cfg = HIF_CFG[f.type] || HIF_CFG["Career"];
+  const confColor = f.confidence === "High" ? "#059669" : f.confidence === "Medium" ? "#D97706" : "#EA580C";
+  return (
+    <div style={{ padding: "12px 14px", borderRadius: "8px", marginBottom: "8px", backgroundColor: cfg.bg, border: `1px solid ${cfg.border}` }}>
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "10px", marginBottom: "5px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
+          <span style={{ fontSize: "13px", flexShrink: 0 }}>{cfg.icon}</span>
+          <span style={{ fontSize: "10px", fontWeight: 700, color: cfg.color, textTransform: "uppercase" as const, letterSpacing: "0.5px" }}>{f.type}</span>
+        </div>
+        <span style={{ fontSize: "10px", fontWeight: 600, color: confColor, backgroundColor: "rgba(255,255,255,0.8)", padding: "1px 7px", borderRadius: "20px", whiteSpace: "nowrap" as const }}>{f.confidence} confidence</span>
+      </div>
+      <p style={{ fontSize: "13px", color: "#111827", lineHeight: 1.65, paddingLeft: "20px" }}>{f.summary}</p>
+    </div>
+  );
+}
 
 function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
@@ -142,7 +169,7 @@ export function Report({ data }: { data: ReportData }) {
           <span style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: B.green, display: "inline-block" }} />
           <span style={{ fontSize: "13px", color: B.gray }}>{t("ready")}</span>
         </div>
-        <button onClick={handlePDF} disabled={exporting} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "8px 16px", borderRadius: "7px", backgroundColor: B.navy, color: B.white, border: "none", fontSize: "13px", fontWeight: 600, cursor: "pointer", opacity: exporting ? 0.6 : 1 }}>
+        <button onClick={handlePDF} disabled={exporting} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "8px 16px", borderRadius: "7px", backgroundColor: B.red, color: B.white, border: "none", fontSize: "13px", fontWeight: 700, letterSpacing: "0.5px", textTransform: "uppercase", cursor: "pointer", opacity: exporting ? 0.6 : 1 }}>
           {exporting && <span style={{ width: "13px", height: "13px", border: "2px solid rgba(255,255,255,0.3)", borderTopColor: "#fff", borderRadius: "50%", animation: "spin 0.8s linear infinite", display: "inline-block" }} />}
           {exporting ? t("exporting") : t("downloadPdf")}
         </button>
@@ -159,11 +186,11 @@ export function Report({ data }: { data: ReportData }) {
                   <span style={{ fontSize: "15px", fontWeight: 700, color: B.red }}>{initials}</span>
                 </div>
                 <div>
-                  <p style={{ fontSize: "10px", fontWeight: 700, color: B.red, textTransform: "uppercase", letterSpacing: "1.2px", marginBottom: "3px" }}>Candidate Intelligence</p>
+                  <p style={{ fontSize: "10px", fontWeight: 700, color: B.red, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "3px" }}>Candidate Intelligence</p>
                   <h1 style={{ fontWeight: 700, fontSize: "20px", color: B.white, letterSpacing: "-0.3px", margin: 0 }}>{data.candidate_name}</h1>
                 </div>
               </div>
-              <div style={{ padding: "8px 13px", borderRadius: "8px", backgroundColor: alertCfg.bg, border: `1px solid ${alertCfg.border}`, textAlign: "center", flexShrink: 0 }}>
+              <div style={{ padding: "6px 12px", borderRadius: "4px", backgroundColor: alertCfg.bg, border: `1px solid ${alertCfg.border}`, textAlign: "center", flexShrink: 0 }}>
                 <p style={{ fontSize: "9px", fontWeight: 700, color: alertCfg.color, textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: "3px" }}>Alert</p>
                 <p style={{ fontSize: "13px", fontWeight: 700, color: alertCfg.color }}>{data.alert_level}</p>
               </div>
@@ -188,6 +215,24 @@ export function Report({ data }: { data: ReportData }) {
           </div>
         </Card>
 
+
+        {/* ── HIGH IMPACT FINDINGS ── */}
+        {(data.high_impact_findings?.length ?? 0) > 0 && (
+          <Card style={{ border: `1px solid ${
+            data.high_impact_findings.some(f => f.type === "Legal" || f.type === "Reputation")
+              ? "#FECACA"
+              : B.border
+          }` }}>
+            <SHead
+              label="High-Impact Findings"
+              sub="Signals that could change this hiring decision"
+              accent={data.high_impact_findings.some(f => f.type === "Legal" || f.type === "Reputation") ? "#DC2626" : "#D97706"}
+            />
+            <div style={{ padding: "14px 20px" }}>
+              {data.high_impact_findings.map((f, i) => <HIF key={i} f={f} />)}
+            </div>
+          </Card>
+        )}
         {/* ── 2. TOP 3 DECISION DRIVERS ── */}
         {data.top_decision_drivers?.length > 0 && (
           <Card>
@@ -195,7 +240,7 @@ export function Report({ data }: { data: ReportData }) {
             <div style={{ padding: "14px 20px", display: "flex", flexDirection: "column", gap: "8px" }}>
               {data.top_decision_drivers.map((d, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px", padding: "10px 14px", backgroundColor: B.surface, borderRadius: "8px", border: `1px solid ${B.border}` }}>
-                  <span style={{ fontSize: "14px", fontWeight: 800, color: B.red, flexShrink: 0, lineHeight: 1.4 }}>{i + 1}</span>
+                  <span style={{ fontSize: "14px", fontWeight: 800, color: B.navy, flexShrink: 0, lineHeight: 1.4 }}>{i + 1}</span>
                   <p style={{ fontSize: "13px", color: B.dark, lineHeight: 1.6 }}>{d}</p>
                 </div>
               ))}
