@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "TieTalent Scout \u2014 Candidate Intelligence",
-  "version": "1.0.0",
-  "description": "Analyze candidate profiles instantly with AI. Get verified signals, hiring impact and recommendations directly on LinkedIn.",
+  "name": "TieTalent \u2014 Candidate Intelligence for Hiring",
+  "version": "1.3.0",
+  "description": "Make better hiring decisions in seconds. Surface risks, gaps, and non-obvious insights directly from any profile.",
   "permissions": [
     "activeTab",
     "storage"

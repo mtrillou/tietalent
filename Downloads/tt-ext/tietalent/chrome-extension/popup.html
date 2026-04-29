@@ -2,74 +2,189 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TieTalent</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      width: 280px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-      background: #fff;
-    }
+    body { width: 300px; font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; background: #fff; color: #1A1A1A; }
+
     .header {
-      background: #1A1A2E;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      padding: 11px 14px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid #F3F4F6;
     }
-    .header img { width: 28px; height: 28px; border-radius: 6px; }
-    .header-text h1 { font-size: 14px; font-weight: 700; color: #fff; }
-    .header-text p { font-size: 10px; color: #9CA3AF; }
-    .section { padding: 14px 16px; border-bottom: 1px solid #E5E7EB; }
-    .label { font-size: 10px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-    .credits { font-size: 18px; font-weight: 700; color: #059669; }
-    .credits-sub { font-size: 11px; color: #9CA3AF; margin-top: 2px; }
-    .key-display { font-size: 11px; color: #6B7280; font-family: monospace; background: #F9FAFB; padding: 6px 8px; border-radius: 6px; margin-bottom: 8px; word-break: break-all; }
-    .btn { width: 100%; padding: 9px; border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; font-family: inherit; }
-    .btn-primary { background: #E8303A; color: #fff; }
-    .btn-primary:hover { background: #C9242D; }
-    .btn-secondary { background: #F3F4F6; color: #374151; border: 1px solid #E5E7EB; margin-top: 6px; }
-    .btn-secondary:hover { background: #E5E7EB; }
-    .input { width: 100%; padding: 9px 10px; border: 1.5px solid #E5E7EB; border-radius: 7px; font-size: 12px; font-family: inherit; outline: none; }
-    .input:focus { border-color: #E8303A; }
-    .error { font-size: 11px; color: #DC2626; margin-top: 6px; }
-    .hint { font-size: 11px; color: #9CA3AF; margin-top: 6px; text-align: center; }
-    .hint a { color: #E8303A; }
-    .footer { padding: 10px 16px; }
-    .status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+    .wordmark { font-size: 13px; font-weight: 800; color: #00126B; letter-spacing: -0.2px; }
+    .wordmark em { color: #FF1F48; font-style: normal; }
+    .badge { font-size: 9px; font-weight: 700; color: #FF1F48; border: 1px solid #FF1F48; padding: 1px 5px; border-radius: 3px; letter-spacing: 0.4px; text-transform: uppercase; margin-left: 5px; }
+    .settings-btn { background: none; border: none; cursor: pointer; color: #9CA3AF; font-size: 11px; padding: 2px 6px; border-radius: 3px; }
+    .settings-btn:hover { color: #6B7280; }
+
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* ── Main screen ── */
+    .main-wrap { padding: 14px; }
+
+    .input-group { margin-bottom: 10px; }
+    .input-label { font-size: 10px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+    .input {
+      width: 100%; padding: 9px 11px;
+      border: 1.5px solid #E5E7EB; border-radius: 4px;
+      font-size: 13px; font-family: inherit; outline: none; color: #1A1A1A;
+      transition: border-color 0.15s;
+    }
+    .input:focus { border-color: #FF1F48; }
+    .input.auto-filled { border-color: #A7F3D0; background: #F0FDF4; }
+    .input-hint { font-size: 10px; color: #9CA3AF; margin-top: 4px; }
+    .input-hint.detected { color: #059669; }
+
+    .error-msg { font-size: 11px; color: #FF1F48; margin-bottom: 8px; display: none; }
+
+    .btn-primary {
+      width: 100%; padding: 11px; background: #FF1F48; color: #fff;
+      border: none; border-radius: 4px; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer;
+      font-family: inherit; transition: background 0.15s; margin-bottom: 10px;
+    }
+    .btn-primary:hover { background: #E5183F; }
+    .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .credits-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 8px; border-top: 1px solid #F3F4F6;
+    }
+    .credits-label { font-size: 11px; font-weight: 500; color: #6B7280; }
+    .credits-label.ok { color: #059669; }
+    .credits-label.warn { color: #D97706; }
+    .credits-label.empty { color: #FF1F48; }
+    .buy-link { font-size: 11px; color: #FF1F48; font-weight: 600; cursor: pointer; }
+
+    /* ── Connect screen ── */
+    .connect-wrap { padding: 16px 14px; }
+    .connect-wrap h2 { font-size: 13px; font-weight: 700; color: #00126B; margin-bottom: 5px; }
+    .connect-wrap p { font-size: 11px; color: #6B7280; line-height: 1.55; margin-bottom: 12px; }
+    .btn-link { font-size: 11px; color: #FF1F48; font-weight: 600; cursor: pointer; display: block; text-align: center; margin-top: 9px; background: none; border: none; width: 100%; font-family: inherit; }
+
+    /* ── Loading screen ── */
+    .loading-wrap { padding: 28px 14px; text-align: center; }
+    .spinner { width: 30px; height: 30px; border: 2.5px solid #FFCCD6; border-top-color: #FF1F48; border-radius: 50%; animation: spin 0.85s linear infinite; margin: 0 auto 12px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-wrap h3 { font-size: 13px; font-weight: 700; color: #00126B; margin-bottom: 4px; }
+    .loading-step { font-size: 11px; color: #9CA3AF; }
+
+    /* ── Result screen ── */
+    .result-wrap { padding: 14px; }
+    .signal-pill {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; margin-bottom: 8px;
+    }
+    .result-name { font-size: 15px; font-weight: 700; color: #00126B; margin-bottom: 5px; }
+    .result-summary { font-size: 12px; color: #374151; line-height: 1.6; margin-bottom: 10px; }
+    .drivers { margin-bottom: 12px; }
+    .driver { display: flex; gap: 7px; padding: 5px 0; border-bottom: 1px solid #F3F4F6; font-size: 11px; color: #374151; line-height: 1.5; }
+    .driver-num { color: #FF1F48; font-weight: 700; flex-shrink: 0; }
+    .btn-view { width: 100%; padding: 10px; background: #FF1F48; color: #fff; border: none; border-radius: 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; cursor: pointer; font-family: inherit; margin-bottom: 6px; }
+    .btn-view:hover { background: #E5183F; }
+    .btn-again { width: 100%; padding: 7px; background: none; color: #6B7280; border: 1px solid #E5E7EB; border-radius: 4px; font-size: 11px; cursor: pointer; font-family: inherit; }
+    .btn-again:hover { border-color: #FF1F48; color: #FF1F48; }
+
+    /* ── No credits screen ── */
+    .nocredits-wrap { padding: 20px 14px; text-align: center; }
+    .nocredits-wrap .icon { font-size: 24px; margin-bottom: 8px; }
+    .nocredits-wrap h2 { font-size: 13px; font-weight: 700; color: #00126B; margin-bottom: 5px; }
+    .nocredits-wrap p { font-size: 11px; color: #6B7280; line-height: 1.5; margin-bottom: 12px; }
+    .btn-back { background: none; border: none; color: #9CA3AF; font-size: 11px; cursor: pointer; font-family: inherit; margin-top: 6px; display: block; width: 100%; }
+
+    /* ── Settings screen ── */
+    .settings-wrap { padding: 14px; }
+    .settings-wrap h2 { font-size: 13px; font-weight: 700; color: #00126B; margin-bottom: 12px; }
+    .set-label { font-size: 9px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .key-box { font-size: 10px; color: #374151; background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 4px; padding: 6px 8px; font-family: monospace; word-break: break-all; margin-bottom: 12px; }
+    .btn-danger { width: 100%; padding: 8px; background: none; color: #FF1F48; border: 1px solid #FFCCD6; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; font-family: inherit; margin-top: 4px; }
+    .btn-danger:hover { background: #FFF0F3; }
+    .btn-back-sm { background: none; border: none; color: #9CA3AF; font-size: 11px; cursor: pointer; font-family: inherit; margin-bottom: 10px; padding: 0; display: block; }
   </style>
 </head>
 <body>
   <div class="header">
-    <img src="icon48.png" alt="TieTalent" />
-    <div class="header-text">
-      <h1>TieTalent</h1>
-      <p>Candidate Intelligence</p>
+    <div style="display:flex;align-items:center;">
+      <span class="wordmark"><em>tie</em>talent<em>.</em></span>
+      <span class="badge">Insights</span>
+    </div>
+    <button class="settings-btn" id="settings-toggle">⚙ Settings</button>
+  </div>
+
+  <!-- Main screen -->
+  <div class="screen active" id="screen-main">
+    <div class="main-wrap">
+      <div class="input-group">
+        <div class="input-label">Who do you want to analyze?</div>
+        <input class="input" id="name-input" type="text" placeholder="Name, username or @handle…" autocomplete="off" />
+        <div class="input-hint" id="name-hint"></div>
+      </div>
+      <div class="error-msg" id="main-error">Please enter a name or username (min. 3 characters)</div>
+      <button class="btn-primary" id="analyze-btn">Analyze this profile</button>
+      <div class="credits-row">
+        <span class="credits-label" id="credits-label">Loading…</span>
+        <span class="buy-link" id="buy-link" style="display:none;">Get credits →</span>
+      </div>
     </div>
   </div>
 
-  <div id="no-key-section" class="section" style="display:none;">
-    <div class="label">API Key</div>
-    <input id="key-input" class="input" type="password" placeholder="tt_xxxxxxxxxxxxxxxx" />
-    <p id="key-error" class="error" style="display:none;"></p>
-    <button id="save-key-btn" class="btn btn-primary" style="margin-top:8px;">Connect</button>
-    <p class="hint">No key? <a href="https://tietalent.com/en/settings" target="_blank">Get one here →</a></p>
+  <!-- Connect screen -->
+  <div class="screen" id="screen-connect">
+    <div class="connect-wrap">
+      <h2>Connect your account</h2>
+      <p>Enter your TieTalent API key to start analyzing profiles anywhere on the web.</p>
+      <input class="input" id="key-input" type="password" placeholder="tt_xxxxxxxxxxxxxxxx" />
+      <div class="error-msg" id="key-error">Key must start with tt_</div>
+      <button class="btn-primary" id="connect-btn" style="margin-top:8px;">Connect</button>
+      <button class="btn-link" id="get-key-btn">Get your free API key →</button>
+    </div>
   </div>
 
-  <div id="connected-section" style="display:none;">
-    <div class="section">
-      <div class="label">Credits remaining</div>
-      <div class="credits" id="credits-count">…</div>
-      <div class="credits-sub" id="credits-sub">Loading…</div>
+  <!-- Loading screen -->
+  <div class="screen" id="screen-loading">
+    <div class="loading-wrap">
+      <div class="spinner"></div>
+      <h3 id="loading-name">Building intelligence report…</h3>
+      <div class="loading-step" id="loading-step">Analyzing profile…</div>
     </div>
-    <div class="section">
-      <div class="label">API Key</div>
-      <div class="key-display" id="key-display">…</div>
-      <button id="remove-key-btn" class="btn btn-secondary">Remove key</button>
+  </div>
+
+  <!-- Result screen -->
+  <div class="screen" id="screen-result">
+    <div class="result-wrap">
+      <div class="signal-pill" id="result-badge"></div>
+      <div class="result-name" id="result-name"></div>
+      <div class="result-summary" id="result-summary"></div>
+      <div class="drivers" id="result-drivers"></div>
+      <button class="btn-view" id="view-btn">View full report →</button>
+      <button class="btn-again" id="again-btn">Analyze another profile</button>
     </div>
-    <div class="footer">
-      <button id="generate-key-btn" class="btn btn-primary">Generate new key</button>
+  </div>
+
+  <!-- No credits -->
+  <div class="screen" id="screen-nocredits">
+    <div class="nocredits-wrap">
+      <div class="icon">⚡</div>
+      <h2>No credits remaining</h2>
+      <p>You've used all your analyses for today. Get more to continue.</p>
+      <button class="btn-primary" id="buy-btn">Get more credits</button>
+      <button class="btn-back" id="nocredits-back">← Back</button>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div class="screen" id="screen-settings">
+    <div class="settings-wrap">
+      <button class="btn-back-sm" id="settings-back">← Back</button>
+      <h2>Settings</h2>
+      <div class="set-label">API Key</div>
+      <div class="key-box" id="settings-key">—</div>
+      <div class="set-label">Account</div>
+      <button class="btn-link" id="open-dashboard" style="text-align:left;margin-bottom:12px;">Open TieTalent →</button>
+      <button class="btn-danger" id="disconnect-btn">Disconnect account</button>
     </div>
   </div>
 
