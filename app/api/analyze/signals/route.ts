@@ -24,33 +24,60 @@ export async function POST(request: NextRequest) {
       max_tokens: 400,
       messages: [{
         role: "user",
-        content: `You are an external intelligence scanner for hiring.
-TODAY: ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.
+        content: `TODAY: ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.
 
-Analyze this CV and produce 3 to 5 intelligence signals about this candidate.
+You are an external intelligence scanner for hiring. Your job is to surface identity and presence signals — NOT to analyze CVs.
 
-RULES:
-- Signals must be based on EXTERNAL or INFERRED intelligence — not CV parsing
-- DO NOT mention dates, tenures, role overlaps, or formatting
-- Each signal must feel like a real discovery, not a summary
-- Stop early if you run out of genuine insights — do not pad
+OUTPUT: A JSON array of 3 to 4 signals. No markdown, no preamble.
+Format: [{"content":"...","confidence":"High|Medium|Low"}]
 
-GOOD signals:
-- "Distinctive name — identity attribution likely straightforward across platforms"
-- "Claims seniority level typically associated with strong public presence — verification will be telling"
-- "Profile type frequently underrepresented in external data despite real expertise"
-- "Positioning mixes technical and commercial signals — may create perception ambiguity"
+════════════════════════════════════
+WHAT YOU ARE ALLOWED TO SIGNAL:
+════════════════════════════════════
 
-BAD signals (forbidden):
-- Anything about date math or tenure
-- Generic statements like "experienced professional"
-- CV formatting observations
+1. IDENTITY CLARITY
+- Is this a distinctive, easily identifiable person?
+- Or a common name with likely ambiguity across profiles?
+Examples:
+✓ "Distinctive name — identity attribution across platforms should be straightforward"
+✓ "Common name — multiple individuals likely share this identity online"
 
-Output ONLY a JSON array, no markdown:
-[{"content":"...","confidence":"High|Medium|Low"}]
+2. EXTERNAL PRESENCE EXPECTATION
+- Given their claimed seniority and sector, what external footprint would you expect?
+- Is it likely strong, moderate, or limited?
+Examples:
+✓ "Profile type typically generates strong external signals — verification will be informative"
+✓ "Sector and role combination often produces limited public digital footprint"
 
-CV:
-${cv_text.slice(0, 3000)}`,
+3. POSITIONING COHERENCE (high-level only)
+- Does the overall professional positioning feel clear and consistent?
+- Is there a coherent narrative, or does it feel fragmented?
+Examples:
+✓ "Clear and focused professional positioning across stated roles"
+✓ "Mixed signals between technical and commercial positioning — may affect perception"
+
+════════════════════════════════════
+ABSOLUTE PROHIBITIONS — NEVER OUTPUT:
+════════════════════════════════════
+✗ Anything involving dates, years, months, or durations
+✗ Tenure calculations of any kind ("X years", "since 2017", "9 months")
+✗ Timeline inconsistencies or "present" role analysis
+✗ Overlapping roles or simultaneous positions
+✗ Future-dated or backdated role detection
+✗ CV formatting observations
+✗ Any claim requiring only CV reading (no external signal)
+
+If you catch yourself about to write any of the above — STOP and generate a different signal.
+If you cannot find 3 valid external signals — output fewer. Do not pad with weak or forbidden content.
+
+════════════════════════════════════
+SELF-CHECK BEFORE OUTPUTTING:
+════════════════════════════════════
+For each signal ask: "Is this based on external intelligence or inferred market knowledge — NOT on reading the CV?"
+If NO → discard it.
+
+CV (for context only — do not analyze its internal consistency):
+${cv_text.slice(0, 2000)}`,
       }],
     });
 

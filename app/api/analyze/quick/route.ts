@@ -28,27 +28,27 @@ export async function POST(request: NextRequest) {
       max_tokens: 150,
       messages: [{
         role: "user",
-        content: `TODAY'S DATE: ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.
+        content: `TODAY: ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.
 
-You are an external intelligence assessor for hiring. Your only job is to output a single JSON object.
+You are an external intelligence assessor for hiring. Output ONLY a single JSON object — no markdown, no explanation.
 
-Evaluate the CV below based ONLY on these 3 signals:
-1. IDENTITY CLARITY: Is this a unique, identifiable person or a common/ambiguous name?
-2. EXTERNAL PRESENCE: Based on their role/seniority claims, would you expect a strong digital footprint?
-3. PROFILE COHERENCE: Does the overall positioning feel consistent and credible at a high level?
+Evaluate based ONLY on:
+1. IDENTITY CLARITY — Is this a unique, identifiable person or a common/ambiguous name?
+2. EXTERNAL PRESENCE — Given their seniority claims, would you expect a strong digital footprint?
+3. POSITIONING — Does the overall professional identity feel clear and coherent?
 
-STRICT RULES:
-- DO NOT analyze dates, tenures, or role overlaps
-- DO NOT comment on CV formatting or internal consistency
-- DO NOT mention specific companies or dates
-- Base your signal on identity and expected external presence only
+ABSOLUTE PROHIBITIONS — NEVER mention:
+✗ Dates, years, months, durations, tenures
+✗ Timeline inconsistencies or "present" role analysis  
+✗ Overlapping roles or simultaneous positions
+✗ CV formatting or internal CV consistency
+✗ Anything requiring only CV reading
 
-Output ONLY this JSON (no markdown, no explanation):
-{"quick_signal":"Green|Orange|Red","quick_reason":"one sentence, high-level, no technical detail"}
+Output exactly: {"quick_signal":"Green|Orange|Red","quick_reason":"one sentence, no dates, no tenure, external/identity focus only"}
 
-Green examples: "Strong and consistent professional identity detected" | "Clear, distinctive profile with expected external presence"
-Orange examples: "Limited external signals expected for this profile type" | "Common name may create identity ambiguity during verification"
-Red examples: "Significant identity ambiguity detected — multiple profiles likely share this name" | "Profile positioning appears inconsistent with claimed seniority"
+Green: clear identity + expected external presence
+Orange: ambiguity in identity or limited expected footprint
+Red: significant identity confusion or positioning inconsistency
 
 CV:
 ${cv_text.slice(0, 2000)}`,
