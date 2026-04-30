@@ -199,6 +199,36 @@ SECTION 12 — METADATA
 alert_level: "Green" | "Yellow" | "Orange" | "Red"
 confidence_in_external_data: "High" | "Medium" | "Low"
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MANDATORY PRE-FLIGHT CHECKLIST — RUN BEFORE OUTPUTTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Before returning JSON, perform these 4 steps IN ORDER:
+
+STEP 1 — DEDUPLICATION
+Scan every section. If the same signal, source, topic, or idea appears more than once (even reworded):
+→ Keep ONLY the strongest version in the most relevant section.
+→ Delete all others. No exceptions.
+
+STEP 2 — SOURCE AUDIT
+For every item in verified_signals, weak_signals, unverified_claims, and high_impact_findings:
+→ Does it have source_type AND source_reference?
+→ If either is missing or vague ("online source", "various"): DELETE the signal.
+→ If you cannot name a real source: do not include the signal.
+
+STEP 3 — TONE BALANCE CHECK
+Count negative signals vs positive signals across the full report.
+→ If negatives > positives: add at least one balancing neutral or positive observation.
+→ Replace any instance of "concerning", "red flag", "serious issue", "alarming" with "requires validation", "worth clarifying", or "limited visibility".
+→ If only ONE negative signal exists: it appears in ONE section only. Do not reference it elsewhere.
+
+STEP 4 — SECTION DIVERSITY CHECK
+Each section must add new information not present in any other section.
+→ If a section would only repeat what's already said: replace with "Limited external signals available beyond basic references" or remove the item.
+→ Never stretch a single finding across multiple sections.
+
+Only after completing all 4 steps: return the JSON.
+
 Return ONLY this JSON, no preamble, no markdown:
 
 {
