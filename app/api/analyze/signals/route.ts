@@ -59,7 +59,7 @@ ${cv_text.slice(0, 3000)}`,
     const match = block.text.match(/\[[\s\S]*\]/);
     if (!match) return NextResponse.json({ signals: [] });
     const signals = JSON.parse(match[0]);
-    return NextResponse.json({ signals: Array.isArray(signals) ? signals.slice(0, 5) : [] });
+    return NextResponse.json({ signals: Array.isArray(signals) ? signals.slice(0, 4) : [] });
   } catch {
     return NextResponse.json({ signals: [] });
   }

@@ -103,7 +103,7 @@ export default function Home() {
       signals.forEach((_: unknown, i: number) => {
         setTimeout(() => {
           setVisibleSignals(prev => [...prev, signals[i]]);
-        }, 5000 + i * 7000);
+        }, 8000 + i * 12000);
       });
     }).catch(() => {});
     try {
