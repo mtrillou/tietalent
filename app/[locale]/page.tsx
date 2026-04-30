@@ -37,6 +37,8 @@ export default function Home() {
   const [showLogin, setShowLogin]   = useState(false);
   const [showNoCredits, setShowNoCredits] = useState(false);
   const [quickSignal, setQuickSignal] = useState<{quick_signal: string; quick_reason: string} | null>(null);
+  const [liveSignals, setLiveSignals] = useState<{content: string; confidence: string}[]>([]);
+  const [visibleSignals, setVisibleSignals] = useState<{content: string; confidence: string}[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_report, setReport]        = useState<ReportData | null>(null);
 
@@ -82,13 +84,27 @@ export default function Home() {
       setShowLogin(true);
       return;
     }
-    setError(null); setReport(null); setLoading(true); setStepIndex(0); setQuickSignal(null);
+    setError(null); setReport(null); setLoading(true); setStepIndex(0); setQuickSignal(null); setLiveSignals([]); setVisibleSignals([]);
     const timer = setInterval(() => setStepIndex(p => p < steps.length - 1 ? p + 1 : p), 5000);
     // Fire quick signal in parallel — best effort, <3s
     fetch("/api/analyze/quick", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ cv_text: cvText }),
     }).then(r => r.json()).then(q => setQuickSignal(q)).catch(() => {});
+    // Fire signal stream in parallel — drip results progressively
+    fetch("/api/analyze/signals", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cv_text: cvText }),
+    }).then(r => r.json()).then(({ signals }) => {
+      if (!signals || signals.length === 0) return;
+      setLiveSignals(signals);
+      // Drip one signal every 7s starting at 5s
+      signals.forEach((_: unknown, i: number) => {
+        setTimeout(() => {
+          setVisibleSignals(prev => [...prev, signals[i]]);
+        }, 5000 + i * 7000);
+      });
+    }).catch(() => {});
     try {
       const res = await fetch("/api/analyze", {
         method: "POST", headers: { "Content-Type": "application/json" },
@@ -168,16 +184,36 @@ export default function Home() {
               <div style={{ height: "100%", backgroundColor: B.red, borderRadius: "2px", width: `${((stepIndex + 1) / steps.length) * 100}%`, transition: "width 1.2s cubic-bezier(0.4, 0, 0.2, 1)" }} />
             </div>
             <p style={{ fontSize: "12px", color: "#9CA3AF", textAlign: "left", marginBottom: "20px" }}>{steps[stepIndex]}</p>
-            <div style={{ textAlign: "left", display: "flex", flexDirection: "column", gap: "8px" }}>
-              {steps.map((step, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "13px", color: i < stepIndex ? B.red : i === stepIndex ? B.navy : "#D1D5DB", fontWeight: i === stepIndex ? 500 : 400 }}>
-                  <span style={{ width: "18px", height: "18px", borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: i < stepIndex ? "#FEF2F2" : "transparent", border: i < stepIndex ? "none" : i === stepIndex ? `2px solid ${B.red}` : "2px solid #E5E7EB" }}>
-                    {i < stepIndex && <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke={B.red} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-                  </span>
-                  {step}
-                </div>
-              ))}
-            </div>
+
+            {/* Live signal feed */}
+            {visibleSignals.length === 0 ? (
+              <div style={{ textAlign: "left", padding: "12px 0" }}>
+                <p style={{ fontSize: "12px", color: "#9CA3AF", fontStyle: "italic" }}>Analyzing external signals…</p>
+              </div>
+            ) : (
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px", textAlign: "left" }}>
+                {visibleSignals.map((sig, i) => (
+                  <div key={i} style={{
+                    padding: "10px 14px",
+                    borderRadius: "6px",
+                    border: `1px solid ${sig.confidence === "High" ? "#A7F3D0" : sig.confidence === "Low" ? "#E5E7EB" : "#FDE68A"}`,
+                    backgroundColor: sig.confidence === "High" ? "#F0FDF4" : sig.confidence === "Low" ? "#F9FAFB" : "#FEFCE8",
+                    animation: "fadeIn 0.5s ease",
+                    display: "flex", gap: "10px", alignItems: "flex-start",
+                  }}>
+                    <span style={{ fontSize: "11px", flexShrink: 0, marginTop: "1px" }}>
+                      {sig.confidence === "High" ? "●" : sig.confidence === "Low" ? "○" : "◐"}
+                    </span>
+                    <p style={{ fontSize: "12px", color: "#111827", lineHeight: 1.55 }}>{sig.content}</p>
+                  </div>
+                ))}
+                {visibleSignals.length < liveSignals.length && (
+                  <p style={{ fontSize: "11px", color: "#9CA3AF", fontStyle: "italic", paddingLeft: "2px" }}>
+                    New insight found…
+                  </p>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
