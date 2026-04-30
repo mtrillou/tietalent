@@ -277,7 +277,10 @@ export function Report({ data }: { data: ReportData }) {
               accent={data.high_impact_findings.some(f => f.type === "Legal" || f.type === "Reputation") ? "#DC2626" : "#D97706"}
             />
             <div style={{ padding: "14px 20px" }}>
-              {data.high_impact_findings.map((f, i) => <HIF key={i} f={f} />)}
+              {[...data.high_impact_findings].sort((a, b) => {
+                const order = { High: 0, Medium: 1, Low: 2 };
+                return (order[a.confidence] ?? 1) - (order[b.confidence] ?? 1);
+              }).map((f, i) => <HIF key={i} f={f} />)}
             </div>
           </Card>
         )}
