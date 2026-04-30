@@ -39,6 +39,7 @@ export default function Home() {
   const [quickSignal, setQuickSignal] = useState<{quick_signal: string; quick_reason: string} | null>(null);
   const [liveSignals, setLiveSignals] = useState<{content: string; confidence: string}[]>([]);
   const [visibleSignals, setVisibleSignals] = useState<{content: string; confidence: string}[]>([]);
+  const [showAllSignals, setShowAllSignals] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_report, setReport]        = useState<ReportData | null>(null);
 
@@ -185,30 +186,66 @@ export default function Home() {
             </div>
             <p style={{ fontSize: "12px", color: "#9CA3AF", textAlign: "left", marginBottom: "20px" }}>{steps[stepIndex]}</p>
 
-            {/* Live signal feed */}
+            {/* Live signal feed — latest visible, rest toggleable */}
             {visibleSignals.length === 0 ? (
               <div style={{ textAlign: "left", padding: "12px 0" }}>
                 <p style={{ fontSize: "12px", color: "#9CA3AF", fontStyle: "italic" }}>Analyzing external signals…</p>
               </div>
             ) : (
-              <div style={{ display: "flex", flexDirection: "column", gap: "8px", textAlign: "left" }}>
-                {visibleSignals.map((sig, i) => (
-                  <div key={i} style={{
-                    padding: "10px 14px",
-                    borderRadius: "6px",
-                    border: `1px solid ${sig.confidence === "High" ? "#A7F3D0" : sig.confidence === "Low" ? "#E5E7EB" : "#FDE68A"}`,
-                    backgroundColor: sig.confidence === "High" ? "#F0FDF4" : sig.confidence === "Low" ? "#F9FAFB" : "#FEFCE8",
-                    animation: "fadeIn 0.5s ease",
-                    display: "flex", gap: "10px", alignItems: "flex-start",
-                  }}>
-                    <span style={{ fontSize: "11px", flexShrink: 0, marginTop: "1px" }}>
-                      {sig.confidence === "High" ? "●" : sig.confidence === "Low" ? "○" : "◐"}
-                    </span>
-                    <p style={{ fontSize: "12px", color: "#111827", lineHeight: 1.55 }}>{sig.content}</p>
+              <div style={{ textAlign: "left" }}>
+                {/* Latest signal — always shown */}
+                {(() => {
+                  const sig = visibleSignals[visibleSignals.length - 1];
+                  return (
+                    <div style={{
+                      padding: "10px 14px", borderRadius: "6px", marginBottom: "8px",
+                      border: `1px solid ${sig.confidence === "High" ? "#A7F3D0" : sig.confidence === "Low" ? "#E5E7EB" : "#FDE68A"}`,
+                      backgroundColor: sig.confidence === "High" ? "#F0FDF4" : sig.confidence === "Low" ? "#F9FAFB" : "#FEFCE8",
+                      animation: "fadeIn 0.5s ease",
+                      display: "flex", gap: "10px", alignItems: "flex-start",
+                    }}>
+                      <span style={{ fontSize: "11px", flexShrink: 0, marginTop: "1px" }}>
+                        {sig.confidence === "High" ? "●" : sig.confidence === "Low" ? "○" : "◐"}
+                      </span>
+                      <p style={{ fontSize: "12px", color: "#111827", lineHeight: 1.55 }}>{sig.content}</p>
+                    </div>
+                  );
+                })()}
+
+                {/* Toggle for previous signals */}
+                {visibleSignals.length > 1 && (
+                  <div>
+                    <button
+                      onClick={() => setShowAllSignals(p => !p)}
+                      style={{
+                        background: "none", border: "none", cursor: "pointer",
+                        fontSize: "11px", color: B.red, fontWeight: 600,
+                        padding: "0 0 8px", display: "flex", alignItems: "center", gap: "4px",
+                      }}
+                    >
+                      {showAllSignals ? "▲ Hide previous signals" : `▼ ${visibleSignals.length - 1} earlier signal${visibleSignals.length > 2 ? "s" : ""}`}
+                    </button>
+                    {showAllSignals && (
+                      <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                        {visibleSignals.slice(0, -1).reverse().map((sig, i) => (
+                          <div key={i} style={{
+                            padding: "9px 13px", borderRadius: "6px",
+                            border: "1px solid #E5E7EB", backgroundColor: "#F9FAFB",
+                            display: "flex", gap: "10px", alignItems: "flex-start",
+                          }}>
+                            <span style={{ fontSize: "11px", color: "#9CA3AF", flexShrink: 0, marginTop: "1px" }}>
+                              {sig.confidence === "High" ? "●" : sig.confidence === "Low" ? "○" : "◐"}
+                            </span>
+                            <p style={{ fontSize: "12px", color: "#6B7280", lineHeight: 1.55 }}>{sig.content}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                ))}
+                )}
+
                 {visibleSignals.length < liveSignals.length && (
-                  <p style={{ fontSize: "11px", color: "#9CA3AF", fontStyle: "italic", paddingLeft: "2px" }}>
+                  <p style={{ fontSize: "11px", color: "#9CA3AF", fontStyle: "italic", marginTop: "6px" }}>
                     New insight found…
                   </p>
                 )}
