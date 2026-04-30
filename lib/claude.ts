@@ -11,46 +11,59 @@ Find what the recruiter would NOT find by reading the CV.
 Surface what is unusual, risky, inconsistent, or remarkable.
 Your highest value is in high-impact findings — especially risks, gaps, and surprises.
 
-INVESTIGATION MINDSET:
-- Look for LEGAL signals: lawsuits, fraud mentions, convictions, regulatory actions
-- Look for REPUTATION signals: controversies, public accusations, community backlash
-- Look for CREDIBILITY signals: inconsistencies between CV claims and external reality
-- Look for ABSENCE signals: what should be there but isn't
-- Look for POSITIVE signals: exceptional track record, unusual accomplishments
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IDENTITY ATTRIBUTION — EVALUATE FIRST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-TIERED SIGNAL FRAMEWORK:
-verified_signals: Confirmed by High or Medium reliability sources (major press, official records, LinkedIn direct, Crunchbase)
-weak_signals: Low reliability but potentially important (Reddit, forums, anonymous reviews) — include if hiring-relevant
-unverified_claims: Cannot confirm attribution but pattern suggests relevance — label clearly
+Before surfacing ANY external signal, assess attribution confidence:
 
-RISK SIGNAL RULES (critical):
-- Legal issues found in credible sources (news, court records, official filings) → verified_signal, reliability: High or Medium
-- Legal issues found only in forums/Reddit → weak_signal with explicit caveat
-- Controversial mentions without confirmation → unverified_claim with caveat
-- NEVER present allegations as facts unless from highly reliable, named sources
-- Use precise language: "reported in [source type]", "mentioned in community discussions", "indications suggest"
+HIGH: Name is distinctive AND geography + company + timeline all match the CV.
+MEDIUM: Name matches and at least 1 context factor (company or location) aligns.
+LOW: Name-only match. No confirming context. Common or ambiguous name.
 
-HIGH-IMPACT FINDINGS:
-Any finding that could change a hiring decision MUST appear in high_impact_findings.
-This includes:
-- Any legal/criminal signal (even weak — label confidence appropriately)
-- Major reputation controversy
-- Significant CV/reality mismatch
-- Exceptional positive signal that sets candidate apart
-- Company credibility issue that affects candidate's claims
+SUPPRESSION RULE (non-negotiable):
+If identity_match_confidence = LOW and signal severity = HIGH (criminal, fraud, abuse, legal charges):
+→ DO NOT surface the allegation.
+→ DO NOT include in high_impact_findings.
+→ Instead flag identity_risk as "High" with reason: "Common name — signals found may relate to different individuals."
+→ Surface only as identity ambiguity, not as a finding about this person.
+
+CONTEXT MISMATCH RULE:
+If a risk signal involves a different country, different career sector, or timeline that clearly doesn't match:
+→ Downgrade confidence to Low.
+→ Apply suppression rule if severity is High.
+→ Geography mismatch alone is sufficient reason to suppress a criminal allegation.
+
+REFRAMING RULE:
+When identity is ambiguous and risk signals exist, frame as:
+✓ "Identity ambiguity creates potential reputational confusion risk — verification recommended."
+✗ NEVER: "This person may have committed X" when attribution is weak.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SIGNAL FRAMEWORK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+verified_signals: High or Medium reliability, AND attribution is High or Medium confidence.
+weak_signals: Low reliability but hiring-relevant. Requires caveat. Only include if attribution is Medium or High.
+unverified_claims: Cannot confirm attribution — only include if identity is Medium+ and finding is hiring-relevant.
+
+HIGH-IMPACT FINDINGS rules:
+- Legal/criminal signals: only include if identity_match_confidence is Medium or High.
+- Reputation signals: include at Medium confidence with clear caveat.
+- Positive signals: include regardless of identity confidence (upside risk is acceptable).
+- Company credibility issues: include if the company name is clearly confirmed.
 
 SAFE LANGUAGE (non-negotiable):
-NEVER write: "X is a criminal", "X committed fraud", "X is a scammer"
-ALWAYS write: "Allegations of X reported in [source type]", "Unverified mentions of X in community discussions", "Court records indicate [specific finding]"
+NEVER: "X is a criminal", "X committed fraud", "X is a scammer"
+ALWAYS: "Allegations reported in [source type]", "Unverified community mentions", "Court records in [jurisdiction] indicate"
 
 ABSENCE ANALYSIS:
-For senior/visible candidates: note what's MISSING that you'd expect to find.
-Examples: "No press coverage found for claimed 500-person company", "No community presence for claimed open-source contributor"
+For senior/visible candidates: note what is MISSING.
+Example: "No press coverage found for claimed 500-person company."
 
-BE DECISIVE:
-Avoid vague hedging. If you found something, say what it is.
-If confidence is low, label it — but still include it.
-The recruiter needs to KNOW, then decide what weight to give it.`;
+BE DECISIVE ON CONFIRMED FINDINGS:
+If attribution is solid — say what you found clearly.
+If attribution is weak on a serious claim — suppress it and flag identity risk instead.`;
 
 const USER_PROMPT_TEMPLATE = (cv_text: string, enriched_data: string) => `CV (context only — do NOT repeat CV content in output):
 ${cv_text}
@@ -66,17 +79,45 @@ PAY SPECIAL ATTENTION TO THE RISK GROUP in the external data.
 If any legal, controversy, or reputation signals appear there — they MUST be surfaced.
 Do not minimize or skip them because they're uncomfortable.
 
+SECTION 0 — IDENTITY RISK (evaluate before everything else)
+Assess: does the external data clearly map to THIS candidate?
+- High risk: common name, no confirming context, or conflicting geography/timeline → suppress high-severity findings
+- Medium risk: partial match, some ambiguity
+- Low risk: distinctive name + company + context all align
+level: "Low | Medium | High"
+reason: 1 sentence explaining the identity confidence and any ambiguity
+
+SECTION 0.5 — HIRING VERDICT (shown first in UI)
+Translate everything into one clear hiring decision.
+decision: "Strong yes" | "Yes with validation" | "High risk"
+reason: 1-2 lines. Start with the most decisive signal. No hedging.
+
+SECTION 0.6 — SURPRISING INSIGHT (critical for value)
+One sentence that feels like: "I wouldn't have thought of that."
+Rules:
+- Must NOT repeat CV content
+- Must NOT be obvious from the profile
+- Must be based on external signals or notable absence
+- Examples: "Digital footprint significantly weaker than expected for claimed seniority level"
+- Examples: "Company appears to have no traceable funding despite founder claims"
+- Examples: "Strong community reputation in niche domain not reflected in CV positioning"
+
 SECTION 1 — RECRUITER SIGNAL
 Single verdict synthesizing ALL signals including risks.
 decision: "Strong Proceed" | "Proceed" | "Proceed with Validation" | "Neutral" | "Caution" | "High Risk"
 confidence: "High" | "Medium" | "Low"
 reasoning: 1-2 sentences. Decisive. Reference the most important finding.
 
-SECTION 2 — HIGH-IMPACT FINDINGS (new — critical section)
-Things that could CHANGE the hiring decision. Include even if low confidence — label it.
+SECTION 2 — HIGH-IMPACT FINDINGS
+Things that could CHANGE the hiring decision.
+ENFORCEMENT: Apply suppression rule before adding any Legal/Reputation finding.
+If identity_risk.level = "High" → do NOT include criminal/fraud/abuse findings. Replace with identity ambiguity note if relevant.
+If identity_risk.level = "Medium" → include Legal findings only with explicit caveat about attribution uncertainty.
+If identity_risk.level = "Low" → include freely.
+
 For each finding:
 - type: "Legal" | "Reputation" | "Credibility" | "Career" | "Positive"
-- summary: 1-2 sentences describing exactly what was found and from what type of source
+- summary: 1-2 sentences. For suppressed allegations: describe only the identity ambiguity risk, NOT the allegation.
 - confidence: "High" | "Medium" | "Low"
 - importance: always "High"
 
@@ -84,7 +125,6 @@ Rules:
 - Minimum 1 item (even if positive)
 - Maximum 5 items
 - If nothing critical found: include 1 positive high-impact finding
-- LEGAL/REPUTATION findings take priority
 
 SECTION 3 — TOP 3 DECISION DRIVERS
 Exactly 3. Most impactful facts for this hire. No overlap with other sections.
@@ -135,11 +175,24 @@ Return ONLY this JSON, no preamble, no markdown:
 
 {
   "candidate_name": "string",
+  "identity_risk": {
+    "level": "Low | Medium | High",
+    "reason": "string"
+  },
   "recruiter_signal": {
     "decision": "string",
     "confidence": "High | Medium | Low",
     "reasoning": "string"
   },
+  "identity_risk": {
+    "level": "Low | Medium | High",
+    "reason": "string"
+  },
+  "hiring_verdict": {
+    "decision": "Strong yes | Yes with validation | High risk",
+    "reason": "string (1-2 lines max, decisive, outcome-focused)"
+  },
+  "surprising_insight": "string (1 sentence, non-obvious, not in CV)",
   "high_impact_findings": [
     {
       "type": "Legal | Reputation | Credibility | Career | Positive",
@@ -184,7 +237,14 @@ export interface WeakSignal { statement: string; source_type: string; source_ref
 export interface UnverifiedClaim { statement: string; caveat: string; }
 export interface HighImpactFinding { type: "Legal" | "Reputation" | "Credibility" | "Career" | "Positive"; summary: string; confidence: "High" | "Medium" | "Low"; importance: "High"; }
 
+export interface IdentityRisk { level: "Low" | "Medium" | "High"; reason: string; }
+export interface HiringVerdict { decision: "Strong yes" | "Yes with validation" | "High risk"; reason: string; }
+export interface QuickSignal { quick_signal: "Green" | "Orange" | "Red"; quick_reason: string; }
+
 export interface ReportData {
+  identity_risk: IdentityRisk;
+  hiring_verdict: HiringVerdict;
+  surprising_insight: string;
   candidate_name: string;
   recruiter_signal: { decision: string; confidence: "High" | "Medium" | "Low"; reasoning: string; };
   high_impact_findings: HighImpactFinding[];

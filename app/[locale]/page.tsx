@@ -1,4 +1,5 @@
 "use client";
+import { TT } from "@/lib/designTokens";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -10,7 +11,13 @@ import { LoginModal } from "@/components/auth/LoginModal";
 import { NoCreditsModal } from "@/components/auth/NoCreditsModal";
 import type { ReportData } from "@/lib/claude";
 
-const B = { red: "#E8303A", redH: "#C9242D", navy: "#1A1A2E", gray: "#6B7280", border: "#E5E7EB", surface: "#F9FAFB", white: "#FFFFFF" };
+// TieTalent design tokens
+const B = { 
+  red: "#E8303A", redH: "#C9242D", navy: "#1A1A2E", 
+  gray: "#6B7280", grayL: "#9CA3AF",
+  border: "#E5E7EB", surface: "#F9FAFB", white: "#FFFFFF",
+  dark: "#1A1A1A"
+};
 
 export default function Home() {
   const tLoad = useTranslations("loading");
@@ -29,6 +36,9 @@ export default function Home() {
   const [error, setError]           = useState<string | null>(null);
   const [showLogin, setShowLogin]   = useState(false);
   const [showNoCredits, setShowNoCredits] = useState(false);
+  const [quickSignal, setQuickSignal] = useState<{quick_signal: string; quick_reason: string} | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_report, setReport]        = useState<ReportData | null>(null);
 
   const steps: string[] = [
     tLoad("steps.0"), tLoad("steps.1"), tLoad("steps.2"), tLoad("steps.3"), tLoad("steps.4"),
@@ -72,8 +82,13 @@ export default function Home() {
       setShowLogin(true);
       return;
     }
-    setError(null); setLoading(true); setStepIndex(0);
+    setError(null); setReport(null); setLoading(true); setStepIndex(0); setQuickSignal(null);
     const timer = setInterval(() => setStepIndex(p => p < steps.length - 1 ? p + 1 : p), 5000);
+    // Fire quick signal in parallel — best effort, <3s
+    fetch("/api/analyze/quick", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cv_text: cvText }),
+    }).then(r => r.json()).then(q => setQuickSignal(q)).catch(() => {});
     try {
       const res = await fetch("/api/analyze", {
         method: "POST", headers: { "Content-Type": "application/json" },
@@ -124,7 +139,31 @@ export default function Home() {
             </div>
             <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
             <h2 style={{ fontWeight: 600, fontSize: "20px", color: B.navy, marginBottom: "8px" }}>{tLoad("title")}</h2>
-            <p style={{ fontSize: "14px", color: B.gray, marginBottom: "28px" }}>{tLoad("subtitle")}</p>
+            <p style={{ fontSize: "14px", color: B.gray, marginBottom: quickSignal ? "16px" : "28px" }}>{tLoad("subtitle")}</p>
+
+            {/* Quick signal badge — appears within ~3s */}
+            {quickSignal && (
+              <div style={{
+                marginBottom: "24px",
+                padding: "12px 16px",
+                borderRadius: "8px",
+                border: `1px solid ${quickSignal.quick_signal === "Green" ? "#A7F3D0" : quickSignal.quick_signal === "Red" ? "#FECACA" : "#FDE68A"}`,
+                backgroundColor: quickSignal.quick_signal === "Green" ? "#ECFDF5" : quickSignal.quick_signal === "Red" ? "#FEF2F2" : "#FFFBEB",
+                display: "flex", alignItems: "center", gap: "10px",
+                animation: "fadeIn 0.4s ease",
+              }}>
+                <span style={{ fontSize: "18px", flexShrink: 0 }}>
+                  {quickSignal.quick_signal === "Green" ? "🟢" : quickSignal.quick_signal === "Red" ? "🔴" : "🟡"}
+                </span>
+                <div style={{ textAlign: "left" }}>
+                  <p style={{ fontSize: "11px", fontWeight: 700, color: quickSignal.quick_signal === "Green" ? "#059669" : quickSignal.quick_signal === "Red" ? "#DC2626" : "#D97706", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "2px" }}>
+                    Preliminary signal
+                  </p>
+                  <p style={{ fontSize: "13px", color: "#111827" }}>{quickSignal.quick_reason}</p>
+                </div>
+              </div>
+            )}
+            <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }`}</style>
             <div style={{ height: "4px", backgroundColor: B.border, borderRadius: "2px", overflow: "hidden", marginBottom: "8px" }}>
               <div style={{ height: "100%", backgroundColor: B.red, borderRadius: "2px", width: `${((stepIndex + 1) / steps.length) * 100}%`, transition: "width 1.2s cubic-bezier(0.4, 0, 0.2, 1)" }} />
             </div>
@@ -152,8 +191,6 @@ export default function Home() {
       {/* ── HERO ── */}
       <div style={{ background: `linear-gradient(135deg, ${B.navy} 0%, #2D2D4E 100%)` }}>
         <div style={{ maxWidth: "1152px", margin: "0 auto", padding: "72px 24px 64px", display: "flex", alignItems: "center", gap: "72px", flexWrap: "wrap" }}>
-
-          {/* Left */}
           <div style={{ flex: 1, minWidth: "300px" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "5px 14px", borderRadius: "20px", marginBottom: "22px", backgroundColor: "rgba(232,48,58,0.15)", border: "1px solid rgba(232,48,58,0.35)" }}>
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: B.red }} />
@@ -165,7 +202,6 @@ export default function Home() {
             <p style={{ fontSize: "17px", color: "#94A3B8", lineHeight: 1.7, maxWidth: "440px", marginBottom: "36px" }}>
               {t("subtitle")}
             </p>
-
             <div style={{ display: "flex", flexDirection: "column", gap: "11px", marginBottom: "32px" }}>
               {valueItems.map(item => (
                 <div key={item.label} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -177,11 +213,8 @@ export default function Home() {
                 </div>
               ))}
             </div>
-
             <p style={{ fontSize: "13px", color: "#475569", fontStyle: "italic" }}>{t("tagline")}</p>
           </div>
-
-          {/* Right — upload card */}
           <div style={{ width: "420px", flexShrink: 0, backgroundColor: B.white, borderRadius: "16px", padding: "28px", boxShadow: "0 24px 64px rgba(0,0,0,0.35)" }}>
             <div style={{ marginBottom: "18px" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "4px" }}>
@@ -190,25 +223,21 @@ export default function Home() {
               </div>
               <p style={{ fontSize: "12px", color: B.gray }}>{t("uploadSubtitle")}</p>
             </div>
-
             {cvText && cvText.trim().length > 50 && (
-                <div style={{ marginBottom: "10px", padding: "10px 12px", backgroundColor: "#ECFDF5", border: "1px solid #A7F3D0", borderRadius: "8px", display: "flex", alignItems: "center", gap: "8px" }}>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#059669"/><path d="M4 7l2 2 4-4" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <span style={{ fontSize: "12px", fontWeight: 600, color: "#059669" }}>CV ready — launching analysis…</span>
-                </div>
-              )}
-              <FileUpload onExtracted={setCvText} isLoading={loading} />
-
+              <div style={{ marginBottom: "10px", padding: "10px 12px", backgroundColor: "#ECFDF5", border: "1px solid #A7F3D0", borderRadius: "8px", display: "flex", alignItems: "center", gap: "8px" }}>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#059669"/><path d="M4 7l2 2 4-4" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <span style={{ fontSize: "12px", fontWeight: 600, color: "#059669" }}>CV ready — launching analysis…</span>
+              </div>
+            )}
+            <FileUpload onExtracted={setCvText} isLoading={loading} />
             {error && (
               <div style={{ marginTop: "14px", padding: "10px 14px", backgroundColor: "#FEF2F2", border: "1px solid #FECACA", borderRadius: "8px", fontSize: "13px", color: "#DC2626" }}>{error}</div>
             )}
-
             <button onClick={handleGenerate}
               style={{ marginTop: "16px", width: "100%", padding: "13px", backgroundColor: B.red, color: B.white, border: "none", borderRadius: "10px", cursor: "pointer", fontSize: "14px", fontWeight: 700, letterSpacing: "0.4px", textTransform: "uppercase", boxShadow: "0 2px 8px rgba(232,48,58,0.3)", transition: "background-color 0.15s" }}
               onMouseOver={e => (e.currentTarget.style.backgroundColor = B.redH)}
               onMouseOut={e => (e.currentTarget.style.backgroundColor = B.red)}
             >{t("generateButton")}</button>
-
             <div style={{ marginTop: "12px", display: "flex", alignItems: "center", justifyContent: "center", gap: "6px" }}>
               <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><rect x="2" y="5" width="8" height="6" rx="1" stroke="#9CA3AF" strokeWidth="1"/><path d="M4 5V4a2 2 0 014 0v1" stroke="#9CA3AF" strokeWidth="1"/></svg>
               <p style={{ fontSize: "11px", color: "#9CA3AF" }}>{t("gdpr")}</p>

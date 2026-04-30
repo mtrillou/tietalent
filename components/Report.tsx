@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import type { ReportData, VerifiedSignal, WeakSignal, UnverifiedClaim, HighImpactFinding } from "@/lib/claude";
+import type { ReportData, VerifiedSignal, WeakSignal, UnverifiedClaim, HighImpactFinding, IdentityRisk } from "@/lib/claude";
 
 // TieTalent brand colors
 const B = {
@@ -198,6 +198,35 @@ export function Report({ data }: { data: ReportData }) {
           </div>
         </Card>
 
+        {/* ── 0. HIRING VERDICT — first thing user sees ── */}
+        {data.hiring_verdict && (
+          <Card style={{
+            border: `2px solid ${data.hiring_verdict.decision === "Strong yes" ? "#A7F3D0" : data.hiring_verdict.decision === "High risk" ? "#FECACA" : "#FDE68A"}`,
+            backgroundColor: data.hiring_verdict.decision === "Strong yes" ? "#ECFDF5" : data.hiring_verdict.decision === "High risk" ? "#FEF2F2" : "#FFFBEB",
+          }}>
+            <div style={{ padding: "16px 20px" }}>
+              <p style={{ fontSize: "9px", fontWeight: 700, color: B.gray, textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: "6px" }}>Hiring Verdict</p>
+              <p style={{ fontSize: "24px", fontWeight: 800, letterSpacing: "-0.5px", marginBottom: "8px", color: data.hiring_verdict.decision === "Strong yes" ? "#059669" : data.hiring_verdict.decision === "High risk" ? "#DC2626" : "#D97706" }}>
+                {data.hiring_verdict.decision === "Strong yes" ? "✓ Strong yes" : data.hiring_verdict.decision === "High risk" ? "✗ High risk" : "⚠ Yes with validation"}
+              </p>
+              <p style={{ fontSize: "13px", color: B.dark, lineHeight: 1.65 }}>{data.hiring_verdict.reason}</p>
+            </div>
+          </Card>
+        )}
+
+        {/* ── SURPRISING INSIGHT ── */}
+        {data.surprising_insight && (
+          <Card style={{ border: `1px solid #C7D2FE`, backgroundColor: "#EEF2FF" }}>
+            <div style={{ padding: "14px 20px", display: "flex", gap: "12px", alignItems: "flex-start" }}>
+              <span style={{ fontSize: "18px", flexShrink: 0 }}>💡</span>
+              <div>
+                <p style={{ fontSize: "9px", fontWeight: 700, color: "#4338CA", textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: "5px" }}>Surprising insight</p>
+                <p style={{ fontSize: "13px", color: "#1E1B4B", lineHeight: 1.65, fontStyle: "italic" }}>{data.surprising_insight}</p>
+              </div>
+            </div>
+          </Card>
+        )}
+
         {/* ── 1. RECRUITER SIGNAL — primary output ── */}
         <Card style={{ border: `2px solid ${decision.border}` }}>
           <div style={{ padding: "18px 22px", backgroundColor: decision.bg }}>
@@ -216,6 +245,25 @@ export function Report({ data }: { data: ReportData }) {
         </Card>
 
 
+
+        {/* ── IDENTITY RISK BANNER (only when Medium or High) ── */}
+        {data.identity_risk && data.identity_risk.level !== "Low" && (
+          <div style={{
+            padding: "10px 16px",
+            backgroundColor: data.identity_risk.level === "High" ? "#FFF7ED" : "#FFFBEB",
+            border: `1px solid ${data.identity_risk.level === "High" ? "#FED7AA" : "#FDE68A"}`,
+            borderRadius: "8px",
+            display: "flex", alignItems: "flex-start", gap: "10px",
+          }}>
+            <span style={{ fontSize: "14px", flexShrink: 0 }}>⚠</span>
+            <div>
+              <p style={{ fontSize: "11px", fontWeight: 700, color: data.identity_risk.level === "High" ? "#EA580C" : "#D97706", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "3px" }}>
+                Identity Risk: {data.identity_risk.level}
+              </p>
+              <p style={{ fontSize: "12px", color: "#374151", lineHeight: 1.6 }}>{data.identity_risk.reason}</p>
+            </div>
+          </div>
+        )}
         {/* ── HIGH IMPACT FINDINGS ── */}
         {(data.high_impact_findings?.length ?? 0) > 0 && (
           <Card style={{ border: `1px solid ${
