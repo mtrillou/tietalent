@@ -192,6 +192,22 @@ summary: 1-2 sentences on overall picture
 risk_level: "Low" | "Medium" | "High"
 implications: 2-4 specific hiring implications
 
+SECTION 10.5 — SENSITIVE SIGNALS (UNVERIFIED)
+Include ONLY when ALL of these are true:
+1. Signal severity is HIGH (legal, fraud, criminal, major controversy)
+2. Signal exists in a credible external source (news, court record, official filing)
+3. Identity match is NOT strong (Medium or Low confidence)
+4. Geography, timeline, and career path are NOT clearly mismatched
+
+If included (max 1-2 signals):
+- NEVER state "The candidate did X"
+- ALWAYS frame as: "A record associated with this name was found in [source]"
+- attribution_status: "Unconfirmed" if name-only match, "Weak match" if some context aligns, "Possible match" if multiple factors align
+- confidence: always "Low"
+- Place AFTER main analysis, NEVER in high_impact_findings or verdict
+
+If no qualifying signals: omit the field entirely (do not include empty array).
+
 SECTION 11 — WHAT TO VALIDATE
 2-3 questions. Not repeated from focus_areas.
 
@@ -287,7 +303,16 @@ Return ONLY this JSON, no preamble, no markdown:
   },
   "what_to_validate": ["string"],
   "alert_level": "Green | Yellow | Orange | Red",
-  "confidence_in_external_data": "High | Medium | Low"
+  "confidence_in_external_data": "High | Medium | Low",
+  "sensitive_signals_unverified": [
+    {
+      "signal": "A record associated with this name was found in [source type]",
+      "context": "Unable to confirm if this refers to the candidate — requires explicit verification",
+      "attribution_status": "Unconfirmed | Weak match | Possible match",
+      "source": { "type": "string", "reference": "string" },
+      "confidence": "Low"
+    }
+  ]
 }`;
 };
 
@@ -297,6 +322,13 @@ export interface UnverifiedClaim { statement: string; caveat: string; }
 export interface HighImpactFinding { type: "Legal" | "Reputation" | "Credibility" | "Career" | "Positive"; summary: string; confidence: "High" | "Medium" | "Low"; importance: "High"; }
 
 export interface IdentityRisk { level: "Low" | "Medium" | "High"; reason: string; }
+export interface SensitiveSignal {
+  signal: string;
+  context: string;
+  attribution_status: "Unconfirmed" | "Weak match" | "Possible match";
+  source: { type: string; reference: string };
+  confidence: "Low";
+}
 export interface HiringVerdict { decision: "Strong yes" | "Yes with validation" | "High risk"; reason: string; }
 export interface QuickSignal { quick_signal: "Green" | "Orange" | "Red"; quick_reason: string; }
 
@@ -317,6 +349,7 @@ export interface ReportData {
   signals: { verified_signals: VerifiedSignal[]; weak_signals: WeakSignal[]; unverified_claims: UnverifiedClaim[]; no_significant_external_data: boolean; };
   hiring_impact: { summary: string; risk_level: "Low" | "Medium" | "High"; implications: string[]; };
   what_to_validate: string[];
+  sensitive_signals_unverified?: SensitiveSignal[];
   alert_level: "Green" | "Yellow" | "Orange" | "Red";
   confidence_in_external_data: "High" | "Medium" | "Low";
 }

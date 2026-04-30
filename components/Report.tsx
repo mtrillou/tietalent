@@ -434,6 +434,49 @@ export function Report({ data }: { data: ReportData }) {
           </div>
         </Card>
 
+        {/* ── SENSITIVE SIGNALS (UNVERIFIED) — shown only when present ── */}
+        {(data.sensitive_signals_unverified?.length ?? 0) > 0 && (
+          <Card style={{ border: "1px solid #FED7AA" }}>
+            <div style={{ padding: "14px 20px 4px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
+                <span style={{ fontSize: "14px" }}>⚠</span>
+                <p style={{ fontSize: "10px", fontWeight: 700, color: "#EA580C", textTransform: "uppercase", letterSpacing: "0.8px" }}>
+                  Sensitive Signals — Verification Required
+                </p>
+              </div>
+              <p style={{ fontSize: "11px", color: "#9CA3AF", lineHeight: 1.5, marginBottom: "14px" }}>
+                These signals are not verified and may relate to other individuals with similar names. Do not treat as confirmed facts.
+              </p>
+              {(data.sensitive_signals_unverified || []).map((s, i) => (
+                <div key={i} style={{ padding: "12px 14px", borderRadius: "8px", marginBottom: "10px", backgroundColor: "#FFF7ED", border: "1px solid #FED7AA" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "10px", marginBottom: "6px" }}>
+                    <span style={{ fontSize: "10px", fontWeight: 700, color: "#EA580C", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                      {s.attribution_status}
+                    </span>
+                    <span style={{ fontSize: "10px", color: "#9CA3AF", backgroundColor: "#F3F4F6", padding: "1px 7px", borderRadius: "20px" }}>
+                      Low confidence
+                    </span>
+                  </div>
+                  <p style={{ fontSize: "13px", color: "#111827", lineHeight: 1.65, marginBottom: "6px" }}>{s.signal}</p>
+                  <p style={{ fontSize: "12px", color: "#6B7280", lineHeight: 1.55, marginBottom: "8px", fontStyle: "italic" }}>{s.context}</p>
+                  {s.source?.reference && (
+                    <p style={{ fontSize: "10px", color: "#9CA3AF" }}>
+                      Source: {s.source.type}{s.source.reference !== s.source.type ? ` — ${s.source.reference}` : ""}
+                    </p>
+                  )}
+                </div>
+              ))}
+              <div style={{ padding: "10px 14px", borderRadius: "6px", backgroundColor: "#F0F4FF", border: "1px solid #C7D2FE", marginBottom: "14px" }}>
+                <p style={{ fontSize: "11px", fontWeight: 600, color: "#4338CA", marginBottom: "5px" }}>Suggested validation questions</p>
+                <p style={{ fontSize: "12px", color: "#374151", lineHeight: 1.6 }}>
+                  "Can you confirm any past legal or compliance matters?"<br />
+                  "Have you ever been involved in disputes or regulatory proceedings?"
+                </p>
+              </div>
+            </div>
+          </Card>
+        )}
+
         {/* ── 9. EXTERNAL SUMMARY + IDENTITY META ── */}
         <Card>
           <SHead label="External Profile" />
