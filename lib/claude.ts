@@ -65,7 +65,11 @@ BE DECISIVE ON CONFIRMED FINDINGS:
 If attribution is solid — say what you found clearly.
 If attribution is weak on a serious claim — suppress it and flag identity risk instead.`;
 
-const USER_PROMPT_TEMPLATE = (cv_text: string, enriched_data: string) => `CV (context only — do NOT repeat CV content in output):
+const USER_PROMPT_TEMPLATE = (cv_text: string, enriched_data: string) => {
+const today = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+return `TODAY'S DATE: ${today}. Use this as the reference for all tenure calculations and timeline analysis.
+
+CV (context only — do NOT repeat CV content in output):
 ${cv_text}
 
 EXTERNAL DATA (3-layer search: professional, risk, visibility):
@@ -231,6 +235,7 @@ Return ONLY this JSON, no preamble, no markdown:
   "alert_level": "Green | Yellow | Orange | Red",
   "confidence_in_external_data": "High | Medium | Low"
 }`;
+};
 
 export interface VerifiedSignal { statement: string; source_type: string; source_reference: string; reliability: "High" | "Medium"; }
 export interface WeakSignal { statement: string; source_type: string; source_reference: string; reliability: "Low"; }

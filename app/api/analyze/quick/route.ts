@@ -28,7 +28,9 @@ export async function POST(request: NextRequest) {
       max_tokens: 150,
       messages: [{
         role: "user",
-        content: `You are a hiring signal detector. Read this CV and output ONLY JSON.
+        content: `TODAY'S DATE: ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}. Use this for tenure calculations.
+
+You are a hiring signal detector. Read this CV and output ONLY JSON.
 
 CV: ${cv_text.slice(0, 3000)}
 
