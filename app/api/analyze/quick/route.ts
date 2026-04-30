@@ -28,15 +28,30 @@ export async function POST(request: NextRequest) {
       max_tokens: 150,
       messages: [{
         role: "user",
-        content: `TODAY'S DATE: ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}. Use this for tenure calculations.
+        content: `TODAY'S DATE: ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.
 
-You are a hiring signal detector. Read this CV and output ONLY JSON.
+You are an external intelligence assessor for hiring. Your only job is to output a single JSON object.
 
-CV: ${cv_text.slice(0, 3000)}
+Evaluate the CV below based ONLY on these 3 signals:
+1. IDENTITY CLARITY: Is this a unique, identifiable person or a common/ambiguous name?
+2. EXTERNAL PRESENCE: Based on their role/seniority claims, would you expect a strong digital footprint?
+3. PROFILE COHERENCE: Does the overall positioning feel consistent and credible at a high level?
 
-Output exactly: {"quick_signal":"Green|Orange|Red","quick_reason":"one sentence"}
+STRICT RULES:
+- DO NOT analyze dates, tenures, or role overlaps
+- DO NOT comment on CV formatting or internal consistency
+- DO NOT mention specific companies or dates
+- Base your signal on identity and expected external presence only
 
-Green = clean consistent profile. Orange = ambiguity or gaps. Red = risk signals detected.`,
+Output ONLY this JSON (no markdown, no explanation):
+{"quick_signal":"Green|Orange|Red","quick_reason":"one sentence, high-level, no technical detail"}
+
+Green examples: "Strong and consistent professional identity detected" | "Clear, distinctive profile with expected external presence"
+Orange examples: "Limited external signals expected for this profile type" | "Common name may create identity ambiguity during verification"
+Red examples: "Significant identity ambiguity detected — multiple profiles likely share this name" | "Profile positioning appears inconsistent with claimed seniority"
+
+CV:
+${cv_text.slice(0, 2000)}`,
       }],
     });
 
