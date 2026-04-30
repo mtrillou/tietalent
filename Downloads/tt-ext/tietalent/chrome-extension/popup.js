@@ -58,29 +58,102 @@ function restoreLoading(state, apiKey) {
   document.getElementById("loading-step").textContent = LOADING_STEPS[stepIdx];
   show("loading");
 
+  // Restore any already-arrived quick signal or live signals
+  if (state.quickSignal) renderQuickSignal(state.quickSignal);
+  if (state.liveSignals && state.liveSignals.length > 0) {
+    renderLiveSignals(state.liveSignals, elapsed);
+  }
+
   // Keep cycling steps
   stepTimer = setInterval(() => {
     stepIdx = Math.min(stepIdx + 1, LOADING_STEPS.length - 1);
     document.getElementById("loading-step").textContent = LOADING_STEPS[stepIdx];
   }, 5000);
 
-  // Poll for completion (analysis runs in background)
+  // Poll for completion and new signals
   pollForResult(apiKey);
+}
+
+function renderQuickSignal(q) {
+  let el = document.getElementById("quick-signal-badge");
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "quick-signal-badge";
+    el.style.cssText = "margin:10px 0 6px;padding:9px 12px;border-radius:6px;display:flex;align-items:center;gap:9px;animation:fadeIn 0.4s ease;";
+    const loadingWrap = document.querySelector(".loading-wrap");
+    if (loadingWrap) loadingWrap.appendChild(el);
+  }
+  const colors = { Green: { bg:"#ECFDF5", border:"#A7F3D0", color:"#059669" }, Orange: { bg:"#FFFBEB", border:"#FDE68A", color:"#D97706" }, Red: { bg:"#FEF2F2", border:"#FECACA", color:"#DC2626" } };
+  const cfg = colors[q.quick_signal] || colors.Orange;
+  el.style.background = cfg.bg;
+  el.style.border = `1px solid ${cfg.border}`;
+  el.innerHTML = `<span style="font-size:14px;flex-shrink:0">${q.quick_signal === "Green" ? "🟢" : q.quick_signal === "Red" ? "🔴" : "🟡"}</span><div><p style="font-size:9px;font-weight:700;color:${cfg.color};text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;">Preliminary signal</p><p style="font-size:11px;color:#111827;line-height:1.45;">${q.quick_reason}</p></div>`;
+}
+
+let signalDripTimers = [];
+let shownSignalCount = 0;
+
+function renderLiveSignals(signals, elapsedMs = 0) {
+  // Clear any pending drip timers
+  signalDripTimers.forEach(t => clearTimeout(t));
+  signalDripTimers = [];
+
+  let container = document.getElementById("live-signals-container");
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "live-signals-container";
+    container.style.cssText = "margin-top:8px;display:flex;flex-direction:column;gap:6px;";
+    const loadingWrap = document.querySelector(".loading-wrap");
+    if (loadingWrap) loadingWrap.appendChild(container);
+  }
+
+  // Figure out how many should already be visible based on elapsed time
+  // First signal at 8s, then every 12s
+  const alreadyVisible = Math.max(0, Math.floor((elapsedMs - 8000) / 12000) + 1);
+
+  signals.forEach((sig, i) => {
+    if (i < alreadyVisible) {
+      appendSignalCard(container, sig, false);
+    } else {
+      const delay = Math.max(0, (8000 + i * 12000) - elapsedMs);
+      const t = setTimeout(() => appendSignalCard(container, sig, true), delay);
+      signalDripTimers.push(t);
+    }
+  });
+}
+
+function appendSignalCard(container, sig, animate) {
+  const card = document.createElement("div");
+  card.style.cssText = `padding:8px 11px;border-radius:5px;display:flex;gap:8px;align-items:flex-start;border:1px solid ${sig.confidence === "High" ? "#A7F3D0" : sig.confidence === "Low" ? "#E5E7EB" : "#FDE68A"};background:${sig.confidence === "High" ? "#F0FDF4" : sig.confidence === "Low" ? "#F9FAFB" : "#FEFCE8"};${animate ? "animation:fadeIn 0.5s ease;" : ""}`;
+  card.innerHTML = `<span style="font-size:10px;flex-shrink:0;margin-top:2px;color:${sig.confidence === "High" ? "#059669" : sig.confidence === "Low" ? "#9CA3AF" : "#D97706"};">${sig.confidence === "High" ? "●" : sig.confidence === "Low" ? "○" : "◐"}</span><p style="font-size:11px;color:#111827;line-height:1.5;">${sig.content}</p>`;
+  container.appendChild(card);
 }
 
 function pollForResult(apiKey) {
   const poll = setInterval(() => {
     chrome.runtime.sendMessage({ type: "GET_STATE" }, (state) => {
-      if (!state || state.status === "loading") return; // still running
+      if (!state) return;
+
+      // Update quick signal if it just arrived
+      if (state.quickSignal) renderQuickSignal(state.quickSignal);
+
+      // Update live signals if new ones arrived
+      if (state.liveSignals && state.liveSignals.length > 0) {
+        const elapsed = Date.now() - (state.startedAt || Date.now());
+        renderLiveSignals(state.liveSignals, elapsed);
+      }
+
+      if (state.status === "loading") return; // still running
       clearInterval(poll);
       clearInterval(stepTimer);
+      signalDripTimers.forEach(t => clearTimeout(t));
       if (state.status === "completed") {
         restoreResult(state);
       } else if (state.status === "error") {
         restoreError(state, apiKey);
       }
     });
-  }, 1000);
+  }, 1500);
 }
 
 function restoreResult(state) {

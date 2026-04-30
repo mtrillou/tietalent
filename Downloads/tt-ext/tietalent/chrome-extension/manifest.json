@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TieTalent \u2014 Candidate Intelligence for Hiring",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "Make better hiring decisions in seconds. Surface risks, gaps, and non-obvious insights directly from any profile.",
   "permissions": [
     "activeTab",

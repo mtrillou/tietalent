@@ -93,6 +93,8 @@ async function handleAnalysis(payload) {
     startedAt: Date.now(),
     result: null,
     error: null,
+    quickSignal: null,
+    liveSignals: [],
   });
 
   // Get API key
@@ -103,6 +105,30 @@ async function handleAnalysis(payload) {
     await setState({ status: "error", error: "NO_API_KEY" });
     throw new Error("NO_API_KEY");
   }
+
+  // ── Fire quick signal in parallel (best-effort, ~3s) ──────────────────────
+  fetch(`${API_BASE}/api/analyze/quick`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-API-Key": apiKey },
+    body: JSON.stringify({ cv_text }),
+    signal: AbortSignal.timeout(15000),
+  }).then(r => r.json()).then(async q => {
+    if (q && q.quick_signal) {
+      await setState({ quickSignal: q });
+    }
+  }).catch(() => {});
+
+  // ── Fire signal stream in parallel (~5s) ─────────────────────────────────
+  fetch(`${API_BASE}/api/analyze/signals`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-API-Key": apiKey },
+    body: JSON.stringify({ cv_text }),
+    signal: AbortSignal.timeout(20000),
+  }).then(r => r.json()).then(async ({ signals }) => {
+    if (signals && signals.length > 0) {
+      await setState({ liveSignals: signals.slice(0, 4) });
+    }
+  }).catch(() => {});
 
   try {
     const response = await fetch(`${API_BASE}/api/v1/analyze/candidate`, {

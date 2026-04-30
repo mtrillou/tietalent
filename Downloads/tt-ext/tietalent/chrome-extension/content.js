@@ -188,9 +188,11 @@
   function openSidebar() {
     isOpen = true;
     sidebar.classList.add("tt-open");
+
     const candidate = detectCandidate();
     detectedName = candidate.name;
     pageText = extractPageText();
+
     if (detectedName) {
       candidateName.textContent = detectedName;
       candidateMeta.textContent = candidate.meta;
@@ -198,16 +200,101 @@
     } else {
       candidatePreview.style.display = "none";
     }
-    // Check auth then auto-run immediately
+
     chrome.runtime.sendMessage({ type: "GET_API_KEY" }, (res) => {
-      if (res && res.api_key) {
-        loadCredits(res.api_key);
-        runAnalysis(); // skip ready state, go straight to analysis
-      } else {
+      if (!res || !res.api_key) {
         authSec.style.display = "block";
         readySec.style.display = "none";
+        return;
       }
+
+      loadCredits(res.api_key);
+
+      // Check if a prior report exists
+      chrome.storage.local.get(["tt_last_report", "tt_report_history"], (stored) => {
+        const lastReport = stored.tt_last_report ? JSON.parse(stored.tt_last_report) : null;
+        const history = stored.tt_report_history || [];
+
+        if (lastReport) {
+          // Show decision screen: run for current profile + links to past reports
+          showReadyWithHistory(lastReport, history);
+        } else {
+          // No prior report — auto-run immediately
+          runAnalysis();
+        }
+      });
     });
+  }
+
+  function showReadyWithHistory(lastReport, history) {
+    authSec.style.display = "none";
+    results.style.display = "none";
+    loading.style.display = "none";
+    errorDiv.style.display = "none";
+
+    const candidateLabel = detectedName || "this profile";
+    const lastName = lastReport.candidate_name || "Previous candidate";
+    const API_BASE = "https://tietalent.vercel.app";
+
+    // Build history links (last 5 excluding current if same name)
+    const historyItems = history
+      .filter(h => h.name !== detectedName)
+      .slice(0, 5);
+
+    let historyHtml = "";
+    if (historyItems.length > 0) {
+      historyHtml = `
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid #F3F4F6;">
+          <p style="font-size:9px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:8px;">Previous reports</p>
+          ${historyItems.map(h => `
+            <a href="${API_BASE}/en/history" target="_blank"
+               style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:6px;border:1px solid #E5E7EB;background:#F9FAFB;margin-bottom:6px;text-decoration:none;cursor:pointer;">
+              <div>
+                <p style="font-size:12px;font-weight:600;color:#00126B;">${h.name}</p>
+                <p style="font-size:10px;color:#9CA3AF;">${h.date || ""}</p>
+              </div>
+              <span style="font-size:11px;color:#FF1F48;font-weight:600;">View →</span>
+            </a>
+          `).join("")}
+          <a href="${API_BASE}/en/history" target="_blank"
+             style="display:block;text-align:center;font-size:11px;color:#9CA3AF;text-decoration:none;margin-top:4px;">
+            See all reports →
+          </a>
+        </div>`;
+    }
+
+    readySec.innerHTML = `
+      <div id="tt-credits-bar">
+        <span id="tt-credits-text">⚡ Loading...</span>
+        <button id="tt-change-key" style="font-size:10px;color:#9CA3AF;background:none;border:none;cursor:pointer;padding:0;">Disconnect</button>
+      </div>
+      <div style="padding:14px 16px 16px;">
+        <button id="tt-analyze" class="tt-btn-primary" style="width:100%;margin-bottom:6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;margin-right:6px"><circle cx="11" cy="11" r="8" stroke="white" stroke-width="2.2"/><path d="M21 21l-4-4" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg>
+          Run Intelligence${detectedName ? ` for ${detectedName}` : ""}
+        </button>
+        <p style="font-size:10px;color:#9CA3AF;text-align:center;margin-bottom:0;">1 credit · ~30 seconds</p>
+        ${historyHtml}
+      </div>`;
+
+    readySec.style.display = "block";
+
+    // Re-bind analyze button
+    document.getElementById("tt-analyze").addEventListener("click", () => runAnalysis());
+
+    // Re-bind disconnect
+    const changeKeyBtn = document.getElementById("tt-change-key");
+    if (changeKeyBtn) {
+      changeKeyBtn.addEventListener("click", () => {
+        chrome.runtime.sendMessage({ type: "CLEAR_API_KEY" }, () => {
+          readySec.style.display = "none";
+          authSec.style.display = "block";
+        });
+      });
+    }
+
+    // Reload credits on new elements
+    chrome.storage.local.get("tt_api_key", (d) => d.tt_api_key && loadCredits(d.tt_api_key));
   }
 
   function runAnalysis() {
@@ -310,6 +397,21 @@
   });
 
   function renderResults(report, meta) {
+    // Save to history
+    chrome.storage.local.get("tt_report_history", (stored) => {
+      const history = stored.tt_report_history || [];
+      const entry = {
+        name: report.candidate_name || detectedName || "Unknown",
+        date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),
+        alert: report.alert_level,
+      };
+      // Remove duplicate same name, prepend new entry, keep last 10
+      const filtered = history.filter(h => h.name !== entry.name);
+      chrome.storage.local.set({
+        tt_last_report: JSON.stringify(report),
+        tt_report_history: [entry, ...filtered].slice(0, 10),
+      });
+    });
     const alertCfg = {
       Green:  { bg: "#ECFDF5", color: "#059669", border: "#A7F3D0", label: "Clean" },
       Yellow: { bg: "#FFFBEB", color: "#D97706", border: "#FDE68A", label: "Review" },
