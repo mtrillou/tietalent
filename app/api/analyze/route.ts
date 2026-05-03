@@ -224,9 +224,9 @@ export async function POST(request: NextRequest) {
     const report = await analyzeCV(cv_text, enrichedData, safeParseJSON);
 
     const label = identity?.full_name || "Unknown candidate";
-    await saveScan({ userId, type: "candidate_intelligence", input_label: label, result: report as object });
+    const scan = await saveScan({ userId, type: "candidate_intelligence", input_label: label, result: report as object });
 
-    return NextResponse.json({ report });
+    return NextResponse.json({ report, scanId: scan.id });
 
   } catch (err) {
     console.error("[/api/analyze] Error:", err instanceof Error ? err.message : "unknown");

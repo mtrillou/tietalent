@@ -87,7 +87,6 @@ export async function saveScan({
   input_label: string;
   result: object;
 }) {
-  // Never log raw result — just save to DB
   return prisma.scan.create({
     data: { userId, type, input_label, result },
   });

@@ -234,6 +234,10 @@ If not applicable: omit entirely.
 PRE-FLIGHT CHECKLIST (run before outputting)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+0. GLOBAL SIGNAL REGISTRY: Before writing any section, mentally list every unique signal found.
+   Assign each signal to EXACTLY ONE section based on: Legal/Reputation → high_impact_findings, Supporting evidence → signals, Summary → synthesis only (no new signals).
+   Once a signal is assigned to a section: it CANNOT appear anywhere else — not rephrased, not summarized, not referenced.
+
 1. DEDUPLICATION: Every signal appears exactly once. Remove any repetition.
 2. SOURCE AUDIT: Every signal in verified/weak/findings has source_type + source_reference. Remove any without.
 3. TONE CHECK: Replace any forbidden words. Add context to every negative signal.
